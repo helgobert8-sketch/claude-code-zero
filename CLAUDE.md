@@ -4,16 +4,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Projects
 
-### Tic Tac Toe (tictactoe.html)
-Single-file, vanilla HTML/CSS/JavaScript web app — no build step, no dependencies.
-**To run:** open `tictactoe.html` directly in a browser.
-
-All game logic lives in `tictactoe.html`:
-- **UI** — 3x3 CSS Grid board; cells get `.x`/`.o`/`.taken`/`.win` classes for styling.
-- **Game state** — `cells` (9-element array), `current`, `gameOver`, `mode` (`'2p'` or `'1p'`), `score`.
-- **AI** — minimax for Hard; random for Easy; mix for Medium. CPU always plays `'O'`.
-- **Flow** — `handleClick` -> `placeMove` -> win/draw check -> if CPU's turn, `setTimeout(cpuMove, 400)`.
-
 ### Dashboard — Macro + AI Domains (C:\Users\manyw\Dashboard\)
 Modular intelligence system. Same 5-layer pipeline (Profiles, Monitor, Analysis, Council, Thesenverlauf) applied to two domains: **Macro** (6 investors, established) and **AI** (11 personas, build-out in progress).
 
