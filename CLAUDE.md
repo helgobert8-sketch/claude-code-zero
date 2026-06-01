@@ -2,12 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Session-Start Auto-Pickup (gilt für ALLE Projekte, nicht nur Dashboard)
+
+Bei Beginn **jeder** Session prüfen, ob im Wurzelverzeichnis eines aktiven Arbeitsverzeichnisses (Primär- **oder** Zusatzverzeichnis) eine `NEXT_SESSION.md` mit einem nicht-leeren pending Prompt liegt (alles ausser `# Pending Prompt — (leer)`). Wenn ja: dem User den Titel/Kern kurz nennen und anbieten, ihn auszuführen — **nicht ungefragt starten** (per [[feedback_no_unsolicited_actions]]). Die Datei ist pro Repo eine einzige, immer-ueberschriebene Pending-Prompt-Datei (kein Stapel); die ausfuehrende Session setzt sie per Selbst-Reset-Footer am Ende zurueck. Hintergrund + Konvention: `feedback_next_session_handoff`-Memory. Bekannte Datei aktuell: `C:\Users\manyw\Dashboard\NEXT_SESSION.md` (weitere Repos analog, sobald dort eine angelegt wird).
+
 ## Projects
 
 ### Dashboard — Macro + AI Domains (C:\Users\manyw\Dashboard\)
 Modular intelligence system. Same 5-layer pipeline (Profiles, Monitor, Analysis, Council, Thesenverlauf) applied to two domains: **Macro** (6 investors, established) and **AI** (11 personas, build-out in progress).
 
-**Session-Start Auto-Pickup:** Bei Beginn einer Dashboard-Session prüfen, ob `C:\Users\manyw\Dashboard\NEXT_SESSION.md` einen nicht-leeren pending Prompt enthält (alles ausser `# Pending Prompt — (leer)`). Wenn ja: dem User den Titel/Kern kurz nennen und anbieten, ihn auszuführen — nicht ungefragt starten. Die Datei ist eine einzige, immer-ueberschriebene Pending-Prompt-Datei (kein Stapel); die ausfuehrende Session setzt sie per Selbst-Reset-Footer am Ende zurueck.
+**Session-Start Auto-Pickup:** Dashboard nutzt `C:\Users\manyw\Dashboard\NEXT_SESSION.md` — siehe die generelle Regel oben unter „Session-Start Auto-Pickup (gilt für ALLE Projekte)".
 
 **Repository layout (post-Phase-1 refactor, 2026-05-02):**
 ```
