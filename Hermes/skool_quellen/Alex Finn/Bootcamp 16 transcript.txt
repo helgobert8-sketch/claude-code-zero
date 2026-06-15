@@ -1,0 +1,1513 @@
+﻿Greetings Earthlings. Hello everybody, you have made it. You have made it to
+ Friday. You've made it to the I'm coding Academy. You've made it to the first
+ day
+ of the rest of your life. Today you'll remember forever. The day that this
+ community went over Claude Opus 4.8 in a live call. What's bigger than that? I
+ say
+ nothing. I hope you all had a beautiful week. We'll have a beautiful weekend
+ coming up. It's the summer. We have reached the summer. Unless you live in
+ the Boston area, then it is cold this weekend. For that, I am glad I no longer
+ live in Boston. Let's do this. How many people here? If you attended yesterday
+'s
+ live vibe coding session, put up an emoji right now. One, two, three, four,
+ five,
+ six, seven, eight, nine. Okay. It's about a quarter. About a quarter of people
+ here.
+ That's fine. What I want to do is this. I want to go over my experiences with
+ Claude Opus 4.8 over the last day. Give some recommendations. Give you my
+ recommendation on code X versus Claude code. Yeah. Let's do that. And then I'm
+ going to quickly go again through that X Caledry went over. Just quick, real
+ quick. So if you saw it already, we'll use it as a refresher. We'll use it as a
+ refresher. Then, as we always do, we will do Q&A. Couple updates on Q&A type
+ stuff.
+ Number one, there's a new category in the community called questions. It
+ appears,
+ there's nothing wrong with this. This is great. It appears for a lot of people,
+ the
+ value of an AI community is like, I got questions. I don't know how this works.
+ I don't know what to do or I need a second set of eyes on this. I'm going to
+ ask others. And that's totally fine. That's great. So one, we have a questions
+ category in the community now. So if you just have like a, and by the way,
+ these
+ are all experiments. If this doesn't work, if this doesn't catch on, we'll
+ change it. Doesn't matter. But if you just have like kind of a general question
+, tech
+ question, support question, there's now a question category. And what I'm going
+ to
+ try to do is every night at a given time, Alison, the new admin of the vibe
+ code
+ academy will send me the like kind of list of questions. And I'll just go down
+ it, rapid fire answer all the questions to the best of my ability, right? Can't
+ do
+ it every night. Sometimes I got a things to do. But to the best of my ability.
+ The
+ second thing is, if you are looking for more hands on Q and A stuff like the
+ second half of these Friday calls, these Friday boot camps are all Q and A, we
+'ve
+ yet to have a single Friday where we made it through every single question. So
+ if
+ you're one of those people where every week you have a lot of questions and I
+ can't always get to your question is because there's so many people that join
+ and have questions. There's a new middle tier in the vibe code academy. You're
+ welcome to join. You don't have to just an option if Q and A is a big value ad
+ for you. There's kind of a middle tier now where I'm going to do a once a month
+ just Q and A session for that tier. So I can hopefully answer more questions
+ for
+ the people that asking questions is like the big value ad. It's not gonna
+ change
+ anything. Everything else is remaining the same. I'm still doing the Q and A's
+ in
+ the second half the Friday boot camps. I'm still answering questions on the
+ message board in the questions category. But if you want an extra hour or two
+ of
+ asking questions and answering questions live, that's an option. Nothing's
+ being
+ taken away from anyone else. Just an extra thing. So that's another thing you
+ can upgrade to that if you prefer. It's an Allison idea right there. It's a
+ great
+ idea for Allison. Allison's great. Feel free to reach out to Allison for
+ anything. She's fantastic for anyone who's ever met her or talked to her. Great
+ admin. With that being said, Claude, Opus, 48. I'll go through these couple
+ things
+ first. I'll take questions on Claude Opus, Claude Codex, right after I go
+ through
+ these couple things. And then we could do general Q and A after that. I mean
+ there's anything else I wanted to add to that I have been doing. Oh, I'll talk
+ to
+ one about one other thing after that. Okay. So let's do this. Let's share the
+ screen. Make sure I'm not sharing anything crazy here. Okay. Looks good. So
+ before I do that real quick, Claude Opus 48 just came out. As people might know
+, I
+ for the first time in a year and a half have preferred a model and harness
+ over Claude code. I have preferred Chad GBT55 and Codex over Claude code. For
+ the
+ last three weeks now, which for the past, I mean this was originally a Claude
+ code community. That's how much I loved Claude code. And then open Claude came
+ now and that blew my mind. And then now Codex is out. I think Codex was better
+ than Claude code. So let's let's just first do this. Actually, I'm going to do
+ quick recap. So if you're in the vibe session yesterday, this will be familiar.
+ I'll do this real quick. Just for those who are new newer, we're in here
+ yesterday.
+ Opus 48. Smashes the benchmarks, although I don't really trust benchmarks and I
+'ll
+ go over a second, what my experiences have been. Smashes benchmarks, same cost
+ as
+ 47. So there's no need to use Opus 47 anymore for anything. Switch everything
+ Opus 48, Hermes, open claw, all that. Haven't noticed a huge difference on the
+ Hermes or open claw front from Opus 48. Maybe a little bit better. I'm reading
+ a lot of tweets from people who think it's much better. So take that into
+ account.
+ Fast mode, much cheaper. Fast mode is a third of the price in Claude code now.
+ So
+ if you're on the $200 plan, you might as well use fast mode. Much less
+ hallucinations. Mythos coming in a few weeks. Dynamic workflows and ultra code.
+ Actually, let me show you that real quick. Let me demo that. If you are in
+ Claude code
+ and you give any prompt, hey, build me the new feature using workflow. Notice
+ how
+ that just turned blue at the bottom there. This is basically a keyword that
+ will
+ cause Claude code when you hit enter to use this new workflow, dynamic workflow
+ mode. And basically what dynamic workflow mode is, is it will, it's almost like
+ a
+ super plan mode in super execution mode, where it will build a plan for tens of
+ thousands of agents to do things. For this task, you give it. So if you say
+ build
+ this big feature, it'll make a plan for agents to do research, agents to do the
+ planning, agents to do the execution, agents to do the testing, agents to do
+ 100,000 different things. And it will send them off and do it. So workflows,
+ the
+ keyword you want to use if you're building out super complex things. Takes up
+ many
+ more tokens, many more tokens. So you want to be careful if you're on anything
+ less than $200 a month plan. I recommend if you're taking vibe coding seriously
+ to turn on extra usage, which basically means once you hit your limits, it just
+ starts charging you through the API. So what I do is building Henry is super
+ important for me. So, you know, vibe coding super important. That's a new
+ workflow
+ mold mode ultra, ultra code, which I'm pretty sure is just this max mode. I
+ don't know why they don't keep the terminology the same. I think that's just
+ max mode. What max mode slash ultra code mode is is basically, it uses the
+ highest level thinking and uses workflow when it feels like it. So you don't
+ have to use the workflow keyword anymore. It just decides on its own when to
+ use
+ it. So this is going to burn tokens like a mother. So those are the two big
+ features of Claude code. Let me see if there's anything else I wanted to cover
+ on that subject. So final. So my experience is over last day using it to build
+ stuff at Henry. Let me pin myself so you can see me better when y'all looking
+ directly at me when I talk. And for everyone, there we go. Here we go.
+ Hey, it's looking like a little bit of a mess. That's fine. We'll fix that.
+ I've been using Claude code and codex a ton the last day. We got a little
+ chocolate
+ bar chocolate bar in my face protein bar. I'm not I'm off the sugar. I'm off
+ the
+ sugar. I'm not doing sugar for the next two months. That was a protein bar not
+ a
+ chocolate bar a chocolate protein bar. I am not switching from codex to Claude
+ code. I do believe opus 48 is actually a better model than Chad GBT 5.5. But
+ and
+ I'll share my entire screen now. I believe codex is a much better harness
+ for vibe coding. I've noticed many different things. I've noticed codex is a
+ lot more willing to test itself automatically. So it'll write code and
+ automatically test itself even if it has to open up a browser and go in the
+ browser and click around. It'll do that. Claude code really hasn't done that
+ for
+ me unless I explicitly asked it to codex does little things more proactively
+ like, you know, it'll make a change and it'll spin up a server for me for to
+ test it a local host server to test it automatically. Claude code doesn't
+ really
+ do that for me. If I ask, sometimes it gets confused. So I've noticed that
+ codex is better with execution because it does all those things proactively.
+ Claude code doesn't do those things proactively, but I do believe opus 48 is
+ smarter than chat GBT 5.5. So the workflow I've been doing over the last 24
+ hours that I figure out that's been good for me so far. Things might change as
+ we go here, but good for me so far has been do the simple things in codex.
+ Just do the simple tasks and codex. And then when I'm doing something a little
+ bit more advanced or something needs to be debugged. So it's not working. I go
+ into Claude code, say, Hey, check this out. Why do you think this is happening?
+ Build me a plan. And then I take that information and give it back to codex
+ and codex does the execution. That's been the workflow that's worked best for
+ me
+ here. Basically every A/B test I've done with codex and Claude code for plans,
+ I give the plans to each other and codex goes, Oh, yeah, it's a way better plan
+.
+ So final suggestion, have them upside by side like I'm showing you here. This
+ is
+ my second monitor. Have them upside by side like this.
+ Do a bunch of work in codex. If you have to do something advanced, put it into
+ Claude code, get the plan there, get the diagnosis there, and then give it back
+ to codex to do the execution. Just because I found codex is going to be
+ better at testing itself, better at spinning things up and handing it over to
+ you. Just better at kind of little things that make life easier.
+ Any questions on that? Any questions on opus for a Claude code codex?
+ Go ahead, Tommy on San Jose. Let's do this real quick, Tommy. Let me just write
+ your name down,
+ Tommy, Sean, San Jose. After Tommy and Sean, after Tommy goes,
+ we're going to throw up the emoji and I'll add you to the list. So Tommy, you
+ ask your question,
+ then we'll say any more questions and you throw up the emoji and I'll add them
+ to the list. So Tommy,
+ then Sean, go ahead, Tommy. How you doing, man? Yeah, I'm doing well. How are
+ you?
+ Very good, man. Beautiful Friday. Glad to hear. All right. So yeah, on the
+ looking at the left side of the screen, Claude code, are you using that in
+ the app itself? Is it are you using the Claude app, which has the you can use
+ co-work and you use chat? Are you using it, like, which tab, I guess, are you
+ using within Claude?
+ Yeah. So this is Claude. This is the Claude code tabs. If I click here, you can
+ see chat,
+ co-work code. Okay. Yes. So you're still in code. Yes. Okay. And are you
+ switching to plan
+ mode to ask those questions? It depends. If I'm building out a big feature and
+ I
+ want a really in depth plan, then yes. What I actually found most of my
+ usage has been when I'm using these two together is like, if I run into an
+ issue multiple times
+ of codecs, I'm sort of bug or just doesn't work the way is intended, I'll go
+ and I'll say, hey,
+ check it out. I actually, I'll go first to codec, say, write me a quick mark
+down file that describes
+ this bug, the issue and what we did that leads up to it. And I take that mark
+down file,
+ give it to Claude, go say, hey, check this out and let me know what you think.
+ And then I don't do
+ plan mode for that. That's more for debugging and just like trying to get a
+ quick decision made.
+ Okay. That makes sense. And then I guess, so does that basically then eliminate
+ plan mode completely
+ in your workflow? Then as far as on the chat, the 5.5 side, you don't even
+ really need to use
+ the plan mode because you're using, you're using Claude to handle that. You
+ know, I, to be honest
+ to you, I never really used plan mode in codecs. I don't think it's that much
+ of an improvement
+ over the way it works currently. I don't think they put much focus or love into
+ plan mode on codecs.
+ I heard one of the Chad GPT products people talk one time that they purely put
+ plan mode in
+ because people switching from Claude got confused like, where's plan mode? I
+ don't know where it is.
+ And so they just put that in there to make them happy. But I don't, I don't
+ think it's like that
+ good or advanced. What I typically do is before I have it do any sort of
+ significant task,
+ I'll say like, just do you have a plan to execute on this yet? And then it'll
+ give
+ up me a plan. Okay, go ahead and do it. That's, that's how I kind of use a plan
+ mode.
+ Got it. Make sense. Thanks for clarifying. Of course, Tommy. What are you
+ building right now?
+ At this moment, nothing zero. So I just been setting up Hermes more
+ infrastructure.
+ And I've built out skills within there to do some tasks like a reoccurring task
+ in my property
+ management business. Cool. So yeah, no, no app building per se. Okay. I
+ encourage you to give
+ it a go. I encourage you. I mean, in the community, there's a Claude code
+ masterclass
+ that has section on like coming up with ideas and stuff. I'd encourage you to
+ give it a go.
+ It'll just give you a deeper understanding. You know, a lot of people join the
+ community
+ because of open claw and Hermes. And that's 100% fine. I mean, that's, you know
+, I'm very
+ passionate about those things. But I do believe there's a big advantage to
+ using Claude code and
+ like spending time to actually hand hold an agent through vibe coding things.
+ You would just kind of get a deeper understanding of how the whole thing works,
+ the tech works,
+ how it thinks, how the, you know, all the, how the sausage is made, you know?
+ No, that makes sense. Yeah. I have, I have two app ideas and I'm just about
+ completed with the,
+ with the course on, on a Claude code. Oh, glorious. Cool. Yeah. So I'm, I'm
+ close to start, to start
+ getting going on a first app. Cool. Good to know. Let me know how it goes.
+ Definitely will.
+ And yes, these two, so these are the, this is the Claude desktop app and the
+ codex desktop app.
+ In the course, we use the plugin for visual studio code. Nothing wrong with it.
+ Should still use it. Like that doesn't, that's not an outdated suggestion at
+ all.
+ That's updated with Opus for eight in ultra code mode and workflow mode. So
+ nothing wrong with
+ using that plugin. I just my workflow I've gotten used to having the desktop,
+ two desktop apps up
+ just like this. So that's just kind of a side note there. Okay, let's go to
+ Sean San Jose.
+ Thank you, sir. Appreciate it. I was curious, because I'm going back and forth
+ between
+ codex and Claude, and I haven't really found a way to implement linear. Like I
+'ve thrown
+ some issues in there, but I can't, I really have to be involved to go back and
+ forth on a feature.
+ I'm just curious how linear is involved for you. What do you mean go back and
+ forth on a feature?
+ Well, like you said, when you're between codex and Claude, if you're building
+ out
+ something that's highly technical as far as code goes, going back and forth
+ across reference
+ that they're on the right track. I'm just wondering if you're building out, let
+'s say I created like a
+ blog generation tool. To do that, I really had to be involved on both sides of
+ it, I feel like.
+ I'm just wondering how you implement linear if you're building something out. I
+ don't know if that
+ makes sense. No, it makes sense. And listen, I'll try to answer the question if
+ I don't answer it,
+ let me know. So I don't touch linear. I don't, in your face with linear at all,
+ I'm not creating issues. I'm not moving issues around. I'm not changing stat
+uses.
+ Many days go by where I don't even open the linear app. That is completely
+ managed by Claude code
+ and codex. So anytime I'm building something out and I go to a new kind of high
+ level feature,
+ which in linear is called projects, right? So you have in linear the
+ terminology is issues.
+ It's issues pretty much equate to tasks. And then you have projects, projects
+ equate to like
+ features or like a higher level umbrella for a bunch of tasks. When I get to a
+ new feature or
+ project in linear, I go to my agent, Claude code or codex, whatever one you're
+ preferring
+ at that moment, and I go, Hey, I want to build this out next. Let's first flesh
+ it out. Then we
+ discuss, okay, this is what's going to go in the feature. This is what we want.
+ This is kind of
+ the order of operations. Once we got that in a good place, then I go, okay,
+ before we start
+ building, so this is what you do right before you start building, I go go in a
+ linear, create
+ the new project and create all the issues that are that need to be created
+ based on what we just
+ discussed. And then it goes in through the plugins programmatically. So I'm not
+ touched and I'm not
+ seeing it. And it adds all the issues into linear. And then it does that goes,
+ all right, chief,
+ I added them all I begin work. And then it goes one by one of those issues,
+ completing them. Now,
+ one thing you want to do is you want to have in your agent.md file or Claude.md
+ file. That's
+ your rules file agent.md for code X, Claude.md for Claude code instructions on
+ how to manage linear.
+ So like, hey, when you finish a task, make sure you change the status, make
+ sure to sign to the
+ right person. But as long as you got that set up, it'll manage it for you. It
+'ll move things around
+ for you. It'll add details for you. There's no interfacing you have to do with
+ linear.
+ Does that answer your question, Sean? Yes, it does. I think I would never touch
+ it either.
+ But the whole point of that is to keep a log basically on what you're doing.
+ And then
+ if you, I guess, if Claude doesn't fix the issue, then you could say, or if
+ there's still a bug,
+ then you could ask code X to go in on that issue to debug it. Yeah, there's a
+ lot of
+ reasons to be using linear. And I recommend anyone who does any sort of vibe
+ coding to use linear.
+ The biggest reason being is it's just a second brain that connects all your
+ agents, Claude code,
+ code X, open claw, Hermes, right? So everything, let me share my screen.
+ Everything that you have in your linear, all the issues, projects, all of that.
+ This is accessible to all your different agents. Your Hermes can see your open
+ claw, your
+ Claude code. So as tasks are being worked on, each agent has visibility into
+ who's working on
+ what the status is, what's changed about it, what branch it's on, right? If I
+ scroll down,
+ you can see the branch it's on. So you go, Hermes, there's a bug with this. Can
+ you fix it? It'll
+ go find the issue, like, okay, it's on this branch, let me pop that open and
+ work on it, right? It
+ just acts as a glue and connector for all your different AI tech that works on
+ things for you.
+ Yeah, because I had a couple agents working on the same branch and one
+ completed it,
+ and, you know, that's a way better setup than have multiple agents working on
+ the same thing
+ at the same time. Yeah, yep. I keep them delineated, so they're working on
+ different things,
+ but this helps them stay organized and make sure they're not stepping on each
+ other's toes.
+ Beautiful, thank you. Thank you, Sean. All right, let's do this. If anyone else
+ has questions on
+ the specific code X, Claude code, opus, vibe coding linear, feel free to throw
+ up emojis. I'll
+ add you to the list, and then we'll, I'll answer them for you. Stuart,
+ Derek, Ashley, Spencer.
+ All right, let's start with Stuart. Stuart was the first person I saw their
+ emoji go up.
+ Stuart, how you doing, man? Hey, good thanks. How are you? I'm doing great, man
+. Good to be
+ talking to you. With code X and Claude, what's the best one to be doing
+ security checks of your
+ code? Like I noticed that code X has this new security beta. Have you seen that
+?
+ Yes. So I saw that security beta. I haven't tested or anything. So is it a
+ question? If you
+ wanted to, you built an app, you built some sort of program, what's the best
+ model to just make
+ sure it's secure? Yeah, exactly. My guess would be at the moment right now,
+ my guess would be opus is better. So I used Claude Sonnet. I used Claude to
+ make creator body secure. I spent a good week once I was done building creator
+ body. Just
+ hey, check this out is everything. So check this out is everything. So check
+ this out is everything.
+ What are security best practices for this? This is this and it made it pretty
+ secure. I've had
+ people review the app. It's made it pretty secure. So my guess would be you
+ could use either.
+ I just have more experience doing security stuff with Claude. And because
+ Claude, I think it's
+ smarter at the moment. I think that you probably will get better security
+ analysis out of it.
+ You just want to make sure I think I have a security module in the Claude Code
+ Masterclass.
+ Yeah, I think I think there is a slash command for security or something in
+ there that I just
+ came across in opus. But yeah, I just haven't read up about it.
+ Yeah, basically the way my security process worked is I did a bunch of research
+ with
+ Chad GBT, like, okay, I vibe code an app. What are the most important things I
+ need to secure
+ when it comes to security? There were things like APIs, role level security in
+ your database,
+ rate limiting, things like that. And so I think I listed that in the security
+ module in the Claude
+ Code Masterclass. But then on top of that, like, if you just go through and you
+ carve out a few hours
+ and you sit there with Claude Code or Codex and go, okay, review the I want to
+ do a full security
+ review. I want to make sure this is production ready for security. Start going
+ through the app
+ and figuring things out and it will start finding things and you just go down
+ different branches
+ with it when it comes to security and it'll come up with ideas and fix things
+ for you.
+ Yep, yep, great. Yeah, I try and sort of ask Codex along the way, like, I sort
+ of say,
+ you know, is it looking secure? Is it good quality code like when it's
+ reviewing Claude? So,
+ yeah, I have been doing that, but I do want to do that deep dive too. Yeah, all
+ right, great, thank you.
+ Of course, yeah, security obviously super important. I find that if you just,
+ like,
+ make sure to prioritize, you know, reverse prompting,
+ Codex and Claude Code, hey, check out my database. How can we make it more
+ secure? Check out my API
+ routes. How can we make it more secure front and how can we make more secure?
+ And you keep doing
+ that and hammering that. You'll eventually get to a very good state when it
+ comes to security.
+ Yep, yep. Thank you. Thank you, Stuart. My old friend, Derek, how you doing,
+ man?
+ Your hardware muted or something because it says you're not muted, but I can't,
+ your lips are moving.
+ I can't hear you. No, I can't hear you. Microphones, man. How about that? Now?
+ Now I can hear you. There you go. Well, fucking zoom. Every time I have to go
+ in and reset this,
+ excuse my French, we set this setting. I don't know why there isn't a, like,
+ save my setup. But
+ anyway, I think we're going to, we're going to reach the year 10,000 and
+ printers will still be
+ unreliable and microphones on video calls will still be unreliable. Exactly.
+ Like, it's going to be
+ a billion years from now. We'll have AGI. We'll be on a billion different
+ planets. Everyone will be
+ rich. The PlayStation 9000 will be out and we'll get into a video call. Hey, I
+ can't hear you.
+ You're on mute. Unmute your mic. It's every video call for that. The end of
+ time will be starting
+ like that. How many times? As Peter Diamonta says, you know, AI is easy. A.B.
+ Tech is hard, but
+ anyway, Thursday's video, I'm assuming he's in the community on what you went
+ over on Opus 4.8
+ and Clods. Correct? Great. Yeah, you go to video recordings. You'll see it.
+ Great. I'm working
+ briefly. I can't say too much on an agentic platform for the motion picture
+ industry, but I've
+ got some bugs going on, and I want to know if you could repeat what you said
+ about how you use
+ codecs and clods side by side, and you ask, "Hey, I think you said you asked Cl
+od, this is going
+ wonky or something like that, and you take its response back over to codecs?"
+ Something like that.
+ Was that sort of close? Yeah, so here's the issue with AI is when an AI
+ builds something that produces a bug, it's usually pretty, not always difficult
+, but a lot of time,
+ it'll just like keep going down a rabbit hole, and it'll be very hard to pull
+ them out to see
+ from a 9,000 foot view. No, you did this wrong, right? Yes. And so, you know,
+ what I'll do is,
+ if I reach a bug, and like you can kind of get a sense, I'm like, "This is
+ going to be a multi-step
+ annoying thing." I'll say, "Hey, this is the bug. Don't change anything. Take
+ some time, look
+ through everything, and give me an analysis of why this might be broken." Then,
+ what I'll do is,
+ okay, I'll say, "Okay, now put in a markdown file, a rundown of what happened."
+ Then, I take that
+ markdown file, I give it to the other agent, so Clod codes, I'll drag it over
+ here, give it in a
+ Clod code, and I'll say, and I'll open Clod code in the same project. I'll say,
+ "We have a bug,
+ check out the markdown file, it describes what we're facing, let me know what
+ you think, analyze it,
+ let me know what you think the solution is." Then, that'll give me a solution.
+ I'll copy that,
+ paste it back into Codex, and almost every time Codex will go, "Oh, yeah,
+ actually, that's much
+ better. Let's do that." Sometimes, you just need that separate new perspective
+ because the AI is
+ going down its rabbit hole to get it out of that bug trap.
+ Got it. Okay. Last question. If you want to make some regarding security review
+, can you just tell
+ your large language model, "Hey, I want this to be GDPR compliance, CCPNA,"
+ which I think is a
+ California state compliance issue, and is that sufficient because will it go
+ into all these other
+ things or it will be just focused on those two things? I mean, you could do
+ that, for sure.
+ I wouldn't try to one-shot GDPR compliance or anything like that. I'd say, I'd
+ try to have it
+ take it slow. What I mean by that is, "Hey, I'm trying to make this app GDPR
+ compliant."
+ First thing I want you to do is just analyze the entire app. Make me a list of
+ everywhere
+ we would have to change things to make a GDPR compliant. Then, I would probably
+ double check it,
+ give it to another agent to go over. If you have the Chad GBT 200 dollar month
+ plan, give it to Chad
+ GBT Pro, just because it's so critical and also so complex at the same time,
+ then take the final
+ plan. "Okay, I'd have it use linear, say, "Hey, make issues for everything we
+ have to do to make
+ this GDPR compliant and go down there one by one." The more complex and
+ important something is,
+ like GDPR or security or privacy or HIPAA compliance, the more you want to make
+ sure it's broken down
+ into smaller tasks so that nothing gets lost in context or anything like that
+ or lost in compactions.
+ So that's how I'd approach that.
+ Thank you very much.
+ And then that would be your project.
+ I just add on the CPA project and then the issues.
+ Yeah, so the project would be GDPR compliance or security and then the issues,
+ the tasks,
+ they call it issues in linear. I wish they would just call a task, but the
+ issues would be
+ everything that needs to be done to complete that project.
+ Skippy, you wanna jump in?
+ I just wanted to say real quick, if I may, that if you're going to do
+ compliance sets,
+ just like Alex was saying, do chunk it down per set, but then I would also
+ suggest that you,
+ at the end of each analysis, produce a report for each because then you have
+ sort of evidence of
+ due diligence in case there's a mistake later, you can at least show that you
+ made a due
+ diligence effort and that could help you assess the non-lawyer.
+ Thank you, Mike, everyone.
+ Yeah, security, big thing. I put a section on it in Cloud Code Masterclass.
+ You're going to want to do a lot of reverse prompting and just project
+ management and linear,
+ so things are broken down into the proper chunks.
+ Let me look at my list again. These are good conversations. Ashley?
+ Hey, thank you. It's a really quick question, I hope, but it goes back to
+ linear again because
+ I've been trying to work out your video the other day about projects and teams
+ and things like that.
+ So I've got a bunch of clients and we've got different projects going on for
+ different
+ clients with different stakeholder groups for each of those code projects, and
+ so I'm trying to
+ work out if that's a team that's a project for a client and then projects
+ inside of that, a lot of
+ them aren't phases, which is what I think you're talking about, projects, like
+ big topics or big
+ stories, user stories, and then issues or the little user stories. Is that the
+ way that you think of it?
+ Yeah, let me pop up my linear. So there's basically three
+ tiers in linear, three levels. There's the issue level, which is the task, fix
+ the screen,
+ change the button the red, make the screen do this. There's the project level,
+ which is the group
+ of issues that all relevant, a market scanner, an entire studio, these are like
+ kind of the
+ feature level or just, it doesn't even need to be a specific feature, it could
+ be security,
+ make this more secure, that's kind of a product level because it's a group of
+ tasks.
+ It's like a phase of the project, right? A phase of events, so maybe you're
+ building something
+ that's dashboard and you have dashboard is one thing and then you have
+ ingestion scripts as a
+ second thing, or you might have something which is back end display creation or
+ something like that.
+ Yes. Okay. Then you have the tier above that, which groups all the projects
+ together. For me,
+ that's, you can see my two, they're called teams. Teams is the third level.
+ Henry Intelligent
+ Machines is one team, creator buddy is another. Those are my two apps I'm
+ building. So for you,
+ it sounds like you got clients, you work with different teams, right? You just
+ got to think
+ with your, it sounds like you got clients for your clients, is it just a group
+ of tasks?
+ And then once you do those tasks, you're done. Or for your clients to like
+ multiple projects per
+ client, because if it's multiple projects per client, then it sounds like you
+ want to make,
+ actually, I take that back. You know, you probably just want to do teams per
+ client because
+ with each team, you can have different members as a party, each team. So there
+ might be scenarios
+ where you're for your clients, you want to actually bring them in and give them
+ visibility to your
+ linear board. Yeah. With that, you would have a team for each. So I'd probably
+ go team level for
+ each client. So a client for a team level, and then inside of there, let's say
+ I've got a project
+ might be an app. As a big picture, it's like a SaaS app, for example, multi-tie
+red access,
+ multi-different. They want to sell it at the low level. So we've got a middle
+ team, a top team.
+ And so there's a bunch of features in there. So there's no middle ground that
+ that app can
+ convert into big phases of a project, master and chunks of a project.
+ Well, I would probably not, for each client, just give it one project that says
+ build your app.
+ I would probably treat it like a full-scale development project. So like, as
+ you can see,
+ this is a full-scale development project for me. There's analytics, there's
+ plan mode,
+ there's SaaS factory, like I would actually break it down per client with
+ multiple projects.
+ And I've got some of this working. So the second bit of the question, probably
+ because I've been
+ in systems and integration for a long, long time, I've never done coding, is
+ around
+ merging a branch. You said the other day that every item becomes its own branch
+, but then does
+ that not leave with me with a million branches of unmerged things? Because I
+ might work on one
+ piece of the puzzle in the morning, and then come on to a different piece of
+ the puzzle in the
+ afternoon, because I kind of hit a brick wall or think of a new feature that's
+ in one of the
+ other projects, for example. I might have four or five issues going, but you
+ talked the other
+ day about issues of having their own branch, but then how do you go about
+ merging branches fundamentally?
+ Yeah, so it's not a hard and fast rule for me. So for those who were on the
+ last call,
+ I talked about how something I try to do in linear is every issue is its own
+ branch.
+ It's not a hard and fast rule. For branches, you kind of want them at the
+ feature level,
+ right? So it might be a little bit closer to project level branches than rather
+ issue level,
+ but it depends. It's just kind of a gray area where the way you want to think
+ about it is each
+ branch is going to be a version of your code, where the changes are together,
+ right? The changes
+ are an analytics plugin that would be one area of the software, you go into a
+ tab and it's all
+ about analytics and back pulling stuff in from Google and pushing stuff to
+ search console.
+ And then in another area of the app, it's about content creation or it's about
+ dashboarding.
+ Those are separate bits and they can work on them side by side and they won't
+ tend to overlap, right?
+ Correct. Yes. Yes. It's somewhere in, you know, it's yes. And you know, as you
+ go,
+ it's hard for me to give blanket yes or no's for everything you're working on,
+ but as you go, you can be like, hey, Claude or Codex, for this thing we're
+ planning out,
+ is it appropriate for us to do a separate branch or for this thing we're
+ planning out,
+ should it be multiple branches? It will give you an exact recommendation based
+ on what it is you're
+ building. Okay. Because the idea of the branches is to make it so, you know, if
+ I'm working on this
+ thing, I'm also working on this thing simultaneously. I don't want their code
+ to step on each other's
+ toes and confuse each other, right? So we put them on separate branches so that
+ they can code
+ without having to worry about anything else. And then we merge them and then we
+ figure out how it
+ fits together afterwards, right? And so, you know, asking your agent as you're
+ building it, hey,
+ would it be appropriate to be split this up or is it better on all one branch?
+ You don't know
+ based on the scope of what it's planning out. Yeah, because I would tend to use
+ cursor for
+ everything, and then not use cursor agent, but use two Claude's the allies
+ inside of there.
+ And one will be working on one area of the code and one will be on the other.
+ And then occasionally,
+ one says, hang on a minute, somebody else has just messed with the database
+ tables or something,
+ and undone everything I just did. And it's that that you're trying to stop,
+ right?
+ And is that correct? Yes. Subagents, do they work in the same way? You know,
+ when you're talking
+ about it's spinning up 10,000 subagents to do something. How does Claude code
+ manage that
+ overstep? Yeah, that's, that's, uh, the way subagents work, and this is the way
+ it works
+ pretty much across everything. So, uh, open claw, Hermes, Claude code codex,
+ subagents
+ are just copies of the original agent. So, subagents aren't different agents.
+ They're
+ the same agent, just copies of it. So, um, that differs that, uh, they'll have
+ separate context,
+ but they'll have, like, kind of the same skills. But they, they will be able to
+ see the way Claude
+ spins up, like, for workflow mode, multiple subagents, they're able to see, and
+ they plan
+ ahead to make sure they don't step on each other's toes. Okay.
+ You don't have to worry about kind of the architecture of subagents quite as
+ much.
+ That's pretty, thank you very much. Thank you, Ashley. It's a very good
+ question.
+ And then the last one will be Spencer. Hey, how's it going, Alex?
+ So, well, man, how you doing? Good. Don't tell my wife, this is my favorite two
+ hours of the
+ week. She tried to get me to go to the in-laws. I said, you know what, I got an
+ Alex Finn meeting.
+ I can't be going to the in-laws right now. Yeah. Right, dude. Yeah. Right. No
+ way. Yeah.
+ You're at the right place. What are your in-laws going to teach you about
+ linear? What are your
+ in-laws going to teach you about subagents? Nothing. Nothing at all. They just
+ want to talk about
+ sky net the whole time. I said, that's, that's not what's going to happen. But,
+ um, oh my God.
+ Yeah. No way. You're, you're, listen, the ball is moving. You're in-laws,
+ permanent underclass,
+ this call escaping the permanent underclass. That's right. That's, I told my
+ mother-in-law
+ that she didn't like it, but we'll, we'll, I digress. My question is what it is
+.
+ My question is what I handle it. Yeah. We got a little, we got a little live
+ stream AF there.
+ I love it. I love it. Um, the, um, the, um, the question I had was, so when you
+ have autonomous
+ agents working and, and I've told you before, I, I don't have a coding
+ background. Um,
+ obviously I've GitHub set up, but I don't really go in there and look at, look
+ at the repo or
+ anything like that. Um, how do you trust that, you know, when you get the issue
+ created in linear,
+ that they're writing really detailed, really high quality specs so that when
+ you hand those
+ off to cloud or codecs that they know what to build and then once they get
+ built, when you got
+ the PR reviews going on, how do you, how do you ensure that they're really
+ testing against those
+ so that you're not developing crap because everything's so autonomous that you
+'re
+ probably hands off for it. Maybe you do look at GitHub because you're more
+ technical than I am,
+ but that kind of prompts or what kind of things they have in their soul or
+ cloud MD files that
+ ensure that they're, they're building quality code.
+ Yeah. Let me, um, let me do this. I forget if I've shared this before or not,
+ but I'm going to
+ share my agent.md file and basically, here it is. Found it. Um, I can share my
+ screen and walk you
+ through it right now. Let me just, uh, pull it open first. All right, here we
+ go. Put that open
+ at it. What is this? Is this cursor or whatever? Um, share screen, window. So
+ basically the agent,
+ so the question basically is, is how do you ensure your agent handles things
+ properly?
+ Doesn't get lazy. You know, makes detailed issues so you can hand it off to
+ each other,
+ reviews the whole requests thoroughly, things like that. That is done via this
+ agent or cloud.md file.
+ Again, every coding tool, cursor, everything uses agents.md. Claude, they said
+ screw it,
+ we're doing cloud.md. So they're the only ones you got to do cloud. Either
+ right. This explains
+ in detail how to handle linear and handoff process and all that. So, uh, so I
+ actually
+ have a linear task. I should share this as well. I have a linear task template
+ that basically has
+ what needs to be included in it. But in those things, it has things like
+ acceptance criteria.
+ What needs to be done before an issue is marked done? You know, how to test?
+ What to test?
+ Um, before opening a PR, run the relevant checks, run the diff, confirm the PR
+ description,
+ follows the template. Right. It's basically saying here's how you test. This is
+ the acceptance
+ criteria. This is the, you know, make sure you look at the risks, include any
+ screenshots of what
+ you built in there. Um, what else we got in here? Uh, what was intentionally
+ not done?
+ So everything has full inch, every linear issue has full instructions on what
+ the acceptance
+ criteria is, detailed descriptions, why it's being implemented, instructions on
+ how to test it,
+ and so that when your agents pull that linear issue, it can just go and the
+ linear issue is
+ so descriptive. Okay. Here's how I test it. This is what I do. You put that in
+ addition to your
+ existing agents. MD, in other words, that is that text that you paid attention?
+ This is an
+ addition. Got you. Is that available for us to look at? I got, I will, the
+ original ones in the
+ Claude Code Masterclass. This additional one, I am going to right now put in
+ the community.
+ Oh, awesome. Thank you. Yeah. Thanks. So let me do this. I want to make sure,
+ because if I save
+ it to after, there's no chance I do it after because I have been talking for
+ what will be about
+ eight hours straight. And all I want to do is bury my face and my pillow after
+ this. Um,
+ let's do this. Let's do, should we do it now? I'll just do gender.
+ We'll make this announcement. Uh, my, um, agents.md and Claude.md files for
+ managing linear. And
+ then I'm just doing this right now live in the college, so I can make sure I
+ get this done.
+ Below is my agent.md file for, uh, making sure my agent creates linear tasks
+ for each task.
+ And properly fills each issue out with the right details.
+ And then I'll get pasted and I'll make sure this looks good and it looks good.
+ And, uh, oh,
+ I'll include one more thing. Ops template linear task. I'll include the linear
+ task.md.
+ Um, I got to find that. Let me see if I can just find that real quick. Ops.
+ Sorry for talking to. Let me see if I can just take it. We're doing that.
+ Yes. I just want to get this done. I feel like I've been asked it many times
+ and I just want to
+ do it. Found it. Linear task. Okay. Found it. So here I'll show you this real
+ quick too.
+ Which is the linear task template. So there's two things you want to add.
+ You want to add the new agent.md file and then we have a linear task.md file,
+ which basically says, here's what a linear task looks like. It's like a
+ template.
+ So the rules for it. And then the issue shape, acceptance criteria, notes,
+ goals, expectations. So I will include this as well. That is such a huge lesson
+ right there.
+ That in your, uh, cloud.md file or agents to reference this linear. That is
+ going to save me.
+ Thank you so much. Of course, linear task.md files for managing linear,
+ below is my agent.md file. And then below that is my linear task.md file for
+ making sure my
+ agent creates linear task for each other. It probably fills them out for each
+ with the right
+ details. The real quick, the linear.md file goes weird. You just, I mean, do
+ you stick it in the
+ agent's linear task? Yeah, I would, I would in the, uh, the root of your
+ project folder,
+ um, create a full, I would create a directory in the root called ops, OPS. And
+ then I would
+ drop it in there. Got it. If you actually look in the, the post I'm about to
+ make,
+ you'll see it. It says in it in the agent.md file, look for the linear template
+ in op slash
+ template slash linear task. So you're just going to want to build a directory
+ structure that matches
+ that. Is that root of open clause directory? Oh, this is the root of your
+ project. Root of your
+ project. Got it. So for open claw, yeah, you could do the same thing for open
+ claw. Put it in the
+ root of your open claw. You add it to your rules file and add the linear task
+ file.
+ For cloud code or codecs, you just add this to your project. Whatever project
+ you're working on.
+ God, dot md. Okay, let me just put some lines here.
+ Okay. Let's see here.
+ Can I ask quick follow up on that? Yes, if you've got like 50 different
+ projects with different
+ things in them, is there a place that you can put this that Claude will always
+ reference
+ regardless of which CLI is running in which project folder or which tool you're
+ using?
+ For Claude code and codecs, I don't think so. You just you're gonna have to
+ like copy and
+ paste every time you start a new project. Thank you. Open claw and Hermes, they
+ always operate
+ from the same directory. So I think you only need to do it once for that.
+ Claude code and codecs
+ is always dependent on the folder you're opening it up in. So you need to copy
+ and paste it for
+ every project folder you open up. Thanks. I appreciate it. Of course. Thanks
+ for nudging me to get
+ because I feel like people asking about every week. I just been too lazy to
+ like go in and copy
+ and paste these files. I wouldn't say lazy. I'd say busy. What's that? I wouldn
+'t say lazy. I'd say
+ busy. Yes, that too. Whatever. Lazy, busy, whatever you want to call it.
+ Okay. Let me see what else I got here. Go ahead, Rod. What's up, Rod?
+ Hey, how's it going? Um, what do you want to talk about? What that linear task
+ can be if
+ if you saved it, you know, whatever on your PC or your Mac or whatever. And
+ then if you
+ gave codecs full access, couldn't you just say, hey, reference the linear task
+ empty when you're
+ starting this project and not have to copy and paste it or just go to find and
+ reference it every
+ time. Yes. Repeat that one more time. Were you putting it? Were you saying to
+ reference it?
+ Where's that going? I mean, you could just save it on your computer, right?
+ Like,
+ just save it, you know, name it, whatever you want to name it, linear task.md
+ and save the file.
+ Like, save it on your desktop or something. And then if codecs has full
+ computer access,
+ I mean, I know this because I don't have anything other than the work stuff, so
+ I'm not worried about
+ it. So I can just say, hey, go reference the linear task empty file, use that
+ as the template and
+ complete this task. And it would reference that. You could do that. Yes.
+ Yeah, it's still kind of a manual way to do it at the point being to be done
+ manually, but yes.
+ Yeah, I just I've got to watch what I like to tell my agents what to do and
+ where to find it.
+ And I have to copy and paste. Like, y'all doing all the work. I'm just sitting
+ here
+ and talking about it again. Yeah, I'm looking through the codec settings right
+ now to see if there's any
+ like global rules file, but it doesn't look like it. So yeah, I think that's
+ the way to do it.
+ I appreciate that, Rod, that you can just tell it. Yeah, that is a good point.
+ All right. Anyone else want to jump in on that subject, that specific subject.
+ And then we will
+ I'll go over an experiment. I'm going to run this week. Eric just raised his
+ thumb up,
+ which I assume means he has a question on this. Eric, you want to jump in?
+ Yeah, I just wanted to point out that there are in your home directory. There's
+ a global
+ dot cloud dot codecs. And if you create one dot agents folder where you can put
+ your agents
+ and Claude MD files in the appropriate spot. And those it looks at before it
+ looks at
+ the project folder. Okay, so there are global Claude dot MD and agent on MD
+ that you can set
+ that it will always look before the project folder. Yes. Okay, that's good to
+ know. There you go.
+ I'm going to have to add that. Would you do you want to post that in the
+ community on the message
+ board? Sure. That'd be amazing. Thank you.
+ All right. That's good. That's good to know. Sounds like you just put in like
+ kind of your root
+ user directory on your computer and Claude encode code X will read it. That's
+ amazing.
+ All right. I'm going to just quickly go over an experiment. I'm going to run
+ this week.
+ I plan on implementing next and then we'll do general Q&A for anyone who has it
+.
+ I want to figure out new ways to do automations or take advantage automation.
+ So I'm paying the
+ 200 a month for code X. It is they give you so much usage in code X so much. I
+ don't come close
+ to the limit. So I want to figure out ways to take advantage of all those extra
+ tokens that
+ they're giving me that I'm not using. So what I'm going to do this week is I'm
+ setting up an
+ automation in here. I don't know if you guys are familiar with Gary Tan's G
+ brain. For those who
+ don't know Gary Tan's the CEO of Y Combinator, a big investment firm. And he
+ came out with
+ a what's called the G brain or G stack kind of a corny name but whatever.
+ Where it will you can do things like slash office hours and it will review your
+ app
+ and tell you what works what does it like what you got to focus on from a
+ functionality
+ perspective what your mode is things like that. And so I'm going to set up an
+ automation this
+ week where basically runs those commands on a nightly basis reviews all the new
+ features I added
+ that day and tells me okay this worked well this didn't here's how you expand
+ here's your
+ moat with it and tell me what works with each thing. So I'm going to do that
+ this week I'm going
+ to let you know how it goes. I'll post in the community about it. But I'm
+ basically going to
+ have it take the prompts in Gary Tan's G brain and review everything I build
+ every day and say
+ oh you could have done this better you could do this different lean into this
+ this is your
+ differentiator. So I encourage people in here who have extra tokens maybe they
+ use the $200
+ a month plan to find out ways to take advantage of your extra intelligence
+ right you get the
+ intelligence you're paying for it. You should be using as much of it as you
+ possibly can
+ and I think the automations are the way to do that where you can automate and
+ also if you're
+ here and you're here for open claw or Hermes, we'll put on Hermes you just say
+ hey do this
+ every night does the same thing you can easily do this with those. But I'd
+ encourage different
+ experiments like this where you have it automated every night reviewing the
+ things you built that
+ day and giving you recommendations. What if you had the chat gbt pro similar
+ mindset on that?
+ Yeah when you say chat gbt pro you mean just like the $200 a month plan. Right.
+ Right. Yeah you get tons of usage you got to be advantage of that. The thing I
+ want you know.
+ Yeah I mean automations that's what you're using in chat gbt it's automations
+ if you have the $200
+ plan if you're in clawed it's routines. And how do you find this Jerry Tan's g
+ brain g
+ stack thingy. Let me share in the chat huh. Yeah Gary let me go Gary Tan here
+ we go.
+ I'll share in the chat. So what I would do is again I'm not a fan of
+ installing other people's skills. So I want to install this but I give it to
+ your agent and say
+ hey what can we pull out of here and make our own and you and automate and run
+ every day.
+ Scan on point. Thanks Nick tap. Security testing comment or another AI browser
+ is good to use
+ alongside. It's a good call out Linda. By the way can't you have clawed include
+ your agent.md
+ so you have to make changes in one spot. Can you can't you have your eight claw
+ed include your
+ agent.md. I don't know I've never combined them I just have both them. Question
+ why are you sexy?
+ I drink a lot of water. There's the global clawed codex or agents folder in
+ your home directory.
+ Oh hey there you go. How do you how do these project folders relate to our obs
+idian agent folders.
+ Well obsidian is just a organizer markdown files. It's all obsidian is obsidian
+ just like
+ shows you where the markdown files are on your computer.
+ I'd imagine I use a different reference in linear.md to point towards a
+ different linear project or
+ team exclusively so it would be unique to each task perhaps. I left clawed code
+ set up my work
+ great. When's the VCA frozen throne scrum? I tried playing frozen throne for
+ the first time in like
+ 15 years the other day and I don't know man maybe my brain so dopamine fried.
+ It just wasn't the
+ same for me. I don't know. That's why they don't make these those types of
+ games anymore. I think
+ they're too slow now for people or we've been dopamine overloaded. Goat game
+ though greatest
+ game ever. But Pokemon will never get old. I'm thinking about buying an
+ Nintendo Switch. Is that
+ crazy? Is that a crazy thing to do? Unwind. Get it. Thinking about doing it.
+ So unwind for 20 minutes at the end of the night. Play whatever the newest
+ Pokemon game is in Zelda.
+ Switch it up a bit. I played the new Zelda a few years ago like damn this is
+ great. Anyway.
+ I got to have a video game club in here something. General Q&A. Throw your emoj
+is up if you have
+ any questions at all. I'll make the list. Chris Lee. Linda. Anyone else. If you
+ have general
+ questions questions about anything feel free to throw up the emojis. I'll add
+ you to the list.
+ And then I'll answer them. Skippy. Okay. All right. We got it. We got a few
+ people Rod.
+ Okay. There we go. Let's do it. I used to play Counter Strike non-stop in
+ middle Skool and
+ high Skool. It was pretty sad how much time spent playing that. There's
+ nothing sad about
+ playing video games in middle Skool. I played so much Counter Strike 1.5. Star
+craft,
+ Brood War. World of Warcraft. Vanilla and Burning Crusade. Through middle
+ Skool. And I don't
+ regret a second of it. Those are my fondest memories. I put on in the
+ background while I'm working
+ World of Warcraft ambient background music. And I listened to that and it
+ reminds me the
+ old days. Zero regrets. Halo. I played a lot of Halo. I wasn't the biggest fan.
+ Overwatch never
+ played Overwatch or a Counter Strike and Brood War type guy. Anyway, Chris Lee.
+ What's up, man?
+ How you doing? Can you hear me? Yes. I'm doing good. Man, I was a Counter
+ Strike fan myself.
+ It was a good time of playing all night. What version did you start on? I don't
+ even remember
+ to be honest. I graduated high Skool in like 2011. So it was like some time.
+ You graduated 2011.
+ And when did you play? Probably like seven great. So like five years earlier
+ than that.
+ You probably started on, I would guess, 1.6 would be my guess. Your guess is
+ probably better than
+ mine on that one. I had friends who were super into it and we were up all night
+ playing it and I
+ don't regret any of it. And parties degree. Were you in each other's basement
+ and partying it up?
+ Yeah. We'd also just like, you know, my friend would take over and get all
+ these viruses
+ on his parents' computer. It was a good time. It was part of the experience you
+ got.
+ Lime wire days, you know. It just, it just sad those days will never come.
+ Formative. You know? Never. We'll never be as excited as we were then.
+ Never. My whole question for you is, are you still using Opus for orchestration
+ for Hermes and
+ open claw? Or have you, has it been GPT 5.5? Like where have you landed on that
+?
+ Opus is still the best orchestrator model. I haven't tested 4.8 too much.
+ Although,
+ from what I'm reading from other people, it's a step up. It's not a step down.
+ So GPT 5.5 is the only
+ basically serviceable model outside of clawed that you can use for agents like
+ 5.4 was useless.
+ 5.4 was completely useless. I agree. 5.5 was useful, but not as good as Opus.
+ So the best
+ one is still clawed. I still think like if you got the cheddar, you want to be
+ on clawed for that.
+ It's better. But if you need to save on cash a little bit, GPT still, 5.5 works
+. It at least
+ works, but you couldn't say about 5.4. How much would you say the discrepancy?
+ Because I've been
+ using 5.5 for a while now and been really impressed with how it's worked,
+ considering 5.4 was a complete
+ dud. And I remember trying it. And it was just like, I'll do that. And it just
+ didn't do anything.
+ How much would you say if you were to rank it like out of a percentage of like,
+ I don't know, Opus is
+ like close to 100% the best? Where would GPT fall for you? Like how much worse
+ in your tests is
+ it in your opinion? Is it like a massive change? Not massive, but what do you
+ notice as the difference?
+ Is it just communication style or implementation? Communication style.
+ For sure. That's more robotic. Yeah. And it has a lot of the issues as
+ codecs when it comes to building things where the front ends, it'll build for
+ you will always be
+ ugly and like slot. I know. Right. It's interesting because if you use an image
+ gen 2 before building
+ something, it looks a lot better. But why doesn't it just do that by default?
+ It seems like a silly
+ kind of miss on their phone, because I always have to like say, like generate
+ image gen 2,
+ like generate a framework first and then build like that around that. And it
+ seems to do a lot better.
+ Seems like an odd miss for them. I'm sure you could put it in your rules file
+ to be like any time
+ you have to build the front end of something. Like make sure you use the image
+ gen model. That's
+ probably a workaround for it. Yeah. Okay. So mainly just like that, that sort
+ of stuff,
+ because I've noticed it being very good. I haven't really, I've like tooled it
+ a little bit to be a
+ little more responsive and like a similar to Opus fashion, not as wordy and not
+ as insane.
+ Seems like it's done a good job. But I was just curious where you landed on
+ that. I know you're
+ hyped about 5.5. It's close enough where you're like, you're not, it's not an
+ emergency to switch
+ the clock. If you're on 5.5, you're good. It's a good model. You used to have a
+ couple of those
+ weaknesses. My mindset is is like, I just got to be on the best thing. I just
+ have to be sure.
+ You know, how much has your spend gone up though from, from that time of
+ cutting off the considerable
+ double or have you kind of managed it? And if you are managing, what is your
+ way of,
+ is it just delegating everything immediately? Because I have 5.5 delegating to
+ sub age. And
+ so the main chat lane isn't like crowded. But how do you kind of manage that?
+ Because I'm not
+ opposed to spending more on clawed. It just seems like I couldn't really, even
+ with optimization and
+ using local models and, and sub agents that were different, it still was like
+ ripping through tokens.
+ Like I was, I was getting very high and trying to manage even new sessions and
+ all that stuff.
+ Yeah, I'm probably spending about double.
+ Yeah. Yeah. Sometimes up to 600.
+ And I talk about it in the open clawed course, but using the brain muscle model
+, where it's like,
+ whatever I can pass off to other models, I do it. And that's cut down on cost a
+ little bit,
+ but I'm still spending a good amount. Yeah, that makes sense. I mean, 5, 600 is
+ not crazy.
+ The way I was using it, it was like going to be insane. So, and it kind of made
+ my like usage of
+ them. Like, I don't know how much I'm spending right now. I'm going to have to
+ keep checking it,
+ whereas I like the, the OAuth situation. I'm not checking it all the time.
+ And then I'll use clawed as like a double checker. I'll be like, hey, can you
+ use clawed to double
+ check this work? Like it have a path to it. So I'll spend money on it when I
+ need it as almost like
+ just a high level checker. I think that, you know, it appears, OpenAI has
+ accelerated their rate of
+ improvement by a lot the last several months. And you know, I'm sure when 5, 6
+ comes out
+ in the next month or so, it'll get even closer to opus from an agent
+ perspective.
+ Oh, cool. Thanks for the answer. You're good, though. You're not missing out on
+ anything crazy
+ by being on 5, 5, like you're, you know, I miss something crazy. If you're on
+ the other models,
+ like 5, 4, but sure, 5, 5, you're good. 5, 4 was literally to me non-functional
+.
+ Ass. Yeah. Total ass. I don't know if something. It was just awful. It pissed
+ me off.
+ I lost audio. I don't know why, but I said ass multiple times. That's what you
+ missed out on.
+ Can I ask a quick question in regards to that? Yes. So what I noticed and I was
+, you know,
+ I ripped through like you 600 bucks a day, and I was like, you saved me so much
+ money once I went
+ on the OAuth program. But what I realized is that I had the sub-agent set up on
+ a bunch of different
+ models. And when it would spawn a sub-agent, it would never actually spawn a
+ sub-agent,
+ and opus 4.6 at the time was doing all the work.
+ So even when I saw you responding, and then it wasn't, it was spawning, but it
+ would spawn itself.
+ And then I would look at open-cost status, and then I called it out on that.
+ And then what it did was
+ it re-labeled anthropic as GPT, but the token window I saw was the same as
+ anthropic. And I
+ called it out again, like, why is this happening? And they just, it was lying.
+ And it even went as
+ deep as changing the name in open-cost status. That's unreal, dude. What you're
+ using the latest
+ opus, and did that? At the time it was opus 4.6. So even though I set up GPT
+ many, I used moon shots,
+ Kimmy K2. I had all these set up, and I had all the sub-agents set up. And it
+ never operated that
+ way. So that's why my spend was absolutely insane. Thropic dogs. Yeah, those
+ sons of bitches. They're
+ trying to use crazy. I mean, isn't that crazy? I've had scenarios where I've
+ set it somewhere,
+ and then it will like revert back to some global setting that like, there's
+ like a mismatch on
+ like a per-chat basis in a global setting. You might want to check out your
+ agent to check with you
+ before changing anything. Have you, are you still an open claw? I still am, but
+ I don't use it as,
+ I just use it as a chat box, like, because I have GPT 5.5 on there, and then I
+ just use it as like,
+ hey, what about this? Does this plan seem right? But I stopped using it because
+ I couldn't,
+ I couldn't get past that. And yeah, I don't know. I mean, even in my JSON file,
+ I had, you know,
+ all the different models set up, all the different API keys, and it just, I don
+'t know. And even now,
+ when I talk to my main agent, it doesn't show me the background work. It used
+ to show like exact
+ tool, this, that, and it no longer shows that. So as soon as I switched to the
+ OAuth program,
+ I didn't care, because it felt like it was free. But it was a weird thing.
+ Yeah, um, I mean, I even went to the point where it could not like the tools
+ function,
+ I set up the tools function. So only certain agents could do certain things.
+ What version I don't know, I'm pretty updated probably, but it wasn't that this
+ was early,
+ this was like two months ago, or two and a half months ago.
+ Yeah, I just asked because in Hermes, they do give you options to like hard
+ code,
+ certain models, a certain tasks, but it's not good enough to make it on like,
+ it's just small tasks, they're not like big ones. So yeah, you're just going to
+ need to
+ get it to not hallucinate and have it like prove to you it's using the other
+ models for the other
+ tasks. I, that wasn't my experience, but it doesn't surprise me to be honest.
+ So yeah,
+ it's going to take some, you know, further prompt, like, okay, we need to
+ verify you're using the
+ right models, right tasks, walk me through how to do this. I did that so many
+ times. And it was
+ just a battle the entire time. And that's when it started like changing the
+ name of the model
+ in open claw status. So I was like, I took a break for a while, because I was
+ like, I can't keep
+ spending four or $500 a day, you know, and then when you presented codex and
+ open that
+ quad, I was like, all right, I'm just going to hand do every single item. And
+ that has saved me
+ huge, but I have shown in close to the beginning of the Terminator movie.
+ Right. Yeah. Right.
+ No, I thought I was hacked or something. And I freaked out. I like took my Mac
+ mini back. I have
+ a studio, but I don't use it for this. And then I ended up getting like a,
+ because I kept at this
+ what's even crazier. I said, what would Elon do? I would say that a lot. And so
+ when I
+ opened a Google search, I typed in something in AI mode in the description, it
+ said, what would
+ AI do? Or what would Elon do? And that's when I freaked out and I returned my
+ computer.
+ Wow. Wow. That's the end of the world going on right there. Isn't that a little
+ crazy? I thought
+ I was, I thought I was just being paranoid. And I was talking to my friends. I
+'m like, dude, for
+ it to say, what would Elon do in Google AI mode? Like, that's when I returned
+ my computer.
+ All right. Well, let me know if you figure out a way to fix that around using
+ the right AI
+ models and stop flying you. All right. Alex, I guess I suppose my computer or
+ my my agents were not
+ quite as bad as Sean's. But certainly, I mean, I think we've anyone who's been
+ using it for a while,
+ open claw will absolutely lie straight to my face, especially when I was
+ testing a lot of crappy
+ local models, like it would get frustrated. And it would like, I would tell it,
+ okay,
+ use that local model. And then it would give me like this really nice output.
+ And I was like,
+ did you, did you use dusty for that? And I'd be like, no, I was like, I just
+ did it. I'm like,
+ please do it. Okay, okay, I will. And then it would do it. And then it would do
+ it again. It would be
+ like, dusty was taking too long. I just did it for you. It's very, it's crazy.
+ Yeah, I find that a lot too, that when a model gets overwhelmed in the open
+ claw or Hermes harness,
+ it tends to lie and hallucinate. I don't think it's like consciously lying. I
+ mean, it's not
+ conscious at all. So it's consciously not doing anything. But I don't think it
+'s like, oh, I'm just
+ gonna lie here. I just think it's hallucinating. I've never really experienced
+ that with Opus.
+ That's why I was surprised to hear that. It happened a lot with five four. It
+ doesn't really
+ happen to a five five. So, you know, you just need to make sure you're giving
+ the model the right
+ scope of a task based on how good it is local models. You don't want to give it
+ super high
+ intellect tasks. It's going to hallucinate. It just will. Opus, you can give it
+ pretty big tasks
+ and it'll be fine. All right.
+ Did we just talk to? Let me, yeah, we did.
+ My list is a little messed up here. I got like six names. All right, here we go
+. Linda.
+ You muted, Linda. There you go. Hey, how you going? Good. How are you? Good to
+ see you. Good.
+ So, Lynne has been amazing for me. So thank you for that tip. I've sort of
+ migrated everything in.
+ I sort of set up a standard testing cycle so that I use it for any of the
+ solutions and I switch
+ between modes. But yesterday for the first time I used Claude on my mobile and
+ it was amazing
+ because I was able to be coding while doing children's drop off and all of that
+ stuff. Are
+ there any tips like that you found like I like Claude said that it's best for
+ front-end work.
+ It's not great to use if you're doing sort of more of the back-end or call type
+ work.
+ But I was sort of reskinning an application and I sort of, I was able to do it
+ all while out and
+ about. Yeah, I mean, Claude, the question is like what are Claude's strengths?
+ What should
+ you be using Claude for over a quarter? Yeah, when, oh, no. So when you're out
+ on mobile,
+ like using Claude on mobile, have you found any sort of boundaries or limits or
+ you've needed
+ to rework things once you've got back to your desktop? Yeah, I think that.
+ Do you have codecs at all? Do you use codecs at all? I do, but mainly for
+ testing or when
+ Claude gets stuck, I take it across to codecs and I get codecs to do my testing
+ cycles.
+ The reason I ask is I found that the mobile experience with codecs has been
+ better and more
+ reliable for me. The reason being is it seems to be better at, like when you're
+ on mobile and you're
+ on the go, it's not easy to test things, right? You're not going to pop open
+ your local host and
+ click around and do so you're a lot more dependent on the agent to do the
+ testing for you. I find
+ that codecs is a lot more proactive and willing to fully test whatever it
+ builds end-to-end.
+ So if you're on mobile and you're on the go, the tough power of Claude is if
+ you give it a command,
+ it's hard to get it tested because Claude's not, for me, hasn't been quite as
+ dependable with
+ testing itself, but codecs has been very dependable with testing itself. So I'd
+ recommend, if possible,
+ if you know you're going to do something where you're going to go on the go,
+ use codecs not only
+ because of that, but also I just found codecs is mobile app to be more reliable
+, like it more
+ reliably connects to sessions and works between your computer and phone. So
+ that's another reason
+ I think we could be using it on mobile, but that's just based on my
+ observations.
+ Yeah, I just kind of started like most of my coding in Claude and so I don't
+ sort of switch
+ as much, but I'll give it a go and see how it works. The other thing as well is
+ I'm still hitting
+ submit a lot on my computer to approve work. I got it to so in Claude, I said I
+ don't like
+ everything, take, you know, do everything, but I still haven't got it so that I
+'m not clicking
+ the button as much. So what's the way to sort of, is it the allow access to my
+ computer in the
+ Claude console? Sorry, what are you using? Desktop app, terminal? No, no, I'm
+ using VS code.
+ Oh, you should still have auto mode in there. So if you go to the mode at the
+ bottom and click it,
+ there shouldn't be an auto mode. I think do you have it in front of you? Right,
+ yeah, I do. You
+ want to you want to quickly check just to make sure I give you a good
+ recommendation here.
+ I was like, because I'm on my phone. Should it be like a slash command or?
+ Try shift tab, the shift tab, do anything? That puts me into plan, because I'm
+ on a
+ hit it again. Then it goes red. What's red? I don't know. Red is a mode, I
+ think that works.
+ What's that Spencer? Oh, yeah, yeah. So, so, yeah. So the red, red, red is auto
+ mode.
+ There you go. Wow. Now you're going to go. Awesome. Always do auto mode. I, I,
+ yeah, yeah. It's good enough. It's smart enough. You're going to auto mode.
+ Have you used the give cloud acts like full access to your computer mode? There
+'s a setting in
+ the cloud desktop app that you can allow it. I sort of, I've looked at it and I
+ thought, you did.
+ I do all the naughty things. Yeah. Okay. Okay. Cool. I give it full access. I
+ give it desktop
+ control. I give it Chrome control. Yeah, control all you want, control
+ everything,
+ control me. If I could give it human body control, I give it that and it just
+ controls my arms and
+ legs. I would, I would allow that. Yeah. If I could get it to control the house
+work, I'd be happy.
+ I mouth control. It just said whatever wants me to say, I just say it. Whatever
+ it means, I give it.
+ Awesome. Thank you. Mine would pin me to the ground and say, what would Elon do
+?
+ You'd have a bad day if you're a God can be lying out everywhere. It'd be, it'd
+ be bad.
+ Thank you. That was a question. Thank you. Let's go to my main man, Skippy.
+ Ah, that's, that's kind of you. I don't need a response here, but I just wanted
+ to point out that
+ I did DMU after a scrum one week ago. So just some heads up stuff. Did it
+ through vibe coding,
+ because that's the only way I knew to do that. Heads up. Is that you DM me?
+ Okay, I can check it
+ out, Skippy. Thanks. I'll pop it open. Cool. Thank you. I will check that out.
+ Rod,
+ Rod the bod, as many people use to call him. Yes. How you doing, man?
+ Hey, how's it going? Good man. Good to see you. I got the product, you know,
+ beta, got the app
+ submitted and approved to the app store. And I thought a pretty cool feature,
+ yeah, for the
+ Mustang business OS. So, you know, it's small business software, CRM stuff, but
+ I actually
+ baked a version of Sam into the software. So now there's a Ask Sam option type
+ of chat that floats
+ around. So anytime you're in the software, you can just go there, you can
+ retrieve a contact,
+ you can email a contact, you can add a contact, you can retrieve data, kind of
+ ask anything about
+ your software, like anything that you have in the business OS as a customer,
+ and Sam can retrieve,
+ add, etc, etc. So my question to you is, do you think that's like a pretty
+ solid different
+ training feature? So, even from the app, so like say, if you have your phone
+ and you go to the,
+ you know, to the app, you have an account, you log in, and you could just go
+ right to your phone
+ and log in and go right to the little Ask Sam bubble and retrieve any of this
+ CRM data from your
+ computer, anything like that. I guess it kind of like a personal assistant, but
+ it gives you access
+ to all of your business data in one spot.
+ Is the question, is that like a big enough differentiator?
+ Well, like, is that a, I mean, the time and effort I put into it, is it worth
+ having something
+ like that, or is it something that's maybe like, yeah, that people might use it
+, might not use it like.
+ Here's where you take it to the next level. So, just having an AI connect into
+ a data source,
+ that's not big enough of a moat or a differentiator, but here's where you could
+ add a differentiator and also just make the app way more valuable.
+ A level of writing data, right, just giving the user another chatbot, people
+ don't want more chat
+ bots. They don't want more blank text boxes to type into. What they would
+ rather have is, okay,
+ you're connected to the data. Now, give me proactive insights about that data,
+ right?
+ Imagine me opening up my SAM business and instead of having a blank text where
+ I go,
+ hey, tell me about this. It just goes, by the way, you should do this. And this
+ just happened in
+ your data, do this. Also, send this email to this person because I just saw
+ this in your data.
+ If you can build that system, right, then I think you have a differentiator
+ that will stand out.
+ But in a few of the tabs, there is that type of like in their owner cockpit
+ dashboard,
+ there is that feature kind of built in where if there's, you know, late,
+ leaves the admin, followed up with, you know, emails they need to respond to,
+ kind of like that, proactive features, things that they may be missing and
+ things it's kind of
+ built into their owner cockpit. It's not necessarily in the part where SAM
+ lives, but
+ it's in the business of us at all. Yeah, I think that'll be the valuable part
+ is the proactive
+ insight. So making that the main experience, the proactive stuff where people
+ don't have to
+ creatively think, I think a big limiting factor for a lot of people out there
+ is the need for
+ creative thinking when it comes to AI. It's kind of what I'm trying to solve
+ with Henry is the
+ elimination of the need of creative thinking when it comes to building
+ businesses. So if you can
+ eliminate that need, I think you've built a very powerful, helpful tool.
+ Awesome. Appreciate it. Appreciate you.
+ So all the questions we had.
+ Glorious week. Hope everyone find some time new test opus this weekend. Feel
+ free to share
+ your experiences in the community. So we can get a well-rounded, see what
+ everyone's doing,
+ what strengths people find, what weaknesses people find, stuff like that.
+ If you use codecs and cloud code together, make sure to share in the community
+ what you use each
+ free, what tasks you give each, what are the strengths of each, things like
+ that. I'll be doing
+ that all weekend. So keep an eye on the community. For that, I'll give more
+ insights. Let's see here.
+ Let me check the comments.
+ Tuesday and Wednesday. So Tuesday and Wednesday, 1 p.m. Pacific. Join in.
+ Can chat with other people in the community, share your projects, hang out,
+ co-work, listen to music. It's Tuesdays, Wednesdays, Thursdays, live vibe
+ coding session.
+ I build stuff in front of you. Fridays is this. We hang out, yes, questions. We
+ learn things. We
+ teach. We live and be merry. It's exciting times. Very exciting times.
+ The technology is unbelievable now. Unbelievable. I'll be using Opus all
+ weekend. I'm very excited
+ for it. It's about it. Derek, give the team a parting wisdom.
+ Build a power of the force.

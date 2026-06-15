@@ -1,0 +1,7 @@
+HOW TO FIX BASICALLY ANY OPENCLAW TECHNICAL ISSUE
+
+So I get a lot of messages about people's OpenClaws breaking for one reason or another. This typically happens when people switch model providers or they change something in their config. Something typically breaks and because you can't talk to your OpenClaw anymore, it's not clear how to fix it.
+Well do I have a solution for you!
+I have yet to run into a single technical problem with OpenClaw that I couldn't fix with Claude Code (or Codex). The solution is simple: when OpenClaw breaks, go into your terminal and navigate to the folder OpenClaw is in (this is typically in the root directory of your computer). When your terminal is in that directory, open up Claude Code (or Codex if you are a ChatGPT subscriber instead). Then tell your agent it is in your OpenClaw folder and it is broken. Describe what you are experiencing and ask it to fix it.
+The agent will proceed to fix it. This has had a 100% success rate for me. If you're not familiar with the terminal or opening up claude code or codex in it, go to any LLM and copy and paste this message in. It will guide you on how to do this.
+Hope this helps!

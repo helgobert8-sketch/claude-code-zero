@@ -1,0 +1,10 @@
+Highly recommend everyone learn and use Github properly
+
+When I was building Creator Buddy one thing that was a huge blocker for me was I'd always have random code for half baked features scattered around the app. I'd start one feature, then get a new idea, and start another one and never come back. Then when it was time to ship, I had to spend a ton of time figuring out what code was good and what was rotten.
+Learning and using Github the right way fixes this.
+Every feature or bug you're coding should be in its own worktree and branch.
+Branches are copies of your production repository in github you commit specific features to. They 'branch off' from your main repository. Then when you are done a feature and it's tested, you merge that branch into main. Basically shipping it to production.
+A worktree is a copy of the code on your computer. It keeps all your features separate locally so if you're coding multiple features, the code doesn't step on eachother.
+If you have been watching my videos in here and are using Linear, you should have a separate branch for each Linear issue. This is an easy way to organize things.
+If you master this workflow, it'll be easy to spin up many many agents at once to build different parts of your code base out. I'm right now using 4 codex agents and 1 claude code agent. I can do this because they are all working in different branches, keeping the code clean.
+Will make a follow up video for this in the community!

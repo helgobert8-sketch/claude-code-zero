@@ -1,0 +1,1268 @@
+﻿going to hit the record button. We are now recording. I'm going to pin myself
+ for everyone so I can
+ be the center of attention as I always prefer. And in a second we are going to
+ talk about
+ a very important topic that I have been noodling on and building over the last
+ several days
+ since Fable released that I think is critical. I think it's important. I look
+ forward to going
+ through what I've come up with with you. I look forward to getting feedback and
+ ideas.
+ I look forward to having fun. I believe if you pay attention and execute on
+ what we go through here,
+ you will become dramatically more productive.
+ This is a big one. This is a big one. Let me pull up my materials
+ so that I can show you something cool. Here we go. I'm popping it open.
+ All right, let's start with this. Let's see how many people we got here. 37. We
+'re in a good spot.
+ We're in a good spot.
+ Okay, April. I got a mute Gabriel. It's fine. All right. When we enter
+ the rooms, let's make sure we hit the mute button when we enter the call rooms.
+ Let's make
+ sure we just hit mute. Let me get a fair ask. Fable five releases three days
+ ago,
+ two days ago, three days ago. I don't know. Time flies. There's been this talk
+ over the past
+ couple of weeks. There's been a lot of vague posting from Claude and OpenAI
+ team members
+ around this concept of loops. They're claiming that these AI models are so
+ smart,
+ you can just set them off and they'll work autonomously for days,
+ figuring things out to do and then doing those things. That's the claim.
+ I disagreed with the claim up to this point. They call it loops. Oh, you
+ shouldn't be prompting
+ your AI anymore. You should be building loops. No more telling your AI what to
+ do,
+ build loops. The AI just figures out what to do. I mean, I've experimented with
+ this a good amount
+ for a while now, for months, and I just didn't believe it was like production
+ ready that concept.
+ I didn't believe you can build any sort of professional software not prompting
+ your AI and
+ just setting up loops. I publicly fought back against it. Then Fable five drops
+ a couple
+ of days ago, and my opinion on that has changed. I've been using it pretty much
+ nonstop the last
+ couple of days. I believe it's so good that you can have it loop autonomously
+ and work autonomously
+ for a very long time. Now, the critical thing here is that you need to set up
+ the right systems
+ in the right guardrails. I since Fable has been since Fable dropped have been
+ developing and
+ building out a system in guardrails. What I'm going to show you is that system
+ in guardrails.
+ I'm not going to keep it. I'm not going to hold anything back. I'm going to
+ share it all.
+ I've been thinking about it a lot. Why has open AI and Claude been gatekeeping
+ or not
+ gatekeeping, but vague posting about this so much. Typically, when you give
+ advice about your tools,
+ you go, here's how to do it. Here's how to execute on the advice I'm giving.
+ But all of Claude and
+ Chad GPT, their posts have been like, make sure you loops in the future do
+ loops. I don't prompt
+ anymore. I just do loops. But none of them are explaining how to do it. And I
+ think I have come
+ to the conclusion after building my own loop and testing it out and using it. I
+'ve come to the
+ conclusion that they're purposely vague posting and they're purposely gate
+keeping how to do all this
+ because that's now the most valuable asset an engineering org has. Is there?
+ Someone's
+ mics off. Can we make sure we're on mute? Can we make sure we're on mute? I don
+'t want to spend
+ half the call muting people. All right. Thank you. If you got a question, feel
+ free to
+ say something in the chat, then I'll call on you. Where was I? I think that now
+ the loop
+ architecture people build is like the most valuable asset an engineering org
+ has. If you have an
+ infrastructure, a loop infrastructure that allows your AI to autonomously work,
+ and it's really good,
+ it increases your efficiency, a hundred X. You don't want your competition to
+ have it,
+ right? Because then your competition becomes as powerful as you. And so now it
+'s almost like the
+ moat a lot of these companies have, you know, is how they automate their AI.
+ And I know I'm
+ going on a soliloquy here, but I'll get to the action in a second. I just want
+ to set the stage
+ properly. Right. If everyone has access to AI, everyone has access to the same
+ models.
+ So what are the modes that are left if everyone has access to the same super
+ intelligence? Well,
+ how you use that intelligence, right? The infrastructure around, by the way,
+ there's a fire tweet I'm
+ coming up with here improvise. I got to write this down. Like this is like a b
+anger thousand
+ like tweet I'm saying out loud right now. So let me just, let me just write
+ this down real quick,
+ the things I'm saying. I think in virality. That's kind of how my brain works.
+ I think in virality.
+ I'm just writing this concept down real quick. I figured out why open AI and
+ anthropic are vague posting about loops. It's the last moat. If everyone has
+ access to the same
+ super intelligence, then the way they use it is the moat. I'm going to share my
+ complete system,
+ surely boom, banger to 8,000 likes, easy, save idea. Back to what I was saying.
+ If everyone has access to the same intelligence, then what's the moat an
+ engineering org has?
+ How they use the intelligence and if you use it in a super efficient way
+ that allows you to have a thousand X efficiency, you don't want to share that.
+ You don't want your
+ competition to have that. And so now, I think the reason why there's been so
+ much vague posting
+ and not many tutorials on how to build this system is people just don't want to
+ lose their
+ advantages. So with that being said, I'm going to share everything I got when
+ it comes to looping.
+ I think this system has dramatically increased my efficiency. And I think there
+'s way more I
+ can do to increase it on top of what it's got. So let's see, we're at talked
+ about fable.
+ What is a loop? Before I show you my loop, let's make sure we're all on the
+ same page
+ around what a loop is. It is basically a system you put in place involving
+ whatever tools you
+ want that allows an AI agent, Claude code code X, Hermes, open claw to work
+ continuously and not
+ require prompting. That's what a loop is. Typically, the way you were using
+ agents up to this point
+ to build stuff is you go to Claude code and you say, Hey, build this feature.
+ And then you test
+ it. It works. You merge it. Okay. And then you go, Oh, I build this. No, I
+ actually don't like that
+ change this. Okay. Now do this. Now build this. And your engineering experience
+ up to that point
+ is you hand holding this agent to the finish line, which for the last two years
+ was a dramatic
+ improvement over what coding was the previous 40 years, right? The previous 40
+ years of coding
+ was literally just manually typing code. Then for two years, you have this
+ major revolution,
+ where you can just kind of tell an AI what to do. And they do it, which is a
+ major efficiency
+ gain for sure. But now this is kind of the third stage. This is the third stage
+ of development.
+ Stage one, writing code stage two, telling an AI what to do stage three, autom
+ating the AI.
+ So that's what a loop is. Now to set the stage for what goes into my loop,
+ I'm using several tools. I'm using cloud code with fable five is fable five. I
+ believe is the
+ only AI that is capable of working autonomously for a very long time. It's the
+ best AI model ever
+ made. It's better than chat GPT 5.5. Chat GPT 5.5 was the best coding model for
+ what three weeks.
+ And now their reign is over. It is now fable five. It is by far the best model.
+ I'd say it's about
+ an equal leap as opus four five was if people were around back in November, op
+us four five dropped.
+ It was incredible mind blowing revolutionary. The biggest leap I think of all
+ time for an AI
+ model. I think this matches that truly incredible model. And so I'm using cloud
+ code.
+ I highly recommend everyone here should be using cloud code at this point.
+ I think you can design everything I'm about to show you. I think you can design
+ with codecs.
+ I think you can do a chat GPT 5.5 if that's your only subscription. I think you
+ can do it.
+ I don't think it'll be quite as good as fable five just because fable five is
+ that good.
+ Fable five is like unbelievable, but chat GPT 5.5 is amazing. So I still think
+ you could do this
+ just won't be quite as good. So that's cloud fable five. The main
+ two other main tools, I think are important for this. One is linear. I think
+ everyone
+ should be using linear if you want to set this up. I've already got you guys to
+ go on to linear.
+ If you've been watching the videos in the classroom and stuff like that,
+ you're probably already on linear. If you're not already on linear,
+ highly recommend going into the classroom section in this community.
+ And there's a section on there for live like five videos on linear. I'd watch
+ them just get
+ set up and understand how it works. And then the last tool you're going to need
+ for this
+ is some sort of communication app. I'm using Slack. The reason why I'm using
+ Slack is because
+ I have teammates. I'm building Henry intelligent machines with a teammate. But
+ you could probably
+ do this with Discord. You could do this with Discord, this system. If you're
+ more of a Discord
+ person. And I don't think you're going to need to pay for Discord. I think you
+ need to pay for
+ Slack to do what I'm going to do here. Like it's like $8 a month or something.
+ But if you're just
+ doing this by yourself, you can do this with Discord. I'm pretty sure. I'm
+ pretty sure.
+ Two messages in the chat. Are you planning to update the bootcamp based upon f
+able five?
+ I don't think I'll update the videos that are there. I think that I'm just
+ going to add more
+ videos on top of it. I think the videos that are there are still relevant and
+ still cover the core
+ of how to talk to coding AI agents properly. That doesn't change. I don't think
+ that changes
+ with fable five is just you taught you taught tell AI like the bootcamp covers
+ the phase two
+ of AI coding how to handhold your agent through things. I still think that's
+ important to know
+ because I still think you will run into situations outside of this loop where
+ you need to handhold
+ your agent. So I don't think that needs updating. If I thought it needed
+ updating, I'd update it.
+ I think what I'm going to do is just make a whole new series on top of that
+ kind of a next
+ part that covers the loop. If that makes sense, Alex modal. Linear is great.
+ Thanks for the
+ recommendation. Core Shane. Highly recommend everyone take the linear videos. I
+ think there's
+ four short videos. I think they're like eight minutes each in the classroom for
+ linear. Highly
+ recommend it. Now, with that being said, I'm just going to share my screen and
+ we're going to go
+ through it. Let's go through it. If you got questions along the way, Finn's the
+ goat. You're the goat,
+ man. Goat first name, Alex. Great first name. Here we go. This is my complete
+ system. I'm not
+ gate keeping anything. I might gate keep this on YouTube so my competitors don
+'t come in and steal
+ my core infrastructure loop. And I'll walk through this. Gordon, I see you
+ leaning in all close,
+ making sure you see every little word there. I'll go through it. I'll explain
+ it. Don't you worry.
+ I'll explain it. What are you sipping? Oh, some horns. Good. I hope you got a
+ little donut or
+ something with it too. There you go. I think this is a vibe code academy
+ exclusive right here. I
+ don't think I'm going to go through this full thing on YouTube. So enjoy it.
+ Anyway, here's how
+ it works. So linear is the core of this entire system. Linear holds all the
+ things you want to be
+ built out in this loop, right? And the idea is this. Let me just paint the
+ picture of how this
+ workflow works. You wake up in the morning, drink a little water, get nice and
+ hydrated,
+ sit down to your computer. I mean, you got a cup of Joe and you sit down and
+ you talk to your AI
+ agent and you just explain all the features and improvements you want to build
+ that day.
+ So you go in. There's three core loops here, spec build review. It says slash
+ him because I'm
+ doing this all in Henry intelligent machines, but just ignore that part spec
+ build review slash
+ spec slash build slash review. You sit down, you do slash spec. And all the
+ examples I'll use
+ will be around Henry slash spec. I want a global chat option in the app slash
+ spec.
+ A user had this bug slash spec. The banner image is broken, make that look good
+ slash spec.
+ Build build AI marketing videos for meta ads that users can do, right? And so
+ you just kind of
+ brain dump in all these features with the slash spec skill. What the slash spec
+ skill will do is
+ one, ask you any questions about each and every one of those features until it
+ feels fully
+ confident enough to build it. And then to build the spec for it, build the
+ document,
+ build the issue inside linear. So each one of those you do creates an issue in
+ linear.
+ From there, there's another chat in Claude, that is a slash loop slash build,
+ just like this. And you hit enter what that does, and then you can say like 20
+ minutes.
+ What that does is every 20 minutes, this loop goes and calls slash him build.
+ What him build does is it goes and it looks for all the specs in linear that
+ haven't been claimed
+ yet. And it grabs the spec and builds it, builds it out, builds it out, puts it
+ on its own preview
+ branch. For those who don't know, preview branch, you have GitHub, you have
+ different branches,
+ a preview branch is just like its own sandbox branch. So whatever code it
+ writes, can't disrupt
+ the production code, right? And so this loop is going, this build loop that's
+ just going and
+ taking every spec building out, putting it on its own branch, taking every spec
+ building out,
+ putting it on its own branch, taking every spec building out, putting its own
+ branch.
+ Then there's a third loop going called slash him review, so slash review for
+ you guys.
+ And what that does is take the preview branches that it built,
+ and a different AI goes and just reviews it, make sure it matches the spec,
+ make sure it matches the acceptance criteria. Once that review passes,
+ you come back at the end of the day, right? So you start your day, you gave it
+ a bunch of ideas,
+ it went autonomously, built out all the ideas and reviewed itself. And then you
+ come back at the
+ end of the day after all the reviews went. And then inside Slack, you have a
+ channel or discord
+ that lists all the preview branches, and then a list of how to test them all
+ step by step. And
+ you go, you just click there, open the branch, test it, looks good to go, merge
+, open a branch,
+ test it looks good to emerge. So your day has went from sitting there all day,
+ hand holding,
+ and I'll go in a way more detail over everything I just said and say, I want to
+ start from a high
+ level. Your day has went from hand holding the agent nonstop, to you come in,
+ you give it a
+ bunch of ideas, it spends all day autonomously building them and reviewing
+ itself. At the end
+ day, you test and merge. And this is from a more detailed perspective, what's
+ happening here,
+ you give your ideas, it interviews you with the spec skill.
+ You can approve the spec if you want, or you can just have it automated,
+ approve it automatically.
+ The builder's just looping. It builds a preview branch. There's a review loop
+ that reviews it.
+ Then you human review it and merge it. And then it all gets listed in Slack
+ channels.
+ Let me see what questions are on here first, and I'll go into some other things
+. Loops are
+ something I haven't personally used yet, but I guess it depends on what you're
+ building,
+ whether or not you can just leave the agents to discuss, decide and make auto
+ changes.
+ How does it know the sequence of issues to build? This is a super powerful
+ workflow.
+ This is basically, so how does it know the sequence of issues to build?
+ So by default, it's just going to take whatever specs are unclaimed and claim
+ them and build them.
+ Now there are scenarios. Will you be posting that loop system doc in the
+ community? Yes,
+ I'm just going to need to remove some things from it because it has like
+ environment variables
+ and shouldn't it that are specific to Henry. So I'll make a generalized version
+ that doesn't
+ have like passwords and stuff in it because I shared this with my partner who I
+'m building
+ Henry with and I don't want. So it would include setup on how to him get up and
+ running.
+ But I'll do a more general version. What was I saying?
+ Oh, sequences. So by default, the build loop just takes whatever is available.
+ Now there's going to be times where a feature you spec out will need multiple
+ issues.
+ So if you have like a super complex feature, you ask your agent to build. It
+ might create four or
+ five issues, right? Because that's typically how linear works. You don't just
+ put massive
+ features in one issue. You break the feature down into multiple issues like
+ bite-sized chunks.
+ What will happen is your agent will say this issue is blocked by this issue,
+ which is blocked by this issue, which is blocked by this issue. So your review
+ loop will be able to
+ know which issue to start with and do it in order if it's a complex feature.
+ What models do you recommend for each phase spec review build test? This is N
+ARAB.
+ I'm sure there's ways you can hyper optimize here, right? And use, you know,
+ sonnet for review,
+ fable for spec, opus for build. I'm sure there's ways you can hyper optimize.
+ I'm going to be honest. I do fable for everything. I'm on the $200 a month plan
+.
+ I've been doing this nonstop for two days now. And I've used 25% of my limits
+ in two days
+ for the week. So not terrible. It resets tonight. I'm also going to be honest.
+ I'm prepared to pay extra to keep using it. I turned on extra usage. So when I
+ hit limits,
+ it's just going to charge me API usage. I understand not everyone wants to do
+ that that way.
+ I think if you're on the $200 a month plan,
+ just give it a go. Use fable for everything, right? Put it on high. You don't
+ need to put
+ on extra high. Why not get a second Mac subscription? I don't feel like it.
+ That's the answer. I don't know. It's just easier if I turn on extra usage.
+ And then I don't have to worry about multiple subscriptions, stuff like that.
+ A lot of questions coming in one second. But I'm sure there's ways you can
+ optimize it,
+ where it's like it uses opus for building sonnet for testing. I'm sure you can
+ do it that way.
+ You're probably going to want to do it that way if you're not on the $200 a
+ month plan.
+ If you're on the $100 a month plan, you're probably going to want to do it that
+ way.
+ If you're on the $20 a month plan, you're not using fable at all.
+ I don't even, it's fable, including a $20 a month plan. I'm not sure. If it is,
+ you're probably getting one prompt out of it, to be honest with you.
+ My Claude desktop built a very similar workflow and Claude is my QA from my
+ local model agents work.
+ Like I think good point to bring up Andrew. I think there are ways you can
+ bring in local models
+ here as well to save tokens. Like I'm sure when the build loop goes
+ and there's no, there's nothing in the queue. It's still burning tokens. So
+ like I think there's
+ probably ways to hyper optimize this so that like you're using a local model as
+ the building loop.
+ And then when it picks up a task, it then can hand it to Claude.
+ I'm going to be honest, I'm two days into this, right? I didn't believe in this
+ until two days
+ ago when fable came out. There's going to be a lot of things I change and
+ improve as time goes on.
+ This is kind of my raw, what's worked for me up to this point.
+ And so I'm sure things will change. I'm sure I'll have to optimize.
+ June 22nd will come around and Thropics has been kind of, oh, we might take it
+ out of the
+ subscription. We might not pull shit. They're just like trying to see what
+ public sentiment is.
+ If people get too angry, they'll keep it in the subscription, but they're going
+ to
+ eventually take it out. It doesn't make economic sense to keep it in. They'll
+ eventually take it
+ out. Things are going to change. Workflow is going to change and evolve.
+ This is where we're at right now. And I think you just got to go for it right
+ now.
+ I think you just got to build it, use it, and as you use it, things will
+ improve and change.
+ How much sleep are you getting? I'm not getting a lot.
+ I really tried hard to prioritize sleep the last few weeks. When like,
+ open clock came out in January, I slept like three to four hours a night for
+ like a month.
+ I was a total wreck. And eventually, I just like, this is unsustainable. I have
+ to
+ prioritize sleep. Last night, last night, I let go a little bit. I stayed up to
+ like one in the
+ morning doing this. That was, that was bad. I shouldn't have done that. Do you
+ have multiple
+ subagents using multiple models for certain workflows? No. No. I just had the
+ default behaviors.
+ If you turn on ultra code, then it'll use the new workflows feature, which
+ spins up subagents,
+ but I haven't found the need for that. Have you tried adjusting the extra high
+ or higher?
+ Yeah, I've done extra high at times. I shifted it down a high for like one task
+,
+ and then I never shifted it back up again. Again, no specific reason. I just,
+ I just keeps working for me. It just keeps working. Also, hopping to other subs
+ would
+ break your flow. Yeah, I mean, that's, that's another thing. You got to have
+ separate windows.
+ I'd rather just keep it on one. Claude is offering 30% for what is worth extra
+ usage.
+ Yep, I did that. I bought that the day fable came out. I bought the thousand or
+ the seven hundred
+ dollars package for thousand dollars. I created and pushed the app you posted
+ the video about
+ yesterday with fable on $20 plan and credit. Oh, really? Amazing. That's great,
+ Shane.
+ Way to actually build along with the video. That's awesome.
+ Alex coding vampire fan. I know that a lot of front, but I can tolerate fixed
+ costs,
+ not variable surprise. I tried using a work one fable and used my five hour
+ limit in 20 minutes
+ and 23% of my weekly usage. Yeah, the workflows seem to be sick where, so for
+ those who don't know,
+ there's a new feature in Claude code called workflows where
+ it'll spin up sub it. I mean, they've tried to implement this 20 different way.
+ This is like
+ their 20th iteration of this feature, but it'll automatically spin up like sub
+ agents to do things
+ when necessary. The issue is just when you do this in fable, it spins up like
+ 10 fable sub
+ agents. And so now you're using like something that's already wildly expensive
+ and just multiplying
+ it by 10. So, you know, I wouldn't use fable on ultra code or use the workflow
+ functionality with
+ fable unless it's like truly a next level complicated thing you're trying to
+ build.
+ But I haven't found that necessary yet.
+ All right, where did we leave off here? Let me see what I went over.
+ So right now, there's different levels of automation.
+ Right now, there is three human touch points in this process. As I get more
+ comfortable and
+ develop this out more, there will be more automation. I will take out the user
+ touch points. So right
+ now, there's three user touch points in this loop, the purple boxes. So raw
+ idea, you go in
+ in the morning, give a bunch of raw ideas. You approve the spec. This is
+ probably the next
+ manual part I'll take out and just make it automated. So after all the specs
+ are made,
+ you go in and you hit approve in the linear issue. This is just to make sure
+ you like the way it's
+ going to build things out. But so far, I've reviewed like six or seven
+ different linear issues and
+ they're all look fine to me. So to save time, I'm probably going to make this
+ automated soon.
+ And then actual merging. This is probably the last part I'm going to automate.
+ You know, I want to I want to test and make sure it's good to go before it
+ starts merging the
+ production. I think that'd be crazy at this point to allow it to automatically
+ merge to production.
+ So this will probably always be human in the loop to like the last stamp of
+ approval at the very
+ end. Like, yep, good to go merge it. But the raw idea on I think there's a lot
+ of ways this could
+ get interesting. I'll give you some of my ideas. You got someone off mute Dante
+.
+ You're off mute Dante. There we go. The people get off mute. There's always
+ something going on in
+ the background. Like, no one ever gets off mute and just perfectly silent.
+ Every time someone gets
+ off mute, there's always 20 people in the background talking. It's funny how
+ that always ends up
+ happening. If you got questions, feel free. Feel free to, you know, go in the
+ chat. Everything I'm
+ muted randomly. Sorry. You're good, Dante. If you got questions where you you
+ feel the urge where
+ it has to be over the microphone, just say in the chat, Hey, can I ask you a
+ question? And I'll call
+ on you. We can do it that way. And then you can feel free to put any random
+ questions you have in
+ the chat to. I'll go through them. So interesting ideas of where this loop can
+ go.
+ You know, right now, I think the most manual part is this first step, right?
+ You still got to come in
+ and give ideas for what to build every morning. And so this still brings a huge
+ amount of efficiency,
+ but you're still coming in and giving raw ideas every morning. I think there
+ are ways to automate
+ this even further. Imagine. Here's like the next step. I think in this. Instead
+ of you coming in and
+ giving a bunch of ideas and having to creatively think about what to build next
+, imagine a world
+ where you just come in and you go on a slack and the agent just starts asking
+ you questions.
+ Very easy questions. What do you think about this? Have you used this? What are
+ your concerns
+ about this? What will you change with this? And you just, it just interviews
+ you and you answer
+ the interview questions. And then based on the interview questions, it comes up
+ with a bunch of
+ different features to build. I think that's probably even easier than having to
+ sit there
+ and come up with ideas at the first thing in the morning and giving you a list
+ of ideas.
+ So I think that's one way to make this even easier. Second way, taking this
+ even to the next level,
+ imagine a world where you upfront have the agent build out
+ really in-depth PRDs on your entire project. So really in-depth overview docs
+ of your entire
+ project and where you want it to go and the vision you have for it, right? So
+ insanely detailed,
+ this is the end state we want this project to be. Every feature, everything.
+ Now imagine that just
+ drives the development. So now you don't even have to answer questions in the
+ morning. Now you
+ don't have to give it commands. It just every morning looks at where your app
+ is, looks at where
+ your vision doc is and then figures out how to close that gap every day. I
+ think that's even the
+ next level past this. And what's really cool is, is like, I don't believe 99.99
+% of people are doing
+ this. Anything remotely close to this. I don't think 99% people are like using
+ cloud
+ period, like effectively, cloud code. So if you're already building things with
+ cloud code,
+ you're already ahead. But now you take it a step further and build out
+ something like this.
+ Now you're above the 99.99%. And so this is Greenfield. This is just what I've
+ built so far based on
+ experimentation and playing around. I'll show you my Slack to just some of the
+ things that happen in Slack.
+ Let me share my screen here. Window Slack. So like for instance, there's a
+ linear block channel.
+ So if linear ever gets blocked, if the builder's ever going and it's looping
+ and gets blocked by
+ something, maybe it's easy to sign up for a site, get an API key, whatever. It
+ messages me in this
+ linear block channel and says, Hey, this has been blocked. What do you want to
+ do? Option A or
+ Option B. And then I just reply, go with Option A or Option B. And then it
+ checks it off, says,
+ Okay, unblocked. And then it gets back to work. So this is all automated. Right
+? This is how you
+ can get creative with this stuff. What systems can you get creative with? Right
+? I'm with my next
+ steps I want to implement today is a testing channel where I just come into the
+ end of the day as a
+ list of all the things that built out. And I click on each preview link, make
+ sure it works, validate,
+ hit checkbox, boom, it merges and ships. Right? There's so many interesting
+ little systems you
+ can build up with this to increase your efficiency. And you build this out, man
+, this like, this just
+ this 100 acts as your efficiency and everything else you do. So it's worth the
+ upfront investment
+ of building this out the right way. Like you build this out the right way up
+ front,
+ everything you and your team does moving forward is just 1000 times more
+ efficient.
+ I mean, there's even further things you can do from there. Right? Next, you
+ build out a dashboard
+ front end shows your whole loop. What linear issues are in build, what linear
+ issues are in review,
+ what linear issues are in the back queue. Then maybe there's a cute little
+ animation and little
+ robots walking around doing things, right? That's the next level on top of all
+ of this. And now
+ that's a publicly available not publicly available, but it's on the web and you
+ can share it with
+ your teammates and your teammates can all at any time go on their phone, but oh
+, this is what our
+ software factory is building and doing, right? Like this just opens up a whole
+ can of worms.
+ And this is something people have been talking about a long time. Like this isn
+'t like some new
+ concept I invented, but I've been trying to do it for a while and I don't think
+ the intelligence
+ was there to get it done. To be honest with you, I think fable five is the
+ first time the
+ intelligence is there. And again, I understand, you know, having a $200 a month
+ open AI plan,
+ a $200 month cloud plan is not as tough. So if you're on Chad GPT only and not
+ Claude,
+ you decide open AI was the way to go. You don't like Claude's business
+ practices,
+ whatever. I think you can do as a Chad GPT five five, you can give it a go.
+ There might be unreliable
+ points. You work through it and you figured out in your bit, you build it
+ around it, you fix it.
+ But fable five, I think was a major unlock that that kind of pushes all this
+ stuff forward.
+ So again, to kind of recap, let me just show you again. This is all built
+ around the tools and
+ the skills, right? The tools being Claude code, linear slack, the skills being
+ spec build review
+ and slash loop, which is the skill for Claude. But then I think in
+ Chad GPT, it's like a slash orchestrator or something, something like that.
+ And you figure out what's right for your team. You figure out what's right for
+ your team.
+ Build it your way, customize any part of this you want. And all I did was hey,
+ build a HTML file
+ that explains our loop system and then build this chart. Built it really easy.
+ And you can just
+ share that HTML file around to all your teammates and they can look at it and
+ see how the loop works.
+ And you keep a record of that, right? You keep a record of it. You update it
+ when you change
+ your system. I think you play around with this every time you play around that
+ you'll be changing
+ and tinkering little things until eventually just optimize they can get. I also
+ side note,
+ if you're looking for ways to make money, like I think this is like a multi-
+billion dollar business
+ opportunity to be quite honest with you. You become a consultant, go to S&P 500
+, come and say,
+ hey, I'll implement a development loop that'll a thousand extra efficiency.
+ They'll probably pay
+ a couple million dollars. You productize this somehow where someone can just
+ sign up on a website
+ and all of a sudden they have a loop set up on their computer. It's a multi-
+million dollar
+ application. Every AI advancement that comes out, you want to think about
+ like, how can I build businesses around the infrastructure? How can I build
+ businesses that
+ help other people take advantage of this stuff? With that being said, where's
+ my mouse? All right,
+ here it is. I have a workflow as the brain muscle where fable orchestrates and
+ reviews and codecs
+ 5.5 does the coding. That's a good move. That's a smart move, Wesley. That's a
+ way around it,
+ right? If you can get your system set up where fables doing the high level
+ orchestration and
+ using cheaper models to do stuff, certainly do it that way. I'm sure it's not
+ that difficult to do
+ it all. Just go to your mouse and say, "Hey, this is what I want you to do,"
+ and then I'll figure out how
+ to do it. When are you going to talk about the next 29-point comeback last
+ night? Is OpenAI
+ the Spurs and Claude the Knicks with fable 5? I mean, as a Boston fan, it's
+ heartbreaking.
+ It's heartbreaking to see New York fans happy. It's heartbreaking that they
+ took the title from us
+ for the largest comeback in finals history, so that sucks.
+ Yeah, I'm not happy about it. Spurs in seven.
+ I want to see one more fucking celebrity smiling on a sideline after watching
+ their first basketball
+ game in 12 years. My ultimate goal, a max headroom animated assistant.
+ Yeah, I think there's so many cool ways. Like, once you build out your loop
+ system,
+ I think there's so many cool ways to make it fun and build out animations and
+ dashboards
+ that show everything going on. I think there's a lot of cool things you can do
+ around that.
+ Have you tried one-shotting something ambitious with ultra-code?
+ I mean, I've made major changes to Henry that were full-stack database, front-
+end,
+ multiple third-party tools that were involved that were all one-shot changed by
+ fable. I mean,
+ I haven't been able to give it a challenge. It hasn't been able to handle yet.
+ When they made the recommendations, hey, you have to be ambitious with this
+ model. They weren't lying.
+ You've been touching on this throughout, but what are some key things you've
+ learned working
+ with a partner versus on your own? My bro-in-law and I started a building a
+ business together,
+ and I'm interested in insights on that aspect. Yeah, I've had some growing
+ pains to be honest
+ with you because I've been independent for a long time, and I've gotten used to
+ many things.
+ I've kind of grown my team for the first time ever over the last month, and it
+'s been interesting.
+ I've tried very, very hard to be solo this entire time, and while I do believe
+ AI makes
+ it easier to be solo, I think at some point it's just smarter to hire people to
+ do things.
+ I have a newsletter with 40,000 subs. I haven't sent a newsletter in two months
+ on it.
+ I just have so much things going on. It's just like one of those things where I
+ just can't sit
+ down for two hours a week and write a newsletter. So I hired a team to help me
+ with that, to help
+ keep me on track, help come up with ideas, research, things like that, and then
+ I'm working with
+ Allison, who's the community manager here, and then I have a solo partner I'm
+ working with on Henry.
+ So it's helped to make a lot of things easier, but it's just like something, it
+ is a challenge,
+ like you have to make sure you water all your plants, right? You have to make
+ sure
+ you're making everyone knows what they're doing, what the goal is, what the
+ focus is, and that's
+ something new, that's something new. So, you know, it's been helpful having the
+ partner I have
+ work with me on Henry is my former boss actually at my last job. I enjoyed
+ working with him so much
+ I asked him to join Henry and help me out. So we had chemistry and trust going
+ into it,
+ but it's like it's certainly a change of pace working with people when you've
+ after you've been
+ working by yourself, you're going to need to learn like we had some growing
+ pain around like
+ me, I work 24/7, 365, I work from the moment I wake up to the moment I go to
+ sleep seven days
+ a week, he doesn't, he has a kid, which is like that's not the expectation for
+ people to work 24/7,
+ but like I'd give him a big task because that's what he wants, he wants to work
+ on big things,
+ and then it's like Sunday night and I want to work, but he has this big
+ blocking task and he's not
+ working Sunday night because he's got a family and so like I'd be like on
+ Sunday night, which is
+ for the record time, most people do not work, they do not work Sunday nights,
+ for me I work Sunday
+ night, so I text and I hit him up like yo I want to work on this thing but your
+ shit's blocking it
+ and he'd get a little upset at me, understandably so looking back and like it's
+ not like I was even
+ like pressuring him to work on a Sunday night, I just wanted to know like where
+ things were at,
+ so what I mean by that, the whole point of the story is like when you start
+ working with other
+ people after being solo, you're just, you're probably going to step on each
+ other's toes until
+ you figure out what are the guardrails, okay he doesn't want me bothering him
+ about work on Sunday
+ nights, okay if I give him a big blocking task this is what's going to be the
+ expectations around
+ this and that, you know what I'm saying big dog, is him going to have all this
+ built in, this out
+ of the box would be awesome, make it plug and play stupid easy, I mean this is
+ kind of the concept
+ around Henry intelligent machines is it's a loop, it's a business loop, it's a
+ loop that builds
+ you businesses so yeah, I mean Henry intelligent machine isn't like an open
+ claw or Hermes or a
+ clawed code, like it's not a replacement for all these things I'm showing you,
+ Henry intelligent
+ machines and AI agent that builds you businesses that finds challenges online,
+ you're uniquely
+ positioned to solve and then builds businesses around it, are you using fable
+ five in Hermes,
+ CLI or clawed desktop, I'm using fable five in the clawed desktop app, I do not
+ use fable five in
+ Hermes or open claw, I use opus in Hermes, I don't think there's any need to
+ use fable
+ in Hermes or I just, I think you'd hit your limits so fast and be paying
+ outrageous amounts of money
+ with the amount of tokens Hermes and open claw uses, so opus is great for that,
+ put a sign in
+ gave to public URL, I have a comment questions as Spencer, Spencer the floor is
+ yours jump on in
+ buddy, I'm gonna take a bite of my food while you do that, that's been sitting
+ here, can you hear me
+ okay, yes sir, so fable five I've been using it for the last two days, it's
+ changed my life so
+ much I'm driving but I'm gonna try and show you here got the new polo because f
+able five is is
+ fire, got the red polo on, that's what I'm talking about and you got the fire
+ glasses on dude,
+ you are fable five embodied, I'm driving my daughter a softball so I gotta take
+ the camera off but
+ I just want to say a couple quick things and maybe a trick that maybe some
+ folks in here can use
+ with fable five, I feel like our workflows are very similar to what you were
+ sharing, I have
+ Hermes agents that are writing review packets or task packets I call them which
+ are kind of
+ the requirements document the PRD I think you call them or something like that
+ and then I have CCD
+ reviewing them it's this whole huge workflow and I feel exactly like you did
+ like there was always
+ some issue with like the t-mux pain or some kind of a reason why the dispatch
+ didn't go it was like
+ it would be autonomous for like the authoring of the packets and reviewing them
+ but then
+ dispatching to an executor or coder would always get hung up on some issue or
+ another
+ and it just felt like I would get so close to having an automated workflow but
+ for whatever
+ reason I don't know if the model or me or somebody wasn't intelligent enough to
+ pull it off
+ and I handed all that crap off to fable yesterday and I said look I've been
+ struggling with this
+ autonomous factory for a while and we've been close and I've seen pieces of it
+ working and it just
+ like for four hours straight just went through my linear it looked at all the
+ tickets having to do
+ with it it saw a bunch of issues a bunch of bugs it was just fixing things I
+ mean I saw it firing
+ for like three or four hours straight fixing things left and right and now we
+'re like 90%
+ there we have one more hurdle to get over so so that was really cool because I
+'m really confident
+ I'm gonna have this auto autonomous factory going here pretty soon but the
+ trick that I learned too
+ is when I ideate with codecs and with and with cloud they'll create a ton of
+ issues because we come
+ up with ideas and they'll create like you said five or six seven issues and
+ then I'll be focusing
+ on something else because I'll be orchestrating a bunch of agents at once and
+ then I lose sight
+ of those issues even though it's part of the product that I'm trying to deliver
+ and then I'll go back
+ and I'll be like oh shoot we got to you know we got to do those too but then it
+ takes me in the loop
+ so then it takes time so what I did was I took a screenshot of a project and it
+ had like 30 issues
+ in the backlog and I just asked fable five I said hey can you review these 30
+ issues
+ let me based on what you know about the product because it's been in there and
+ it's seen my whole
+ repo and everything I said let me know which ones are stale let me know which
+ ones need a little
+ nudge let me know which ones maybe we got all the way to pr and it never merged
+ for whatever
+ reason because I lost sight of it or I got focused on something else it went
+ through in like 20
+ minutes did an audit and then it fired off a bunch of work to be done it closed
+ a bunch of a mouth
+ that were superseded I mean this that was all off a screenshot I mean this
+ thing is so freaking
+ powerful and makes me so more efficient than I was two days ago I just I'm so
+ excited and that's
+ why I'm wearing the red polo I just wanted to share that with the Alex no I
+ appreciate you sharing
+ that uh first of all you're feeling how people should be feeling people should
+ be excited about
+ this I get people that angry at me on social media from getting like super
+ excited and happy about
+ all this stuff we're we're literally witnessing the most powerful technology in
+ the history of
+ our species should be excited that's insane we're living through the birth of
+ it right so that's one
+ two I like the way you approach your loop where like this isn't going to be
+ flawless you're
+ going to set this up and there's going to be issues this is a very complex
+ system and
+ like I think of it almost like a surgeon where as you build these things with
+ AI these systems
+ like there's going to be issues you just think of it like a surgeon we're like
+ okay what's broken
+ is the bone broken is the thing lacerated okay how do we fix that one thing
+ what is the core of the
+ issue we're facing and how do we fix that thing and the AI can do that so if
+ you set up a loop and
+ it's like the codes bad or it's not putting it on the right branch or it's you
+ know the the merges
+ are breaking you take a step back you go to your AI and you say hey this is
+ breaking this is the
+ issue this is the error what's the issue and how do we fix it and then it goes
+ and then every time
+ you fix one of those things the system gets better and simpler and more
+ efficient and you just keep
+ doing that over and over and over until it works right a lot of people when
+ they run into these
+ issues when they're building the loops or building any sort of complex system
+ they run into an
+ issue and they roll over and die some most people I talked about this in uh the
+ clawed code bootcamp
+ for those who took it still recommend everyone take it it's actually like the
+ first modular thing
+ I talked about mindset the critical mindset with AI if you're going to be
+ successful is you can't
+ just roll over and die when you run into challenges and issues so many people
+ in the and this is a
+ vast majority of the world operates like this in some ways my partner building
+ this out like at
+ first he operated this way where it's like you run into an issue and your gut
+ initial reaction when
+ you run into an issue is running to someone else asking someone else giving up
+ but with AI it's never been easier to just figure it the f out I'm trying to
+ curse less
+ it's never been easier to figure it the f out right autodidactic that's like
+ the most important
+ quality a person can have right now with ais the ability to be autodidactic the
+ ability to figure
+ it out yourself with AI it's so easy to just figure it out yourself anytime you
+'re running a challenge
+ just setting this up anytime you run the issues anytime you can't think of a
+ way to do something
+ anytime it's challenged to be creative just go to the AI and say hey how do we
+ do this what's the
+ best way to approach this how do we fix this I promise you'll be able to figure
+ it out you don't
+ need to lean on other people anymore thank you Spencer no problem buddy
+ drive safe if you crash while asking me a question i'll never be able to
+ forgive myself
+ do not crash while asking me questions that's why i took the camera off i had
+ it just constantly
+ in my words i couldn't couldn't worry about whether i was in the frame or not
+ all right good
+ good i used ultra code to go over my whole system all my software got upgrades
+ because
+ it what if you want to use loops for non-coding related projects for example
+ surfacing
+ info through tons of i mean yeah hundred percent there's a lot of opportunities
+ around loops for
+ that stuff too surfacing data like that's a good idea for using loops with
+ local models right
+ that's what i do every 20 minutes quen three six on my dgx spark searches the
+ web for a specific
+ type of data you can set those loops up too do you have a class on setting up
+ linear i got good
+ news for you david you are a part of a community that has a class on setting up
+ linear if you go
+ here and then go let me i won't beg post about this anymore let me show you
+ exactly
+ which course it is i'll screen share it so everyone can see it let's go
+ classroom let me
+ share my screen share everyone's got to take this if you're into the loops
+ which you're now an hour
+ into this loop conversation you got to be able to use linear here we go this is
+ in
+ yeah here we go ai workflows so go to ai workflows in classroom right so you
+ got a classroom at the
+ top ai workflows about a bing about a boom you click introduction linear linear
+ advanced linear
+ integration of a cloud code linear and open cloud boom boom boom boom boom
+ awesome everyone should take it yep course
+ and that did that replace is a kabon the the one on uh on hermies their their
+ flow system
+ no so i think what is it the official pronunciate i got a thousand comments
+ every youtube it's
+ kanban it's kanban i don't care uh i think the official pronunciations kanban i
+ say kanban
+ don't care uh does not replace hermies kanban um here's the way i like to think
+ of it david
+ linear i'm using that primarily for product development it's a product
+ development tool
+ that's what it is it's made for people building products so it's got a whole
+ bunch of functionality around building products and tracking tasks and owners
+ and things like that
+ right uh hermies kanban it's more for managing your employee that does stuff
+ across your computer
+ building presentations moving files around checking on things for you that's
+ more general
+ employee works i still use both i still use both
+ when do you use loops versus goals a goal i set last night for a major feature
+ in for 10 hours
+ on fable two hours downtime for usage so i'm it's holy crap
+ i mean i would use goals if i was manually vibe coding like i was telling hey
+ do this then do
+ this then do this kind of the phase two of vibe coding phase three which is the
+ looping i don't
+ think you really need slash goal you need slash loop loops it over and over and
+ over again
+ um but because the tasks are being broken down in a small issues in linear you
+ don't need a huge
+ massive slash goal do you mind me asking what percentage breakdown you have you
+ brought a lot
+ to the table i'm thinking about partnering someone but i'm deep in the project
+ and have sales
+ relationships i'm assuming shawn san hose that you mean like how did i split
+ like the equity
+ with the partner i mean there's there's a lot of factors involved shawn um like
+ if you come up
+ if you come up with an idea together and then you start building it together
+ then you probably
+ want to split it 50/50 for me i came up with the idea i built out the entire
+ prototype i got
+ 9 000 people on the wait list and then i went to my former boss and said hey
+ you want to help me
+ build this thing and you have the distribution i gave him and i had the
+ distribution right and
+ he's like also not working on it full time so that's my split is yeah 99.25 and
+ 99.75 and .25 that's
+ the split between us yeah my concern like with that setup like you said with
+ the blockers
+ right because if you have something that needs to be done and he's only two and
+ a half percent
+ invested how willing maybe is he going to be to get certain things done
+ i mean if you believe in the project and you have any sort of equity
+ and you're like oh i just i have a blocker but i don't really care
+ then you're not a good partner like are you are you in your out right don't don
+'t accept terms and
+ then be like yeah i got this thing but i don't really care like that's not how
+ it's not a good
+ partner you know i'm saying big dog i mean there's just there's a lot of nuance
+ to all this
+ that i it's just hard for me to go all over on a single call between our
+ relationship and how
+ we work together and all that so it's not as simple as everything i just said
+ no but obviously
+ you want them invested you gave things to think about right and you want them
+ invested
+ and so i was thinking of partnering with somebody my concern is like you i'm
+ working on sundays and
+ you know if they have a family so those are all things that take into account
+ when you negotiate
+ with them it's also there's also complexity around where i'm at where i've
+ raised money i raised
+ money before he came on i raised half a million dollars at a five point six
+ million dollar evaluation
+ and so me giving him a percent in the company is actually a hefty amount of
+ money i'm giving
+ him right like that's not nothing if you haven't raised money and you have no
+ evaluation you're
+ giving them a percent of nothing right so it's it's easy to kind of throw
+ around percentages so
+ the equation also changed because i asked him to come on after i raised money
+ makes sense there's a lot of complex i'd say this dude i'd ask like i gave you
+ the best advice i
+ could give you based on my situation you might want to go to fable and say hey
+ i'm thinking about
+ bringing this guy on i don't know if he's all the way in here's what i have
+ like it depends on what
+ do you have built out so far how much of the idea have you developed already
+ how much did you
+ contribute to the building the product and the development of the idea those
+ are all things you
+ got to uh take into account can i ask you question over mic fine-tuning yes g
+ordon loyd you want to
+ jump in here you do Tim Hortons is down so thanks for noticing um you you drink
+ it all it's good you
+ got it you got it all down the goal you get up to northern albert i'll buy you
+ i'll buy you Tim Hortons
+ next time in northern albert gordon i'm hitting you up okay to the Rockies it's
+ worth worth a visit
+ um i'll keep it short i'm just excited number one that i get to talk to you now
+ because i've
+ been watching you a while on all your shows and and seeing you on the moon shot
+ was it was pretty
+ cool um thank you i'm drinking from a fire hose when it comes to uh to learning
+ software engineering
+ so my application really is about i'm sales first like these ginsets behind me
+ that's what i sell
+ so all the data centers that are powering clot fable these are the the
+ generators that i'm selling
+ so i'm looking to build this automated sales agent and where i'm getting hung
+ up and of course i
+ know i can reverse prompt and with the loops i don't know if this is gonna if
+ it's gonna fix it or not
+ but the problem i'm having is that i get a prototype i say hey i want to dash a
+ dashboard of
+ mission control and i get something and i look at it and number one i don't
+ know all the terminologies
+ and the bands and the pop-up windows and how all those terms work and i've been
+ iterating back and
+ forth and saying hey i take screenshots and this i'm just curious because it
+ seems like i've been
+ spending a lot of time just tweaking the setup hey did this this horizontal
+ scroll is not working
+ this isn't working and all these issues that come up so i'm curious if there's
+ an effective
+ or an efficient way to get to something that's a lot more polished and usable
+ without having
+ to tweak all the little buttons and the things this isn't working the delay on
+ this pop-up is all
+ that stuff you know what i'm you know i'm saying i mean i can reiterate it and
+ it's probably a mindset
+ thing but ultimately i'm just trying to see if there's a little bit more of a
+ way i can get to
+ a polished product because i just want to mission control that i can
+ effectively be using for my
+ sales process that's the goal so appreciate you i mean i'm sure there's ways to
+ automate this where
+ you can use different plugins like playwright i think is one of them
+ where you can have the agent itself click around and use the website and you
+ can say hey
+ loop through the website go through every possible path and make sure
+ everything works well you know
+ if it's not working well it's probably just a code issue so you can just say
+ hey i want to focus on
+ ui um
+ polish go through all the code around ui and make sure everything's polished
+ and works well
+ right so there's ways to loop around it specifically for that
+ you know i think at the end of the day you're going to want to test everything
+ manually anyway
+ you're going to want to go through and and so maybe you just as your testing
+ man you just quickly
+ note down in a notepad oh this was slow this popped out weird this button looks
+ off you just take
+ the notepad you give it to the agent and have it loop through all of them that
+'s probably the best
+ way but i mean you're i think it's going to i don't know if we're at the point
+ yet where you can
+ eliminate all user testing um but you could probably make the development of
+ the issues you
+ find user testing pretty quick thanks of course thanks for the question
+ um
+ i got no family and it's almost 11 p.m. in the Netherlands and willing to go to
+ 1 a.m. wake up
+ at 6 a.m. for my full-time job hire me it's funny Daryl
+ i've been chatting to my agent um i've been chatting to my agent about
+ connecting
+ to able cloud code slack discord he's suggesting running a skill for spec build
+ review trying to
+ figure out yeah boom i mean i will uh i'll get the transcript of this video out
+ there take the
+ transcript give it to your agency hey find the part where he talks about a loop
+ let's build out a
+ similar system that's everyone's homework here
+ i've heard from other c-suite peers that they have problems with some
+ developers who stop and
+ throw their hands up when they run out of token allowance for the day this is
+ the wrong mindset
+ and it is happening hundred percent do you recommend those linear workshops in
+ addition your youtube
+ videos on linear or is the ai workflows video um i think the videos we have in
+ the community on
+ linear are more are going to be more in depth so i went from a high level in
+ youtube video i'd go
+ to the more in depth route in the community that's usually how i do we're all
+ covered things from a
+ high level on youtube but then i go super in depth step by step in the
+ community
+ i use harmonies would be the best way to have fable improve my workloads
+ um there's no ways i don't recommend using fable for harmonies i don't think it
+'s necessary i think
+ hope i think opus is a sweet spot for harmonies
+ goals have helped my cloud focus on improving my agent infrastructure do i need
+ a partner
+ sure would like one you don't need a partner i don't think you need one
+ i want one because you know one of my moats is distribution right youtube
+ twitter my newsletter also you know this community vibe code academy
+ this is something very important to me this isn't um effort free put a lot of
+ effort into this
+ you know i want to make sure this community's valuable for everyone who joins
+ and and uses it
+ you're investing in me and i want to make sure i invest in you guys and make
+ sure you get more
+ value out of it than you're putting in and so uh you know i i think if your
+ life is dedicated to
+ building your project i don't think you need a partner for me i need to make
+ youtube videos
+ i'm making a lot of sacrifices right now i haven't done live streaming in like
+ a month
+ and my live stream was like the biggest ai live stream and i had to cut it out
+ because
+ this project's too big and important right so bringing on a partner is going to
+ make those things
+ easier i still have to make sacrifices though so it just depends it depends how
+ much help you need
+ to accomplish your goals i need a lot of help because i need to put out youtube
+ videos and you
+ tweet and you put newsletters i need to maintain the community i need to do
+ live streams i need a
+ fundraise things like that nuance hundred percent the negotiation on equity
+ often tells you
+ you're not with the right peeps it's important to help follow around 100
+ percent question regarding
+ agent building verse workflows we'll make this the last question don't tell you
+ want to ask the
+ last question here yeah thanks alex this might be a little bit of a higher one
+ um but i i build
+ agents for businesses um and the linear thing's really cool like from an
+ engineering standpoint
+ but given the fable drop um you know i wanted your take on as far as like when
+ it comes to building
+ a harness for a company um should i should i get away from hermies open claw
+ and just just
+ use like the clawed agent sdk um you know and then from there because because
+ the hard part really
+ memory building and wiring um so i'm you know just thinking about the future of
+ like
+ what i do um you know what's your take on like like harness building itself
+ with fable or
+ kind of that side what would the original intention behind building uh custom
+ harness for the company
+ um basically automating uh workflows but kind of taking the next level of a
+ dashboard and creating
+ like um replies for the ceo and slack for example um the answer in his voice so
+ there's a lot of fine
+ tuning of like the voice and taking a lot of his transcripts and things like
+ that um and this is
+ just one example but uh most of them use some kind of either slack or team's
+ system um so it's an
+ agent in that and um like i said the linear thing is cool it's just kind of
+ more um you know engineer
+ development focused um you know and fable just like has changed the the
+ landscape when it comes to
+ agentics so i'm just um you know if you were in my shoes um should i just go
+ like all in on the sdk
+ building um or you know should i should i mess with the third party harnesses
+ this is literally like what's been plaguing me the past two days dude
+ um
+ is this are you building this for one are you building this as a business where
+ you'll sell
+ us to multiple companies or are you doing this for one specific business that's
+ kind of the goal
+ honestly i'd be lying if i said i didn't want to you know create a full-blown
+ company out of
+ this um right now i need case study and and proof and um you know my own taste
+ development um but
+ that being said i think when it comes to like a product that CEOs want they don
+'t really care um
+ you know what i mean as far as what it's capable of what model is using um so
+ that being said like
+ some uh business owners don't you know i can see getting away with something
+ like Hermes or
+ open car i have been getting away with that um and then there's others where it
+'s it's just not
+ as um you know detailed and structured for like enterprise big teams my concern
+ with the clawed
+ sdk is is you're locked into the clawed models and i'm not a fan of being
+ locked into them i don't
+ think there's a lot of price flexibility with them they're all even haiku i
+ think for what it is is
+ very expensive um and so i'm not a fan i'm not a fan of that kind of vendor
+ locking
+ same you know i think we're going to live in a future where a lot of companies
+ will have their
+ own ai infrastructure they'll have local models running they'll have gpu's
+ running local models
+ they'll have models they custom built themselves and i think they're going to
+ want to tie that into
+ whatever agents they're using and so that's why i've never built anything
+ around the clawed sdk is
+ that you just locked in forever to anthropic and i just uh i think it just it
+ just chewed this the
+ world moves too fast to be locked in the anthropic forever even though they've
+ clearly over the last
+ couple years have proven they're the dominant ai company um so you know i think
+ to give you a
+ highly specific answer i would just like need to know in detail what are the
+ requirements of the
+ agent you're building what are the guardrails like what are the what is all the
+ purposes
+ behind it privacy all that i think i have a tech background so a lot of that
+ has been you know
+ fleshed out and it is like new ones um but but to your point yeah it's just
+ like it's just so
+ hard to to get locked in i think it's hard with uh hermies and open claw to
+ make it like enterprise
+ ready because they're so open and you can do pretty much ending with them so i
+ think there's
+ probably a middle ground where you make an agent that's like has very specific
+ nemo claw i'm going
+ to be honest i'm not too educated on nemo claw andrew i know it's like built
+ for enterprise i haven't
+ used it too much so i don't know but yeah i think i think building custom
+ solutions is probably the
+ way to go cool thank you um if you dante make a post and tag me and put like
+ more of the nuance
+ in there then i can i can probably give you more specific answer like i put a
+ post in like the
+ community here's all the decision making factors and you tag me i could
+ probably give you more
+ nuanced answer sweet i got a jet i hope this was helpful i have the

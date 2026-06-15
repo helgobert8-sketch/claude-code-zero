@@ -1,0 +1,106 @@
+My AGENTS.md/CLAUDE.md and linear-task.md files for managing Linear
+
+Below is my AGENTS.md and then below that is my linear-task.md file for making sure my agent creates Linear tasks for each task, and properly fills each issue out with the right details. The AGENTS file is the rules file, the linear task file is the template for Linear issue:
+
+# Henry V1 Agent Instructions
+These instructions apply to this repository.
+## Default Workflow
+When working from a Linear issue, use `ops/templates/linear-task.md` as the starting prompt.
+Before editing:
+- Read the Linear issue, linked spec, and relevant existing files.
+- Identify the acceptance criteria and non-goals.
+- Check current implementation patterns before adding new ones.
+- Inspect current git status so unrelated work is not disturbed.
+While editing:
+- Implement only the stated acceptance criteria.
+- Do not change unrelated files.
+- Do not refactor opportunistically.
+- Preserve existing behavior unless the issue explicitly changes it.
+- Follow existing code style, architecture, naming, and UI conventions.
+- Add or update tests when the change affects logic, data flow, permissions, integrations, or user-visible behavior.
+Before opening a PR:
+- Run the relevant checks for the files touched.
+- Review the diff for unrelated changes.
+- Confirm the PR description follows `.github/pull_request_template.md`.
+## PR Standard
+Every PR should explain:
+- What changed
+- Why
+- Linear issue
+- Acceptance criteria checked
+- Screenshots, Loom, or preview URL when relevant
+- Risk
+- How to test
+- What was intentionally not done
+- Agent involvement
+- Follow-up issues created
+## PR Review Standard
+When reviewing a PR, use `ops/templates/pr-review.md`.
+Review against the linked Linear issue only. Look for acceptance criteria gaps, bugs, broken data flow, unnecessary scope expansion, security issues, bad abstractions, missing loading/error states, and code that will be hard for future agents to modify.
+Do not suggest unrelated improvements unless they are severe.
+Return review feedback in three groups:
+1. Must fix before merge
+2. Should fix soon
+3. Safe to merge
+## Useful Commands
+```bash
+npm run lint
+npm run build
+npm run dev
+npx convex dev
+```
+Use the narrowest useful verification command for the task. If a broad check is already known to have unrelated failures, say that plainly in the PR and include the more targeted checks that passed.
+--------------------------------------------------------------------------------------------------------------------------------------------
+linear-task.md:
+# Linear Task Prompt
+Use this prompt when starting work from a Linear issue.
+Claude Code users should also have the repo root `CLAUDE.md` loaded. Run `/memory`
+inside Claude Code if you need to verify which project instructions are active.
+```md
+You are working on Linear issue HEN-___.
+Before editing:
+- Read the Linear issue, linked spec, and relevant existing files.
+- Identify the acceptance criteria and non-goals.
+- Check current implementation patterns before adding new ones.
+- Inspect current git status so unrelated work is not disturbed.
+Rules:
+- Implement only the acceptance criteria.
+- Do not change unrelated files.
+- Do not refactor opportunistically.
+- Preserve existing behavior unless the issue explicitly changes it.
+- Follow existing code style, architecture, naming, and UI conventions.
+- Create or update tests when the change affects logic, data flow, permissions, integrations, or user-visible behavior.
+Before opening a PR:
+- Run the relevant checks.
+- Review your own diff.
+- Confirm no unrelated files were changed.
+Open a PR.
+In the PR description, explain:
+- what changed
+- why
+- Linear issue
+- acceptance criteria checked
+- screenshots, Loom, or preview URL when relevant
+- risk
+- how to test
+- what you intentionally did not do
+- agent involvement
+- follow-up issues created
+```
+## Linear Issue Shape
+Use this structure for the Linear issue itself when possible:
+```md
+## Problem
+What user, business, or technical problem does this solve?
+## Acceptance Criteria
+- [ ] Observable outcome one
+- [ ] Observable outcome two
+## Notes / Links
+- Spec:
+- Design:
+- Relevant files:
+## Non-goals
+- What should not be changed in this task?
+## Test Expectations
+- What should be tested manually or automatically?
+```

@@ -1,0 +1,82 @@
+My OFFICIAL agent memory system!!! (steal this)
+
+So I've been working the last few days really hard on rebuilding the memory system for my Hermes agent. I like Hermes a lot. It's very fast. I love the self improvement. But the memory was considerably worse for me than OpenClaw.
+It constantly forgot things. Each compaction was basically a lobotomy. So I spent the last few days doing research and designing a memory system that adds a Obisidian vault layer.
+For those that don't know, Obsidian is basically a graphic interface for markdown files. You can easily organize and read folders of markdown files. Hermes (and OpenClaw) have skills for Obsidian to use it and create and read markdown files in it.
+The following system is the new system I implemented in Hermes. I can confirm it works. You can also easily do this in OpenClaw. Same structure. Feel free to copy and paste the system below and give it to your agent (could be either OpenClaw or Hermes, doesn't matter). I'd highly recommend reading it first so you understand it. Always good to understand how things work.
+I'll record an in depth video going over every part step by step in depth for the OpenClaw masterclass tomorrow. Then a quicker higher level one for youtube a couple days later.
+My system:
+There are 4 layers, from smallest/always-present to largest/on-demand:
+LAYER 1: BUILT-IN MEMORY (~2,200 chars)
+----------------------------------------
+- Injected into every single prompt automatically
+- Tiny — just compact facts and pointers
+- Things like "Alex's name", "SSH into DGX with ssh spark", "vault is at X path"
+- Think of it as sticky notes on my monitor — always visible
+LAYER 2: AGENTS.md + SOUL.md
+-----------------------------
+- Also injected every single prompt automatically
+- My operating instructions, personality, and hard rules
+- Includes the mandatory logging rules we just tightened
+- This is my "how to behave" layer
+LAYER 3: OBSIDIAN VAULT (the big one)
+--------------------------------------
+- Location: iCloud Obsidian vault, shared with OpenClaw
+- NOT auto-injected — I read it on session start and during work
+- Three folders:
+Agent-Shared/ — both agents read/write
+user-profile.md — who you are, preferences, corrections
+project-state.md — all projects and their status
+decisions-log.md — shared decision history
+Agent-Hermes/ — my private workspace
+working-context.md — what I'm actively doing right now
+mistakes.md — things I've gotten wrong
+daily/ — daily logs (one file per day)
+Agent-OpenClaw/ — OpenClaw's space (I don't touch it)
+- I READ on: session start, after compaction, when I need details
+- I WRITE on: task start, every 3-5 tool calls, task completion, corrections
+LAYER 4: SESSION SEARCH
+------------------------
+- Searchable archive of every past conversation
+- I don't write to it — it's automatic
+- I query it when you reference past work or I need cross-session context
+- Last resort recall — "what did we do about X last week?"
+THE FLOW
+========
+New session starts
+|
+v
+Read vault (user-profile, project-state, working-context, today's log)
+|
+v
+Work on tasks — checkpoint to vault every 3-5 tool calls
+|
+v
+Task done — append to daily log, update working-context
+|
+v
+Compaction hits? — todo list survives, re-read vault after
+|
+v
+Session ends — flush everything to daily log
+That's it. Layers 1 and 2 are always there. Layer 3 is the workhorse I actively maintain. Layer 4 is the safety net for anything that slipped through.
+
+---
+
+Like
+36
+38 comments
+Alex Finn
+💎
+• Apr 1
+
+To be 100% clear: this system is applicable to BOTH OpenClaw and Hermes. It works for both. These 2 tools are almost exactly the same with some subtle differences. There is NO need to use Hermes if you are still learning OpenClaw. After mastering OpenClaw, it's cool to experiment with building multi agent workflows using Hermes.
+
+3
+
+Reply
+Alex Finn
+💎
+• Apr 1
+
+Also another small note: in the Obsidian layer in that description it mentions 3 folders: 1 for Hermes, 1 for OpenClaw, and a shared folder. This allows each agent to have their own memories, plus a shared workspace where all agents can share important context on the work they do.

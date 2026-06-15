@@ -1,0 +1,40 @@
+Grok oauth now in Hermes. 
+
+Not amazing for orchestrator, but great as a tool for AI image and video gen
+Recommend adding it in ! Do 'hermes tools' in your terminal and add it
+
+Like
+24
+6 comments
+
+---
+
+Auny H
+• 25d
+
+I have Hermes scanning trending posts thru Grok oauth in my niche 2-3 times a day and suggesting posts I can reply to or quote post. It also gives me 1 content idea per 'trending' topic if relevant
+
+3
+
+Reply
+Scott Young
+• 25d
+
+@Auny H I've been looking to do exactly this, Auny! How much does it cost you on the Grok API side?
+
+2
+
+Reply
+Auny H
+• 25d
+
+@Scott Young i've been using grok API for a month now and the cost has pretty much been zero for trending news and X post link pulls.
+OAuth gets rid of API needs. you can ask your hermes or openclaw to directly search X now. you don't need any API access anymore
+
+2
+
+Reply
+丂ㄒ卂尺丂Ҝ尺乇卂爪 The
+• 25d
+
+I just watched your latest youtube where you talk about the video gen use with Grok OATH and Hermes. Great nugget thanks for sharing. Oh and the last feature , tasks in KanBan to literal tasks for hermes to work on ... that is the BIG unlock. Linear was my last breakthrough, I have created so much work for myself in there. Now I have possiblly have hermes to in there and start taking some work items for me .. OMG ! there literally are not enough hours in the day to get all i want to get done done.. CRAZY
