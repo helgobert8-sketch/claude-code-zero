@@ -10,7 +10,9 @@ Ursprünglich war Opus 4.8 als Harness-Modell geplant. Verworfen für den Start,
 - „Opus via Claude Max + Agent-SDK-Credit (ab 15.06.2026)" ist eine **Deckelung** (Max 5x = $100/Mo, separater Topf), kein „unbegrenzt" — danach Pay-as-you-go.
 - Die **Anthropic-OAuth-Anbindung in Hermes ist die fehleranfälligste Ecke** (offene GitHub-Issues #12905 / #21107 / #25267; Detail siehe Auth-Warnblock in `HERMES_SETUP.md` Abschnitt 4).
 
-Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das vorhandene ChatGPT-Plus-Abo, kein API-Key). **Opus 4.8 später als zweites Orchestrator-Profil** via SDK-Credit — erst nach Claim + Verifikation, dass die Nutzung wirklich den Credit zieht.
+Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das vorhandene ChatGPT-Plus-Abo, kein API-Key). **Opus 4.8 ggf. später als zweites Orchestrator-Profil.**
+
+> **KORREKTUR 2026-06-16 (Recherche):** Die Annahme „Opus gratis über den Agent-SDK-Credit" war falsch. **Der Agent-SDK-Credit (Max5x ~$100/Mo, Max20x ~$200/Mo) deckt Hermes NICHT** — er gilt nur fürs **offizielle Claude Agent SDK / `claude -p` / Claude Code**, nicht für Dritt-Agents wie Hermes (Abo-OAuth „als Claude Code" = nicht unterstützt, ToS-fragil, Routing-Issues #12905/#21107 offen). **Claude in Hermes geht zuverlässig nur via API-Key (Pay-as-you-go);** für ein *low-volume* Orchestrator-Profil aber günstig (~$10–40/Mo). Opus-via-Abo-OAuth verworfen; ob Claude überhaupt dazukommt → später entscheiden. Rate-Limit-Transparenz Claude ≈ OpenAI.
 
 **Env-Foot-Gun vorab geprüft:** weder `OPENAI_API_KEY` noch `ANTHROPIC_API_KEY` gesetzt (würde sonst den OAuth-Pfad überschreiben → ungewolltes Pay-as-you-go).
 
@@ -87,7 +89,7 @@ Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das 
 - **Codex CLI braucht „Gerätecode-Autorisierung"** in ChatGPT → Settings → Security (Default aus).
 - **Kein `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` in der Umgebung** lassen — überschreibt den OAuth-Pfad → ungewolltes Pay-as-you-go.
 - **Token-Hygiene:** Tools/Skills ausmisten; und der **Brain-Dump gehört in den Vault (on-demand)**, nicht in SOUL.md/AGENTS.md (die werden bei *jeder* Nachricht geladen).
-- **Opus-4.8-Orchestrator-Profil** kommt später via Agent-SDK-Credit — erst nach Claim + Verifikation (Anthropic-OAuth = raue Ecke, siehe Warnblock in HERMES_SETUP.md).
+- **Opus-4.8-Orchestrator-Profil:** ginge **nur via API-Key (Pay-as-you-go)**, NICHT via Agent-SDK-Credit (der deckt nur das offizielle Claude Agent SDK / Claude Code, nicht Dritt-Agents wie Hermes; Abo-OAuth = nicht unterstützt/ToS-fragil — Recherche 2026-06-16, siehe Korrektur-Block Abschnitt 0). Für low-volume-Orchestrator (Brain) günstig (~$10–40/Mo); ob überhaupt → später entscheiden.
 - **Hermes patcht auf „Kannst du das fixen?" seinen EIGENEN Quellcode** (06-16-Erfahrung mit dem Auto-TTS-Bug): methodisch (Code + Regressionstests + `pytest`/`py_compile`), aber es entsteht **lokale Divergenz vom Nous-Upstream** im `…\hermes-agent\`-Repo. **Gut zu wissen:** (a) Patches werden erst beim nächsten Gateway-Restart scharf — vorher mit `git -C …\hermes-agent diff` reviewen; (b) Hermes kann den „Refusing to restart"-Schutz via *verzögertem* Restart umgehen und sich selbst neu starten; (c) jeden Selbst-Fix als `.patch` sichern (`git diff --output=…`) + in `ClaudeCodeZero\Hermes\` ablegen, sonst geht er bei `hermes update` („Restore local changes? n") verloren. Verwerfen: `git -C …\hermes-agent checkout -- .`.
 - **Desktop-GUI bleibt die fragile Ecke** (2. Anlauf 06-16): jetzt nicht mehr `@assistant-ui/tap`, sondern **Electron-Download `fetch failed`** (AV/EDR-SSL-Interception) **+ node-22-vs-24-Drift**. Die App ist für Hermes' Funktion nicht nötig (CLI + Telegram + Gateway sind der Workhorse) — sauberer Bau-Versuch erst nach `hermes update` auf node-24-Basis.
 
