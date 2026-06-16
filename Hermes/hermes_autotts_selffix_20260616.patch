@@ -1,0 +1,321 @@
+diff --git a/gateway/platforms/base.py b/gateway/platforms/base.py
+index 205d9cbf5..80694780d 100644
+--- a/gateway/platforms/base.py
++++ b/gateway/platforms/base.py
+@@ -1882,16 +1882,19 @@ class BasePlatformAdapter(ABC):
+         # (``voice.auto_tts`` in config.yaml, pushed by GatewayRunner on connect).
+         # Per-chat overrides live in two sets populated from ``_voice_mode``:
+         #   - ``_auto_tts_enabled_chats``: chat explicitly opted in via ``/voice on``
+-        #     or ``/voice tts`` (mode is ``voice_only`` or ``all``). Fires even when
+-        #     the global default is False.
++        #     or ``/voice tts`` (mode is ``voice_only`` or ``all``). Fires for voice
++        #     inputs even when the global default is False.
++        #   - ``_auto_tts_all_chats``: chat explicitly opted in via ``/voice tts``
++        #     (mode is ``all``). Fires for text inputs too.
+         #   - ``_auto_tts_disabled_chats``: chat explicitly opted out via
+         #     ``/voice off`` (mode is ``off``). Suppresses auto-TTS even when the
+         #     global default is True.
+-        # The gate in _process_message() is:
++
+         #   fire if chat in _auto_tts_enabled_chats
+         #     OR (_auto_tts_default and chat not in _auto_tts_disabled_chats)
+         self._auto_tts_default: bool = False
+         self._auto_tts_enabled_chats: set = set()
++        self._auto_tts_all_chats: set = set()
+         self._auto_tts_disabled_chats: set = set()
+         # Chats where typing indicator is paused (e.g. during approval waits).
+         # _keep_typing skips send_typing when the chat_id is in this set.
+@@ -2118,8 +2121,8 @@ class BasePlatformAdapter(ABC):
+         """Whether auto-TTS on voice input should fire for ``chat_id``.
+ 
+         Decision layers (Issue #16007):
+-          1. Explicit ``/voice on`` or ``/voice tts`` → always fire (even if
+-             ``voice.auto_tts`` is False).
++          1. Explicit ``/voice on`` or ``/voice tts`` → always fire for voice
++             inputs (even if ``voice.auto_tts`` is False).
+           2. Explicit ``/voice off`` → never fire.
+           3. Fall back to the global ``voice.auto_tts`` config default.
+         """
+@@ -2129,6 +2132,19 @@ class BasePlatformAdapter(ABC):
+             return False
+         return bool(self._auto_tts_default)
+ 
++    def _should_auto_tts_for_event(self, event: MessageEvent) -> bool:
++        """Whether this inbound event should receive a synthesized voice reply.
++
++        ``/voice on`` means voice-to-voice: only voice inputs get spoken replies.
++        ``/voice tts`` means always speak: text inputs get spoken replies too.
++        """
++        chat_id = event.source.chat_id
++        if chat_id in self._auto_tts_disabled_chats:
++            return False
++        if event.message_type == MessageType.VOICE:
++            return self._should_auto_tts_for_chat(chat_id)
++        return chat_id in self._auto_tts_all_chats
++
+     def set_fatal_error_handler(self, handler: Callable[["BasePlatformAdapter"], Awaitable[None] | None]) -> None:
+         self._fatal_error_handler = handler
+ 
+@@ -4268,13 +4284,10 @@ class BasePlatformAdapter(ABC):
+                         )
+                         text_content = _recovered
+ 
+-                # Auto-TTS: if voice message, generate audio FIRST (before sending text)
+-                # Gated via ``_should_auto_tts_for_chat``: fires when the chat has
+-                # an explicit ``/voice on|tts`` opt-in OR when ``voice.auto_tts`` is
+-                # True globally and no ``/voice off`` has been issued.
++                # Auto-TTS: generate audio FIRST (before sending text). ``/voice on``
++                # is voice-to-voice; ``/voice tts`` also speaks replies to text input.
+                 _tts_path = None
+-                if (self._should_auto_tts_for_chat(event.source.chat_id)
+-                        and event.message_type == MessageType.VOICE
++                if (self._should_auto_tts_for_event(event)
+                         and text_content
+                         and not media_files):
+                     try:
+diff --git a/gateway/run.py b/gateway/run.py
+index 4541e0fa6..ec90cce6f 100644
+--- a/gateway/run.py
++++ b/gateway/run.py
+@@ -2501,33 +2501,46 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+             enabled_chats = getattr(adapter, "_auto_tts_enabled_chats", None)
+             if isinstance(enabled_chats, set):
+                 enabled_chats.discard(chat_id)
++            all_chats = getattr(adapter, "_auto_tts_all_chats", None)
++            if isinstance(all_chats, set):
++                all_chats.discard(chat_id)
+         else:
+             disabled_chats.discard(chat_id)
+ 
+-    def _set_adapter_auto_tts_enabled(self, adapter, chat_id: str, enabled: bool) -> None:
++    def _set_adapter_auto_tts_enabled(self, adapter, chat_id: str, enabled: bool, *, all_inputs: bool = False) -> None:
+         """Update an adapter's per-chat auto-TTS opt-in set if present.
+ 
+         Used for ``/voice on``/``/voice tts`` where the user explicitly wants
+-        auto-TTS even when ``voice.auto_tts`` is False globally.
++        auto-TTS even when ``voice.auto_tts`` is False globally. ``all_inputs``
++        distinguishes ``/voice tts`` from voice-to-voice ``/voice on``.
+         """
+         enabled_chats = getattr(adapter, "_auto_tts_enabled_chats", None)
+         if not isinstance(enabled_chats, set):
+             return
++        all_chats = getattr(adapter, "_auto_tts_all_chats", None)
+         if enabled:
+             enabled_chats.add(chat_id)
++            if isinstance(all_chats, set):
++                if all_inputs:
++                    all_chats.add(chat_id)
++                else:
++                    all_chats.discard(chat_id)
+             # An explicit opt-in clears any stale /voice off for this chat.
+             disabled_chats = getattr(adapter, "_auto_tts_disabled_chats", None)
+             if isinstance(disabled_chats, set):
+                 disabled_chats.discard(chat_id)
+         else:
+             enabled_chats.discard(chat_id)
++            if isinstance(all_chats, set):
++                all_chats.discard(chat_id)
+ 
+     def _sync_voice_mode_state_to_adapter(self, adapter) -> None:
+         """Restore persisted /voice state into a live platform adapter.
+ 
+-        Populates three fields from config + ``self._voice_mode``:
++        Populates four fields from config + ``self._voice_mode``:
+           - ``_auto_tts_default``: global default from ``voice.auto_tts``
+           - ``_auto_tts_enabled_chats``: chats with mode ``voice_only``/``all``
++          - ``_auto_tts_all_chats``: chats with mode ``all``
+           - ``_auto_tts_disabled_chats``: chats with mode ``off``
+         """
+         platform = getattr(adapter, "platform", None)
+@@ -2536,7 +2549,12 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+ 
+         disabled_chats = getattr(adapter, "_auto_tts_disabled_chats", None)
+         enabled_chats = getattr(adapter, "_auto_tts_enabled_chats", None)
+-        if not isinstance(disabled_chats, set) and not isinstance(enabled_chats, set):
++        all_chats = getattr(adapter, "_auto_tts_all_chats", None)
++        if (
++            not isinstance(disabled_chats, set)
++            and not isinstance(enabled_chats, set)
++            and not isinstance(all_chats, set)
++        ):
+             return
+ 
+         # Push the global voice.auto_tts default (config.yaml) onto the adapter.
+@@ -2565,6 +2583,12 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+                 key[len(prefix):] for key, mode in self._voice_mode.items()
+                 if mode in {"voice_only", "all"} and key.startswith(prefix)
+             )
++        if isinstance(all_chats, set):
++            all_chats.clear()
++            all_chats.update(
++                key[len(prefix):] for key, mode in self._voice_mode.items()
++                if mode == "all" and key.startswith(prefix)
++            )
+ 
+     async def _safe_adapter_disconnect(self, adapter, platform) -> None:
+         """Call adapter.disconnect() defensively, swallowing any error.
+diff --git a/gateway/slash_commands.py b/gateway/slash_commands.py
+index 92db5b42f..b3de213c1 100644
+--- a/gateway/slash_commands.py
++++ b/gateway/slash_commands.py
+@@ -1887,7 +1887,7 @@ class GatewaySlashCommandsMixin:
+             self._voice_mode[voice_key] = "all"
+             self._save_voice_modes()
+             if adapter:
+-                self._set_adapter_auto_tts_enabled(adapter, chat_id, enabled=True)
++                self._set_adapter_auto_tts_enabled(adapter, chat_id, enabled=True, all_inputs=True)
+             return t("gateway.voice.tts_enabled")
+         elif args in {"channel", "join"}:
+             return await self._handle_voice_channel_join(event)
+diff --git a/tests/gateway/test_active_session_text_merge.py b/tests/gateway/test_active_session_text_merge.py
+index 16d40815b..c73e469f9 100644
+--- a/tests/gateway/test_active_session_text_merge.py
++++ b/tests/gateway/test_active_session_text_merge.py
+@@ -106,6 +106,7 @@ def _make_adapter() -> BasePlatformAdapter:
+     adapter._text_debounce = {}
+     adapter._auto_tts_default = False
+     adapter._auto_tts_enabled_chats = set()
++    adapter._auto_tts_all_chats = set()
+     adapter._auto_tts_disabled_chats = set()
+     adapter._typing_paused = set()
+     return adapter
+diff --git a/tests/gateway/test_base_topic_sessions.py b/tests/gateway/test_base_topic_sessions.py
+index dd2ef3a12..3ff7b72bb 100644
+--- a/tests/gateway/test_base_topic_sessions.py
++++ b/tests/gateway/test_base_topic_sessions.py
+@@ -266,6 +266,20 @@ class TestTelegramAutoTtsCaptionDelivery:
+             message_id="voice-1",
+         )
+ 
++    @staticmethod
++    def _make_text_event(chat_id: str = "-1001", thread_id: str = "17585") -> MessageEvent:
++        return MessageEvent(
++            text="hello",
++            message_type=MessageType.TEXT,
++            source=SessionSource(
++                platform=Platform.TELEGRAM,
++                chat_id=chat_id,
++                chat_type="group",
++                thread_id=thread_id,
++            ),
++            message_id="text-1",
++        )
++
+     @staticmethod
+     def _hold_typing():
+         async def hold(_chat_id, interval=2.0, metadata=None):
+@@ -295,6 +309,56 @@ class TestTelegramAutoTtsCaptionDelivery:
+         assert adapter.play_tts.await_args.kwargs["caption"] == "Short reply"
+         assert adapter.sent == []
+ 
++    @pytest.mark.asyncio
++    async def test_voice_tts_all_mode_speaks_text_input(self, tmp_path):
++        adapter = DummyTelegramAdapter()
++        adapter._keep_typing = self._hold_typing()
++        adapter._auto_tts_all_chats.add("-1001")
++        adapter.play_tts = AsyncMock(return_value=SendResult(success=True, message_id="tts-1"))
++        adapter.set_message_handler(lambda _event: asyncio.sleep(0, result="Text reply"))
++
++        tts_path = tmp_path / "reply.ogg"
++        tts_path.write_text("audio", encoding="utf-8")
++        event = self._make_text_event()
++
++        with patch("tools.tts_tool.check_tts_requirements", return_value=True), patch(
++            "tools.tts_tool.text_to_speech_tool",
++            return_value=json.dumps({"file_path": str(tts_path)}),
++        ):
++            await adapter._process_message_background(event, build_session_key(event.source))
++
++        adapter.play_tts.assert_awaited_once()
++        assert adapter.play_tts.await_args.kwargs["caption"] == "Text reply"
++        assert adapter.sent == []
++
++    @pytest.mark.asyncio
++    async def test_voice_on_mode_does_not_speak_text_input(self, tmp_path):
++        adapter = DummyTelegramAdapter()
++        adapter._keep_typing = self._hold_typing()
++        adapter._auto_tts_enabled_chats.add("-1001")
++        adapter.play_tts = AsyncMock(return_value=SendResult(success=True, message_id="tts-1"))
++        adapter.set_message_handler(lambda _event: asyncio.sleep(0, result="Text reply"))
++
++        tts_path = tmp_path / "reply.ogg"
++        tts_path.write_text("audio", encoding="utf-8")
++        event = self._make_text_event()
++
++        with patch("tools.tts_tool.check_tts_requirements", return_value=True), patch(
++            "tools.tts_tool.text_to_speech_tool",
++            return_value=json.dumps({"file_path": str(tts_path)}),
++        ):
++            await adapter._process_message_background(event, build_session_key(event.source))
++
++        adapter.play_tts.assert_not_awaited()
++        assert adapter.sent == [
++            {
++                "chat_id": "-1001",
++                "content": "Text reply",
++                "reply_to": None,
++                "metadata": {"thread_id": "17585", "notify": True},
++            }
++        ]
++
+     @pytest.mark.asyncio
+     async def test_long_telegram_auto_tts_keeps_followup_text_when_caption_would_truncate(self, tmp_path):
+         adapter = DummyTelegramAdapter()
+diff --git a/tests/gateway/test_telegram_voice_v0_regressions.py b/tests/gateway/test_telegram_voice_v0_regressions.py
+index b2b8d4d0e..b9b622725 100644
+--- a/tests/gateway/test_telegram_voice_v0_regressions.py
++++ b/tests/gateway/test_telegram_voice_v0_regressions.py
+@@ -53,6 +53,7 @@ async def test_voice_tts_is_explicit_audio_reply_opt_in():
+     adapter = SimpleNamespace(
+         _auto_tts_disabled_chats=set(),
+         _auto_tts_enabled_chats=set(),
++        _auto_tts_all_chats=set(),
+     )
+     runner = _runner(adapter)
+     runner._voice_mode = {}
+@@ -68,4 +69,5 @@ async def test_voice_tts_is_explicit_audio_reply_opt_in():
+ 
+     assert runner._voice_mode["telegram:12345"] == "all"
+     assert "12345" in adapter._auto_tts_enabled_chats
++    assert "12345" in adapter._auto_tts_all_chats
+     assert result
+diff --git a/tests/gateway/test_voice_command.py b/tests/gateway/test_voice_command.py
+index 4d52591a2..2cdb36f34 100644
+--- a/tests/gateway/test_voice_command.py
++++ b/tests/gateway/test_voice_command.py
+@@ -196,6 +196,7 @@ class TestHandleVoiceCommand:
+             _auto_tts_default=False,
+             _auto_tts_disabled_chats=set(),
+             _auto_tts_enabled_chats=set(),
++            _auto_tts_all_chats=set(),
+             platform=Platform.TELEGRAM,
+         )
+ 
+@@ -203,6 +204,7 @@ class TestHandleVoiceCommand:
+ 
+         assert adapter._auto_tts_disabled_chats == {"off_chat"}
+         assert adapter._auto_tts_enabled_chats == {"on_chat", "tts_chat"}
++        assert adapter._auto_tts_all_chats == {"tts_chat"}
+ 
+     def test_sync_pushes_config_default_onto_adapter(self, runner, monkeypatch):
+         """Issue #16007: ``voice.auto_tts`` must propagate to ``_auto_tts_default``."""
+@@ -217,6 +219,7 @@ class TestHandleVoiceCommand:
+             _auto_tts_default=False,
+             _auto_tts_disabled_chats=set(),
+             _auto_tts_enabled_chats=set(),
++            _auto_tts_all_chats=set(),
+             platform=Platform.TELEGRAM,
+         )
+ 
+@@ -2911,9 +2914,9 @@ class TestShouldAutoTtsForChat:
+             _auto_tts_default=default,
+             _auto_tts_enabled_chats=set(enabled),
+             _auto_tts_disabled_chats=set(disabled),
++            _auto_tts_all_chats=set(),
+         )
+-        # Bind the unbound method — _should_auto_tts_for_chat only reads the
+-        # three attrs above via ``self.``, so an unbound call works.
++        # The method only reads the attrs above via ``self.``, so an unbound call works.
+         from gateway.platforms.base import BasePlatformAdapter
+         return BasePlatformAdapter._should_auto_tts_for_chat, adapter
+ 

@@ -88,6 +88,8 @@ Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das 
 - **Kein `OPENAI_API_KEY` / `ANTHROPIC_API_KEY` in der Umgebung** lassen — überschreibt den OAuth-Pfad → ungewolltes Pay-as-you-go.
 - **Token-Hygiene:** Tools/Skills ausmisten; und der **Brain-Dump gehört in den Vault (on-demand)**, nicht in SOUL.md/AGENTS.md (die werden bei *jeder* Nachricht geladen).
 - **Opus-4.8-Orchestrator-Profil** kommt später via Agent-SDK-Credit — erst nach Claim + Verifikation (Anthropic-OAuth = raue Ecke, siehe Warnblock in HERMES_SETUP.md).
+- **Hermes patcht auf „Kannst du das fixen?" seinen EIGENEN Quellcode** (06-16-Erfahrung mit dem Auto-TTS-Bug): methodisch (Code + Regressionstests + `pytest`/`py_compile`), aber es entsteht **lokale Divergenz vom Nous-Upstream** im `…\hermes-agent\`-Repo. **Gut zu wissen:** (a) Patches werden erst beim nächsten Gateway-Restart scharf — vorher mit `git -C …\hermes-agent diff` reviewen; (b) Hermes kann den „Refusing to restart"-Schutz via *verzögertem* Restart umgehen und sich selbst neu starten; (c) jeden Selbst-Fix als `.patch` sichern (`git diff --output=…`) + in `ClaudeCodeZero\Hermes\` ablegen, sonst geht er bei `hermes update` („Restore local changes? n") verloren. Verwerfen: `git -C …\hermes-agent checkout -- .`.
+- **Desktop-GUI bleibt die fragile Ecke** (2. Anlauf 06-16): jetzt nicht mehr `@assistant-ui/tap`, sondern **Electron-Download `fetch failed`** (AV/EDR-SSL-Interception) **+ node-22-vs-24-Drift**. Die App ist für Hermes' Funktion nicht nötig (CLI + Telegram + Gateway sind der Workhorse) — sauberer Bau-Versuch erst nach `hermes update` auf node-24-Basis.
 
 ---
 
@@ -96,8 +98,12 @@ Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das 
 - **Phase 1 — Basis (Install, Modell, Test-Chat):** ✅ DONE.
 - **Phase 2 — Gedächtnis: DONE (Kern 06-15/16; Agent-Shared + Auto-Load-GATE 06-16).** Obsidian + Vault `C:\Users\manyw\HermesBrain` (`OBSIDIAN_VAULT_PATH` gesetzt; Vault war anfangs doppelt verschachtelt `HermesBrain\HermesBrain` → eine Ebene hochgezogen). 4-Schichten-Struktur gebaut (`INDEX.md` + `Agent-Shared/` + `Agent-Hermes/` + `daily/`; leere Ordner via `.gitkeep`). Brain-Dump (physisch vorbereitet, in Hermes eingetippt) + Reverse-Prompting durch. **Geschrieben:** `SOUL.md` (`…\hermes\SOUL.md`, Persona/Ton) + `AGENTS.md` (`C:\Users\manyw\AGENTS.md` — Workdir-geladen, operatives Destillat **ohne Sensibles**, Projekte nur Name+1-Zeile). Persistenz-Sicherung: `Agent-Shared/_braindump-raw.md` + `_entscheidungen.md`. **Routing-Regel:** SOUL=Persona · AGENTS=operatives Destillat (nichts Sensibles, geht bei jeder Nachricht an OpenAI) · Agent-Shared=voller Wissensschatz on-demand (sensibel ok, **keine** Seed-Phrases/Passwörter/Kontonummern). **Agent-Shared gefüllt (06-16, durch Claude Code, Freigabe-Schleife pro Entwurf eingehalten):** 10 thematische Notizen aus `_braindump-raw.md` (`01-person` … `10-referenzen`) + in `INDEX.md` verlinkt. Redaktionsregeln: Code/Build **präferentiell** (nicht exklusiv) bei Claude Code — Prinzip „passendes Modell je Aufgabe" (Hermes/GPT-5.5+Codex kann abgegrenztes Coden selbst; dynamisches Modell-Feld; API-Kostenfall); keine echten Geheimnisse; Buttcoin-Detail dünn → von Chris zu ergänzen. **Quick-Check bestanden:** frisch `hermes` aus Home-Terminal → „Was ist mein Nordstern?" korrekt aus AGENTS.md (Auto-Load bestätigt).
 - **Phase 3 — Erreichbarkeit: ✅ DONE (06-16).** Telegram-Bot `@paronthes_hermes_bot` via @BotFather (`/newbot` → Name → Username auf `bot` endend → Token). `hermes gateway setup` → Telegram + Token + **Allowed-User = eigene numerische Telegram-ID** (geholt via **@userinfobot**, NICHT über den eigenen Bot!) + **Home-Channel = eigene DM**. `hermes gateway install` registriert **Scheduled Task `Hermes_Gateway`** (Auto-Start bei Windows-Login; UAC nur für die Task-Anlage). **Text-GATE** (hin/zurück) bestanden. **ffmpeg** für Voice via winget mit **expliziter Paket-ID** `Gyan.FFmpeg.Essentials -e --accept-source-agreements --accept-package-agreements` (das generische `winget install ffmpeg` scheiterte zuvor an Mehrdeutigkeit) → ffmpeg 8.1.1 full-build/gyan.dev mit `libopus`; danach `hermes gateway restart`. **Voice-GATE** beide Richtungen bestanden (Opus→Text Transkription + TTS→Opus Encoding). **Deutsche Stimme:** Default war englisch (`en-US-AriaNeural`) → in `C:\Users\manyw\AppData\Local\hermes\config.yaml` (NICHT `~/.hermes/`!) unter `tts.edge.voice` auf `de-DE-FlorianMultilingualNeural` (mehrsprachig, m) geändert + Gateway-Restart.
-- **Phase 4 — Werkzeuge:** Grok als Tool (X-Trends/Bild) + Skills/Tools-Ausmist-Pass. (**Linear raus aus Hermes** — gehört zur Claude-Code-Build-Achse, nicht zu Hermes; Entscheid 2026-06-16.)
-- **Phase 5 — Autonomie:** Morning-Brief-Cron via Reverse-Prompting + **Scout-Rolle** (personalisierte Ideen-/Prototyp-Vorschläge aus Personenkenntnis, Nordstern-gebunden + Triage; graduierte Vorschläge → Linear/PRD → Claude Code). **Mission Control** nicht jetzt — Kandidat fürs Buttcoin-Content-System („Content-System rund machen"-Track, startet mit Failure-Diagnose der Vorversionen).
+- **Phase 4 — Werkzeuge: ✅ DONE (06-16).**
+  - **(A) Grok als Tool:** `hermes auth add xai-oauth` (PKCE-Loopback-OAuth, setzt **SuperGrok / X-Premium+** voraus; **kein** Modellwechsel — GPT-5.5 bleibt Orchestrator, daher `auth add` statt `hermes model`) → `hermes tools enable x_search`. **Live verifiziert:** X-Trend-Scan über Telegram liefert echte X-Status-Links. `video_gen` testweise aktiviert, mangels Provider + akutem Bedarf wieder `disable`d; Bild-Gen bleibt unverändert bei `openai-codex`/`gpt-image-2-medium`. (Hinweis: `hermes login` ist in v0.16.0 entfernt → `hermes auth add` nutzen.)
+  - **(B) Desktop-App: ⏸️ GEPARKT** — `hermes desktop --build-only` scheitert an (1) Electron-Binary-Download (`@electron/get` → `fetch failed`, vermutlich AV/EDR-SSL-Interception wie bei RSS/YT) **und** (2) node-22-vs-24-Drift (Desktop-Code verlangt node≥24, Hermes bündelt v22). Für „wenn Platz"-Bonus nicht den Eingriff wert. **Wichtig:** Der Source-Build (`hermes desktop`) ist NICHT der einzige Weg — laut früherer Recherche gibt es einen **prebuilt `.exe`-Installer** (Docs `…/windows-native`), der den node/Electron-Source-Build umgeht = der noch-nicht-probierte, vielversprechendere Pfad. Alternativ vorher `hermes update` (node-24 + aktueller Code, `hermes backup` davor) + SSL-Bypass + Gateway-Stop gegen EBUSY-Locks. Als **optionaler Auftakt von Phase 5** vorgemerkt.
+  - **(C) Skills-Ausmist:** 63 → **37 enabled / 26 disabled** via `skills.disabled`-Liste in config.yaml (Batch über Hermes' eigene `save_disabled_skills`-API; Backup `config.yaml.bak.ausmist_*`, 1 Zeile reversibel). Deaktiviert: Musik/Audio + Bild/CV/VJ + ML-Training/Ops + Fremd-Ökosysteme (yuanbao/openhue/himalaya/airtable/teams/polymarket/maps) + 4 Design (excalidraw/sketch/notion/powerpoint). Skills-Index im System-Prompt 7,1 → **4,0 KB** (−42 %); Tool-Schemas +4 KB durch `x_search` → netto sinnvoller belegt statt totes Rauschen.
+  - **Nebenereignis 06-16 — Hermes hat seinen eigenen Auto-TTS-Bug selbst gefixt:** Auf „Kannst du das fixen?" hin **7 Dateien im `hermes-agent`-Source gepatcht** (`gateway/platforms/base.py`+`run.py`+`slash_commands.py` + 4 Test-Dateien, 125+/18−), `/voice on` (Voice→Voice) vs `/voice tts` (auch Text→Sprache) vs `/voice off` sauber getrennt, **`177 passed / 21 skipped`** + `py_compile`/`git diff --check` sauber, dann **Gateway selbst neu gestartet** (verzögerter Restart, umging den „Refusing to restart"-Schutz) → Auto-TTS funktioniert live (TTS-Test bestätigt). **Patch gesichert** als `Hermes/hermes_autotts_selffix_20260616.patch`. ⚠️ **Upstream-Divergenz** — diese 7 Dateien weichen jetzt vom Nous-Code ab und erschweren künftige `hermes update`s (genau den Desktop-/node-24-Pfad). Vor einem Update: Patch via `git apply` re-anwenden ODER auf offiziellen Nous-Fix warten + lokal zurückrollen (`git -C …\hermes-agent checkout -- .`).
+- **Phase 5 — Autonomie:** Morning-Brief-Cron via Reverse-Prompting + **Scout-Rolle** (personalisierte Ideen-/Prototyp-Vorschläge aus Personenkenntnis, Nordstern-gebunden + Triage; graduierte Vorschläge → Linear/PRD → Claude Code). **Optionaler Auftakt: Desktop-App** (Befund Phase 4 B) — nur koppeln, wenn die Profiles-/Cron-UI für Multi-Profil/Autonomie konkret gebraucht wird. **Mission Control** nicht jetzt — Kandidat fürs Buttcoin-Content-System („Content-System rund machen"-Track, startet mit Failure-Diagnose der Vorversionen).
 
 ---
 
@@ -173,7 +179,37 @@ tts:
 ```
 *Edit speichern → `hermes gateway restart`. Backup der Config liegt als `config.yaml.bak.*` daneben.*
 
-*(Weitere Prompts aus Phase 4–5 werden hier ergänzt, sobald wir sie nutzen.)*
+### A.5 Phase 4 — Werkzeuge (Grok-Tool + Skills-Ausmist), wiederverwendbare Befehle
+
+> Nicht-interaktive `hermes`-Checks lassen sich auch ohne Terminal-Neustart fahren, wenn man den Launcher absolut adressiert: `C:\Users\manyw\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe`. Interaktives (OAuth-Browser-Flow) im eigenen Terminal.
+
+**(A) Grok als Tool anbinden (kein API-Key, OAuth):**
+```powershell
+hermes auth add xai-oauth        # PKCE-Loopback-OAuth; Browser → autorisieren. SuperGrok/Premium+ nötig. Aendert NICHT das Hauptmodell.
+hermes auth status xai-oauth     # erwartet: "logged in"
+hermes tools enable x_search     # X-Trend-Scan scharf schalten (nutzt die xai-oauth-Credential, model grok-4.20-reasoning)
+hermes tools list                # Verifikation
+```
+*Funktionstest (in Telegram/Hermes):* „Nutze dein X-Search-Tool (Grok): die 3–4 meistdiskutierten Themen rund um KI-Agenten, je mit Link." → muss `🐦 x_search` feuern + echte x.com-Status-Links liefern. (`video_gen` braucht zusätzlich einen Provider-Block → erst bei konkretem Bedarf.)
+
+**(B) Tool-/Skill-Status messen + ausmisten:**
+```powershell
+hermes prompt-size               # Byte-Breakdown System-Prompt + Tool-Schemas (Baseline/Erfolgsmessung)
+hermes tools list                # Toolsets enabled/disabled
+hermes skills list               # installierte Skills + Status (Summenzeile: x enabled / y disabled)
+hermes skills config             # interaktive TUI zum Einzel-Toggle
+```
+**Skills non-interaktiv per Batch deaktivieren** (TUI schreibt nur die Liste `skills.disabled` in config.yaml → direkt setzbar):
+```python
+# venv-Python, cwd = hermes-agent
+from hermes_cli.config import load_config
+from hermes_cli.skills_config import get_disabled_skills, save_disabled_skills
+cfg = load_config()
+save_disabled_skills(cfg, set(get_disabled_skills(cfg)) | {"comfyui","yuanbao",...}, platform=None)
+```
+*Danach `hermes gateway restart`, damit der schlankere Prompt in der laufenden Session greift (oder warten bis zum nächsten Login-Auto-Start). Config-Backup vorher anlegen.*
+
+**Gateway-Restart-Disziplin:** `hermes gateway restart` killt den Prozess (kein graceful-Flag; `restart_drain_timeout: 180` lässt laufende Arbeit nur bis 180 s abfließen). **Nicht** mitten in eine laufende Agent-Aufgabe restarten — abwarten oder den nächsten Login-Auto-Start nutzen (Config-Änderungen sind schon persistent).
 
 ---
 

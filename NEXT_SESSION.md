@@ -1,20 +1,21 @@
-# Pending Prompt — Hermes-Setup Phase 4 (Werkzeuge: Grok-Tool + Skills-Ausmist)
+# Pending Prompt — Hermes-Setup Phase 5 (Autonomie: Morning-Brief-Cron + Scout-Rolle)
 
-**Kern:** Hermes-Agent-Setup fortsetzen mit **Phase 4 — Werkzeuge**. Phase 1–3 (Basis / Gedächtnis / Erreichbarkeit) sind DONE — siehe Memory `project_hermes_agent`.
+**Kern:** Hermes-Agent-Setup fortsetzen mit **Phase 5 — Autonomie**. Phase 1–4 (Basis / Gedächtnis / Erreichbarkeit / Werkzeuge) sind DONE — siehe Memory `project_hermes_agent` + `Hermes/Hermes-Setup Doku 15062026.md` (Abschnitt 6 = Phasen, Anhang A.5 = Phase-4-Befehle).
 
-**Aufgabe Phase 4:**
-1. **Grok als Tool anbinden** (SuperGrok / X-OAuth, kein eigenes Profil): `hermes tools` → Grok hinzufügen. Zweck: KI-Bild-/Video-Generierung + X-Trend-Scan (kein API-Key nötig). Live-Setup-Disziplin: Chris führt OAuth aus, Claude begleitet + verifiziert (kurzer Funktionstest: 1 Bild + 1 Trend-Scan).
-2. **Skills/Tools-Ausmist-Pass** (Token-Bloat-Hygiene, Alex-Finn-Warnung „Hermes uses outrageous amounts of tokens"): geladene Skills/Tools durchsehen, ungenutzte deaktivieren → schlanke, zweckgebundene Profile (Primär = Modell, Sekundär = Zweck-Scoping).
+**Aufgabe Phase 5:**
+1. **Morning-Brief-Cron** via Reverse-Prompting einrichten (`hermes cron` UI; täglicher Brief). Vorher mit Hermes durchsprechen, was rein soll (Kalender/Mail/Trends/Projekt-Status) — schlank halten, Token-Hygiene.
+2. **Scout-Rolle** etablieren: personalisierte Ideen-/Prototyp-Vorschläge aus Personenkenntnis, **Nordstern-gebunden + ruthless Triage**; graduierte Vorschläge → Linear/PRD → Claude Code baut (Brücke Assistenz↔Coding). Pattern aus `project_hermes_agent` (Flächen-Ordnung) + [[feedback_synthesize_focus_anti_sprawl]].
+3. Live-Setup-Disziplin: Chris führt interaktive `hermes`-Schritte/Cron-Anlage aus, Claude begleitet + verifiziert.
 
-**WICHTIG — bewusst NICHT in Hermes:** **Linear bleibt draußen** (gehört zur Claude-Code-Build-Achse → `project_linear_build_axis`). In Phase 4 NICHT einrichten.
+**Optionaler Auftakt zu Phase 5 — Desktop-App (nur wenn konkret gebraucht):** Profiles-/Cron-UI ist für Multi-Profil/Autonomie nützlich. **NICHT** den Source-Build (`hermes desktop`) — der scheitert an node-24-Drift + Electron-Download-SSL. Stattdessen **prebuilt `.exe`-Installer** probieren (Docs `…/windows-native`). Falls doch `hermes update` nötig: vorher `hermes backup` **und** den Auto-TTS-Self-Patch beachten (sonst geht er verloren — `Hermes/hermes_autotts_selffix_20260616.patch` re-applien).
 
-**Reihenfolge:** erst Grok-Tool (+ Funktionstest), dann Skills-Ausmist.
+**WICHTIG — bewusst NICHT in Hermes:** **Linear bleibt draußen** (Claude-Code-Build-Achse → `project_linear_build_axis`).
 
-**Kontext:** Verlauf + wiederverwendbare Prompts/Befehle in `Hermes/Hermes-Setup Doku 15062026.md` (Abschnitt 6 = Phasen, Anhang A = Prompts; A.4 = Phase-3-Befehle). Danach folgt Phase 5 (Autonomie/Cron + Scout-Rolle). Auto-Pickup-Regel: Kern kurz nennen + anbieten, **nicht ungefragt starten**.
-
-**Separat geparkt (NICHT Teil von Phase 4):**
+**Separat geparkt (NICHT Teil von Phase 5):**
 - **Opus-4.8-Orchestrator-Profil** → erst nach SDK-Credit-Claim + Verifikation (Anthropic-OAuth = raue Ecke).
 - **Buttcoin-Content-System „rund machen"** → eigener Design-Pass, startet mit Failure-Diagnose der Vorversionen → `project_buttcoin_content_system`.
 
+Auto-Pickup-Regel: Kern kurz nennen + anbieten, **nicht ungefragt starten** ([[feedback_no_unsolicited_actions]]).
+
 ---
-*Selbst-Reset: Nach Ausführung von Phase 4 diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*
+*Selbst-Reset: Nach Ausführung von Phase 5 diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*
