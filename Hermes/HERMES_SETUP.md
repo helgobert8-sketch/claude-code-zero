@@ -134,7 +134,7 @@ hermes setup        # kompletter Assistent
    ```
 3. **OpenRouter** — ein Key, viele Modelle, flexibles Routing.
 
-> Wechsel jederzeit per `hermes model` — keine Bindung. **Empfehlung für dich:** mit **Anthropic/Opus 4.8** starten (du nutzt Claude bereits); Nous Portal als Option, falls du die gebündelten Content-Tools willst.
+> Wechsel jederzeit per `hermes model` — keine Bindung. **Empfehlung für dich (Stand 15.6.2026):** mit **ChatGPT/Codex-OAuth (GPT-5.5)** starten — glatter OAuth-Pfad, ChatGPT-Plus-Abo vorhanden; Anthropic-OAuth ist (noch) die raue Ecke (siehe Warnblock). **Opus 4.8 später als zweites Profil (Orchestrator/„Gehirn")**, sobald der Agent-SDK-Credit geclaimt + verifiziert ist — ein low-volume-Orchestrator passt gut in die $100/Mo-Deckelung (Max 5x). Nous Portal als Option für gebündelte Content-Tools.
 
 ### ⚠️ Anthropic-Auth: OAuth (Subscription-Credit) vs. API-Key — der Risiko-Schritt **[Recherche 15.6.2026]**
 
