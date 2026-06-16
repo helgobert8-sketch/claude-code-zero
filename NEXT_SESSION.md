@@ -1,18 +1,20 @@
-# Pending Prompt — Hermes-Setup Phase 3 (Telegram-Erreichbarkeit)
+# Pending Prompt — Hermes-Setup Phase 4 (Werkzeuge: Grok-Tool + Skills-Ausmist)
 
-**Kern:** Hermes-Agent-Setup fortsetzen mit **Phase 3 — Erreichbarkeit**. Phase 1 (Basis) + Phase 2 (Gedächtnis) sind DONE; die Flächen-Ordnung (Linear / Hermes-Kanban / Mission Control / Obsidian) ist entschieden — siehe Memory `project_hermes_agent` (Block „Flächen-Ordnung").
+**Kern:** Hermes-Agent-Setup fortsetzen mit **Phase 4 — Werkzeuge**. Phase 1–3 (Basis / Gedächtnis / Erreichbarkeit) sind DONE — siehe Memory `project_hermes_agent`.
 
-**Aufgabe Phase 3:**
-1. **Telegram-Bot via @BotFather** (Kern + GATE): Chris erstellt in Telegram den Bot (`/newbot` → Name → Token) und trägt den Token in Hermes ein; Claude Code begleitet + verifiziert (Test-Nachricht hin/zurück). Live-Setup-Disziplin: Chris führt BotFather/Befehle aus, Claude begleitet.
-2. **ffmpeg für Voice-Messages** (erst nach dem Text-GATE): der winget-Weg scheiterte beim Erst-Setup → alternativer Pfad (Static-Build / Scoop / Chocolatey).
+**Aufgabe Phase 4:**
+1. **Grok als Tool anbinden** (SuperGrok / X-OAuth, kein eigenes Profil): `hermes tools` → Grok hinzufügen. Zweck: KI-Bild-/Video-Generierung + X-Trend-Scan (kein API-Key nötig). Live-Setup-Disziplin: Chris führt OAuth aus, Claude begleitet + verifiziert (kurzer Funktionstest: 1 Bild + 1 Trend-Scan).
+2. **Skills/Tools-Ausmist-Pass** (Token-Bloat-Hygiene, Alex-Finn-Warnung „Hermes uses outrageous amounts of tokens"): geladene Skills/Tools durchsehen, ungenutzte deaktivieren → schlanke, zweckgebundene Profile (Primär = Modell, Sekundär = Zweck-Scoping).
 
-**Reihenfolge:** erst @BotFather + Text-Messaging (GATE), dann ffmpeg/Voice.
+**WICHTIG — bewusst NICHT in Hermes:** **Linear bleibt draußen** (gehört zur Claude-Code-Build-Achse → `project_linear_build_axis`). In Phase 4 NICHT einrichten.
 
-**Kontext:** Voller Verlauf + wiederverwendbare Prompts in `Hermes/Hermes-Setup Doku 15062026.md` (Section 6 = Phasen, Anhang A = Prompts). Auto-Pickup-Regel: Kern kurz nennen + anbieten, **nicht ungefragt starten**.
+**Reihenfolge:** erst Grok-Tool (+ Funktionstest), dann Skills-Ausmist.
 
-**NICHT Teil von Phase 3 (separate, bewusst geparkte Tracks):**
-- **(A)** Linear auf der Claude-Code-Build-Achse einrichten + Pilot-migrieren → `project_linear_build_axis`.
-- **(B)** Buttcoin-Content-System „rund machen" → eigener Design-Pass, startet mit Failure-Diagnose der Vorversionen; Mission Control ist Kandidat-Vehikel → `project_buttcoin_content_system`.
+**Kontext:** Verlauf + wiederverwendbare Prompts/Befehle in `Hermes/Hermes-Setup Doku 15062026.md` (Abschnitt 6 = Phasen, Anhang A = Prompts; A.4 = Phase-3-Befehle). Danach folgt Phase 5 (Autonomie/Cron + Scout-Rolle). Auto-Pickup-Regel: Kern kurz nennen + anbieten, **nicht ungefragt starten**.
+
+**Separat geparkt (NICHT Teil von Phase 4):**
+- **Opus-4.8-Orchestrator-Profil** → erst nach SDK-Credit-Claim + Verifikation (Anthropic-OAuth = raue Ecke).
+- **Buttcoin-Content-System „rund machen"** → eigener Design-Pass, startet mit Failure-Diagnose der Vorversionen → `project_buttcoin_content_system`.
 
 ---
-*Selbst-Reset: Nach Ausführung von Phase 3 diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*
+*Selbst-Reset: Nach Ausführung von Phase 4 diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*

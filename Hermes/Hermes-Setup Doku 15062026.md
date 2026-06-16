@@ -95,7 +95,7 @@ Entscheid: heute mit **GPT-5.5 über ChatGPT/Codex-OAuth** aufsetzen (nutzt das 
 
 - **Phase 1 — Basis (Install, Modell, Test-Chat):** ✅ DONE.
 - **Phase 2 — Gedächtnis: DONE (Kern 06-15/16; Agent-Shared + Auto-Load-GATE 06-16).** Obsidian + Vault `C:\Users\manyw\HermesBrain` (`OBSIDIAN_VAULT_PATH` gesetzt; Vault war anfangs doppelt verschachtelt `HermesBrain\HermesBrain` → eine Ebene hochgezogen). 4-Schichten-Struktur gebaut (`INDEX.md` + `Agent-Shared/` + `Agent-Hermes/` + `daily/`; leere Ordner via `.gitkeep`). Brain-Dump (physisch vorbereitet, in Hermes eingetippt) + Reverse-Prompting durch. **Geschrieben:** `SOUL.md` (`…\hermes\SOUL.md`, Persona/Ton) + `AGENTS.md` (`C:\Users\manyw\AGENTS.md` — Workdir-geladen, operatives Destillat **ohne Sensibles**, Projekte nur Name+1-Zeile). Persistenz-Sicherung: `Agent-Shared/_braindump-raw.md` + `_entscheidungen.md`. **Routing-Regel:** SOUL=Persona · AGENTS=operatives Destillat (nichts Sensibles, geht bei jeder Nachricht an OpenAI) · Agent-Shared=voller Wissensschatz on-demand (sensibel ok, **keine** Seed-Phrases/Passwörter/Kontonummern). **Agent-Shared gefüllt (06-16, durch Claude Code, Freigabe-Schleife pro Entwurf eingehalten):** 10 thematische Notizen aus `_braindump-raw.md` (`01-person` … `10-referenzen`) + in `INDEX.md` verlinkt. Redaktionsregeln: Code/Build **präferentiell** (nicht exklusiv) bei Claude Code — Prinzip „passendes Modell je Aufgabe" (Hermes/GPT-5.5+Codex kann abgegrenztes Coden selbst; dynamisches Modell-Feld; API-Kostenfall); keine echten Geheimnisse; Buttcoin-Detail dünn → von Chris zu ergänzen. **Quick-Check bestanden:** frisch `hermes` aus Home-Terminal → „Was ist mein Nordstern?" korrekt aus AGENTS.md (Auto-Load bestätigt).
-- **Phase 3 — Erreichbarkeit:** Telegram via @BotFather. (ffmpeg für Voice-Messages nachinstallieren.)
+- **Phase 3 — Erreichbarkeit: ✅ DONE (06-16).** Telegram-Bot `@paronthes_hermes_bot` via @BotFather (`/newbot` → Name → Username auf `bot` endend → Token). `hermes gateway setup` → Telegram + Token + **Allowed-User = eigene numerische Telegram-ID** (geholt via **@userinfobot**, NICHT über den eigenen Bot!) + **Home-Channel = eigene DM**. `hermes gateway install` registriert **Scheduled Task `Hermes_Gateway`** (Auto-Start bei Windows-Login; UAC nur für die Task-Anlage). **Text-GATE** (hin/zurück) bestanden. **ffmpeg** für Voice via winget mit **expliziter Paket-ID** `Gyan.FFmpeg.Essentials -e --accept-source-agreements --accept-package-agreements` (das generische `winget install ffmpeg` scheiterte zuvor an Mehrdeutigkeit) → ffmpeg 8.1.1 full-build/gyan.dev mit `libopus`; danach `hermes gateway restart`. **Voice-GATE** beide Richtungen bestanden (Opus→Text Transkription + TTS→Opus Encoding). **Deutsche Stimme:** Default war englisch (`en-US-AriaNeural`) → in `C:\Users\manyw\AppData\Local\hermes\config.yaml` (NICHT `~/.hermes/`!) unter `tts.edge.voice` auf `de-DE-FlorianMultilingualNeural` (mehrsprachig, m) geändert + Gateway-Restart.
 - **Phase 4 — Werkzeuge:** Grok als Tool (X-Trends/Bild) + Skills/Tools-Ausmist-Pass. (**Linear raus aus Hermes** — gehört zur Claude-Code-Build-Achse, nicht zu Hermes; Entscheid 2026-06-16.)
 - **Phase 5 — Autonomie:** Morning-Brief-Cron via Reverse-Prompting + **Scout-Rolle** (personalisierte Ideen-/Prototyp-Vorschläge aus Personenkenntnis, Nordstern-gebunden + Triage; graduierte Vorschläge → Linear/PRD → Claude Code). **Mission Control** nicht jetzt — Kandidat fürs Buttcoin-Content-System („Content-System rund machen"-Track, startet mit Failure-Diagnose der Vorversionen).
 
@@ -141,7 +141,39 @@ Gleich gebe ich dir einen ausführlichen Brain-Dump über mich, meine Arbeit, me
 Bestätige jetzt mit "bereit" — dann tippe ich los. Antworte auf Deutsch.
 ```
 
-*(Weitere Prompts aus Phase 3–5 werden hier ergänzt, sobald wir sie nutzen.)*
+### A.4 Phase 3 — Erreichbarkeit (Telegram + Voice), wiederverwendbare Befehle
+
+**Telegram-Bot anlegen (in der Telegram-App):**
+1. `@BotFather` öffnen → `/newbot` → Anzeigename → Username (muss auf `bot` enden) → **Token** notieren (geheim).
+2. **Eigene numerische User-ID holen:** `@userinfobot` anschreiben (`/start`) → er antwortet `Id: 123456789`. (Wichtig: das ist ein **eigener** Bot — der eigene Hermes-Bot kann die ID nicht liefern.)
+
+**Gateway einrichten + Dauerbetrieb (PowerShell, Home-Verzeichnis):**
+```powershell
+hermes gateway setup     # Telegram wählen → Token → Allowed-User = eigene ID → Home-Channel = eigene DM (Y)
+hermes gateway run       # Vordergrund-Test (Logs sichtbar); Ctrl+C stoppt
+hermes gateway install   # als Scheduled Task 'Hermes_Gateway' (Auto-Start bei Login; UAC bestätigen)
+hermes gateway status    # 'running/active' prüfen
+hermes gateway restart   # nach Config-Änderungen (liest config.yaml neu ein)
+```
+*Nicht gleichzeitig `run` (Vordergrund) und den installierten Dienst laufen lassen → Telegram-Conflict (ein Token, ein getUpdates-Consumer).*
+
+**ffmpeg für Voice-Messages (winget, kein Admin nötig):**
+```powershell
+winget install --id Gyan.FFmpeg.Essentials -e --accept-source-agreements --accept-package-agreements
+# danach NEUES Fenster: ffmpeg -version  →  dann: hermes gateway restart
+```
+*Explizite `--id` nutzen — `winget install ffmpeg` bricht an Mehrdeutigkeit ab.*
+
+**Deutsche TTS-Stimme setzen** (Config: `C:\Users\manyw\AppData\Local\hermes\config.yaml`, **nicht** `~/.hermes/`):
+```yaml
+tts:
+  provider: edge
+  edge:
+    voice: de-DE-FlorianMultilingualNeural   # m, mehrsprachig (DE + eingebettetes EN); Alt.: de-DE-SeraphinaMultilingualNeural (w), de-DE-ConradNeural (m), de-DE-KatjaNeural (w)
+```
+*Edit speichern → `hermes gateway restart`. Backup der Config liegt als `config.yaml.bak.*` daneben.*
+
+*(Weitere Prompts aus Phase 4–5 werden hier ergänzt, sobald wir sie nutzen.)*
 
 ---
 
