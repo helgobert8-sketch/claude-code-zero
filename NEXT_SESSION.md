@@ -1,21 +1,24 @@
-# Pending Prompt — Hermes-Setup Phase 5 (Autonomie: Morning-Brief-Cron + Scout-Rolle)
+# Pending Prompt — Hermes Desktop-App + Core-Update (geplante Migration)
 
-**Kern:** Hermes-Agent-Setup fortsetzen mit **Phase 5 — Autonomie**. Phase 1–4 (Basis / Gedächtnis / Erreichbarkeit / Werkzeuge) sind DONE — siehe Memory `project_hermes_agent` + `Hermes/Hermes-Setup Doku 15062026.md` (Abschnitt 6 = Phasen, Anhang A.5 = Phase-4-Befehle).
+**Kern:** Den am 2026-06-17 fehlgeschlagenen Desktop-Install als **bewusste, geplante Core-Update-Migration** nachholen. Phase 5 (Autonomie) ist sonst DONE — **Morning-Brief-Cron** (`6a0c0b7481fd`, tgl. 8:00) **und Scout-Cron** (`baa8c0508d27`, wöchentlich So 18:00) laufen + sind validiert. Hintergrund/Details: Memory `project_hermes_agent` (Bullets „Phase 5 Teil 2 — Scout" + „Parkplatz — Desktop-App-Retry UPDATE 2026-06-17" + „Codex-Rolle").
 
-**Aufgabe Phase 5:**
-1. **Morning-Brief-Cron** via Reverse-Prompting einrichten (`hermes cron` UI; täglicher Brief). Vorher mit Hermes durchsprechen, was rein soll (Kalender/Mail/Trends/Projekt-Status) — schlank halten, Token-Hygiene.
-2. **Scout-Rolle** etablieren: personalisierte Ideen-/Prototyp-Vorschläge aus Personenkenntnis, **Nordstern-gebunden + ruthless Triage**; graduierte Vorschläge → Linear/PRD → Claude Code baut (Brücke Assistenz↔Coding). Pattern aus `project_hermes_agent` (Flächen-Ordnung) + [[feedback_synthesize_focus_anti_sprawl]].
-3. Live-Setup-Disziplin: Chris führt interaktive `hermes`-Schritte/Cron-Anlage aus, Claude begleitet + verifiziert.
+**Warum eigene Session (die Gotcha):** Der prebuilt `.exe`-Installer ist **KEIN benigner Install** — er fährt intern ein **volles `git pull --ff-only origin main`** (Core `45e2f4fdc` → `origin/main`, ~11,8k-Commit-Sprung) und stasht den Auto-TTS-Self-Patch; am 06-17 scheiterte das `git stash apply` (Konflikt in `gateway/platforms/base.py`) → Install brach ab. Sauber zurückgerollt auf `45e2f4fdc` + Patch byte-genau wiederhergestellt. Der Sprung muss **geplant + verifiziert** gefahren werden, nicht nebenbei.
 
-**Optionaler Auftakt zu Phase 5 — Desktop-App (nur wenn konkret gebraucht):** Profiles-/Cron-UI ist für Multi-Profil/Autonomie nützlich. **NICHT** den Source-Build (`hermes desktop`) — der scheitert an node-24-Drift + Electron-Download-SSL. Stattdessen **prebuilt `.exe`-Installer** probieren (Docs `…/windows-native`). Falls doch `hermes update` nötig: vorher `hermes backup` **und** den Auto-TTS-Self-Patch beachten (sonst geht er verloren — `Hermes/hermes_autotts_selffix_20260616.patch` re-applien).
+**Aufgabe:**
+1. **Vorgespräch + Entscheid:** Vorwärts (neuer Core + Desktop-GUI) ODER beim stabilen `45e2f4fdc` bleiben? Vorwärts nur, wenn Nutzen (Desktop-GUI / Cron-UI / Profiles) den Verifikations-Aufwand lohnt. Der Scout/Morning-Brief brauchen die Desktop-App NICHT.
+2. **Falls vorwärts — Prep:** `hermes gateway stop` + `hermes backup` (sichert config/auth/cron/skills/sessions, **schließt `hermes-agent/` aus**) + frischen Core-Diff sichern (`git -C C:\Users\manyw\AppData\Local\hermes\hermes-agent diff > Hermes/tts_patch_backup_<datum>.patch`). Dann Installer (`Hermes-Setup.exe`) ODER `hermes update` fahren.
+3. **TTS-Self-Patch-Schicksal klären:** Der Patch ist gegen den **alten** Gateway-Code (upstream hat `gateway/`-Dateien umgebaut, u.a. `send_message`-Tool entfernt). Prüfen, ob Auto-TTS auf dem neuen Core **schon ab Werk korrekt** ist (dann Patch fallen lassen) — sonst frisch neu ableiten. **NICHT den alten Patch blind erzwingen.**
+4. **End-to-end neu verifizieren:** Voice (`/voice tts`, de-DE-Florian) · Morning-Brief- + Scout-Cron (`hermes cron list`) · Auth (`hermes auth list`: openai-codex / xai-oauth / copilot) · Gateway-Dienst läuft.
+5. **NICHT** den Source-Build (`hermes desktop`) — scheitert an node-24/Electron-SSL. Nur prebuilt `.exe` bzw. `hermes update`.
 
-**WICHTIG — bewusst NICHT in Hermes:** **Linear bleibt draußen** (Claude-Code-Build-Achse → `project_linear_build_axis`).
+**Recovery, falls's wieder klemmt:** `git -C C:\Users\manyw\AppData\Local\hermes\hermes-agent reset --hard 45e2f4fdc` + `git stash apply` bzw. `git apply Hermes/tts_patch_live_backup_20260617.patch`. `c2fa302e9` = `origin/main` (jederzeit wieder holbar; Vorwärtsweg bleibt offen).
 
-**Separat geparkt (NICHT Teil von Phase 5):**
-- **Opus-4.8-Orchestrator-Profil** → erst nach SDK-Credit-Claim + Verifikation (Anthropic-OAuth = raue Ecke).
-- **Buttcoin-Content-System „rund machen"** → eigener Design-Pass, startet mit Failure-Diagnose der Vorversionen → `project_buttcoin_content_system`.
+**Separat geparkt (NICHT Teil dieser Session):**
+- **Codex als Reviewer/Overflow wiren** — Auth ist bereits beidseitig bereit (Codex-App-Pro + Hermes `openai-codex`). Wiring = schlanke per-repo `AGENTS.md` → `CLAUDE.md`, erst bei konkretem Bau-Bedarf → `project_hermes_agent` (Codex-Bullet) + `project_linear_build_axis`.
+- **Opus-4.8-Orchestrator-Profil** → via API-Key, nach Bedarf.
+- **Scout-/Morning-Brief-Iteration** (v1.2-Härtungen) laufen nebenbei nach realen Läufen.
 
 Auto-Pickup-Regel: Kern kurz nennen + anbieten, **nicht ungefragt starten** ([[feedback_no_unsolicited_actions]]).
 
 ---
-*Selbst-Reset: Nach Ausführung von Phase 5 diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*
+*Selbst-Reset: Nach Ausführung diese Datei auf `# Pending Prompt — (leer)` zurücksetzen.*
