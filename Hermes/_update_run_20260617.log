@@ -1,0 +1,121 @@
+Start: Wed, Jun 17, 2026  8:17:35 PM
+⚕ Updating Hermes Agent...
+
+✗ Another hermes.exe is running:
+    PID 8848  hermes.exe
+
+  Updating now would fail to overwrite C:\Users\manyw\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe because
+  Windows blocks REPLACE on a running executable.
+
+  Close Hermes Desktop, exit any open `hermes` REPLs, and
+  stop the gateway (`hermes gateway stop`) before retrying.
+
+  If you've already closed everything and these PIDs are
+  stale, terminate them directly, then retry the update:
+      taskkill /PID 8848 /F
+
+  Override with `hermes update --force` if you've already
+  confirmed those processes will not write to the venv.
+ExitEnd: Wed, Jun 17, 2026  8:17:39 PM rc=0
+=== Retry Start: Wed, Jun 17, 2026  8:20:37 PM ===
+Using Python 3.11.15 environment at: venv
+  × Request failed after 3 retries in 5.1s
+  ├─▶ Failed to fetch: `https://pypi.org/simple/pillow/`
+  ├─▶ error sending request for url (https://pypi.org/simple/pillow/)
+  ├─▶ client error (Connect)
+  ╰─▶ invalid peer certificate: UnknownIssuer
+  help: Consider enabling use of system TLS certificates with the
+        `--system-certs` command-line flag
+Using Python 3.11.15 environment at: venv
+  × Request failed after 3 retries in 5.3s
+  ├─▶ Failed to fetch: `https://pypi.org/simple/tzdata/`
+  ├─▶ error sending request for url (https://pypi.org/simple/tzdata/)
+  ├─▶ client error (Connect)
+  ╰─▶ invalid peer certificate: UnknownIssuer
+  help: Consider enabling use of system TLS certificates with the
+        `--system-certs` command-line flag
+Using Python 3.11.15 environment at: venv
+  × Request failed after 3 retries in 5.8s
+  ├─▶ Failed to fetch: `https://pypi.org/simple/prompt-toolkit/`
+  ├─▶ error sending request for url (https://pypi.org/simple/prompt-toolkit/)
+  ├─▶ client error (Connect)
+  ╰─▶ invalid peer certificate: UnknownIssuer
+  help: Consider enabling use of system TLS certificates with the
+        `--system-certs` command-line flag
+Using Python 3.11.15 environment at: venv
+  × Request failed after 3 retries in 5.3s
+  ├─▶ Failed to fetch: `https://pypi.org/simple/markdown/`
+  ├─▶ error sending request for url (https://pypi.org/simple/markdown/)
+  ├─▶ client error (Connect)
+  ╰─▶ invalid peer certificate: UnknownIssuer
+  help: Consider enabling use of system TLS certificates with the
+        `--system-certs` command-line flag
+Traceback (most recent call last):
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 8851, in _cmd_update_impl
+    print()
+^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7209, in _install_python_dependencies_with_optional_fallback
+    try:
+^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7197, in _install
+    Called early on every hermes invocation. The .old files are unlocked once
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7078, in _run_quarantined_install
+    
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 6723, in _run_install_with_heartbeat
+    except OSError as exc:
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\manyw\\AppData\\Local\\hermes\\bin\\uv.exe', 'pip', 'install', '-e', '.']' returned non-zero exit status 1.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\venv\Scripts\hermes.exe\__main__.py", line 10, in <module>
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 12482, in main
+    # and raises OSError on failure (which propagates as a traceback).
+    ^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 8344, in cmd_update
+    return
+    ^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 9919, in _cmd_update_impl
+    names = ", ".join(relaunched_profiles)
+^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 5934, in _update_via_zip
+    "update path."
+^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7209, in _install_python_dependencies_with_optional_fallback
+    try:
+^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7197, in _install
+    Called early on every hermes invocation. The .old files are unlocked once
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 7078, in _run_quarantined_install
+    
+  File "C:\Users\manyw\AppData\Local\hermes\hermes-agent\hermes_cli\main.py", line 6723, in _run_install_with_heartbeat
+    except OSError as exc:
+        ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\manyw\AppData\Roaming\uv\python\cpython-3.11-windows-x86_64-none\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\manyw\\AppData\\Local\\hermes\\bin\\uv.exe', 'pip', 'install', '-e', '.']' returned non-zero exit status 1.
+⚕ Updating Hermes Agent...
+
+→ Fetching updates...
+→ Found 11805 new commit(s)
+  ✓ Pre-update snapshot: 20260617-182043-pre-update
+→ Pulling updates...
+  ✓ Cleared 80 stale __pycache__ directories
+→ Updating Python dependencies...
+  ⚠ Optional extras failed, reinstalling base dependencies and retrying extras individually...
+⚠ Git update failed: Command '['C:\\Users\\manyw\\AppData\\Local\\hermes\\bin\\uv.exe', 'pip', 'install', '-e', '.']' returned non-zero exit status 1.
+→ Falling back to ZIP download...
+
+→ Downloading latest version...
+→ Extracting...
+✓ Updated 75 items from ZIP
+→ Updating Python dependencies...
+  ⚠ Optional extras failed, reinstalling base dependencies and retrying extras individually...
+=== ExitEnd: Wed, Jun 17, 2026  8:22:44 PM rc=0 ===
