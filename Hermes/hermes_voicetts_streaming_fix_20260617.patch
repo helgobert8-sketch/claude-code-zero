@@ -1,0 +1,136 @@
+# Hermes local fix 2026-06-17 — /voice tts auto-TTS over gpt-5.5 (Codex) streaming, Telegram
+#
+# Symptom: /voice tts never produced an automatic voice reply (manual tts_tool worked).
+# Three coupled root causes, fixed in 3 hunks:
+#
+#  1. The base-adapter auto-TTS gate (gateway/platforms/base.py _process_message_background,
+#     `if response:` block) is on the NON-streamed final-send path, which is suppressed
+#     when the stream consumer already delivered the text (run.py: "Suppressing normal
+#     final send ... streamed=True"). Under Codex/gpt-5.5 streaming it never ran.
+#       -> HUNK A: gateway/run.py, both _streaming_enabled sites — disable delivery-
+#          streaming (and the interim consumer) for chats in _auto_tts_all_chats
+#          (/voice tts) so the full response reaches the non-streamed path.
+#
+#  2. Edge TTS only emits .ogg/Opus (Telegram voice bubble) when want_opus is true, which
+#     keys on the HERMES_SESSION_PLATFORM contextvar. On the post-handler asyncio.to_thread
+#     auto-TTS call that contextvar isn't set -> .mp3 -> send_voice delivers a non-voice
+#     audio file or falls back to text.
+#       -> HUNK B: gateway/platforms/base.py auto-TTS — convert .mp3 -> .ogg via
+#          tts_tool._convert_to_opus for Telegram before play_tts().
+#
+#  3. After 1+2, BOTH auto-TTS paths fired (runner _send_voice_reply = voice-only AND base
+#     adapter = voice+text) because the runner dedup only excluded VOICE input, not TEXT.
+#       -> HUNK C: gateway/run.py _should_send_voice_reply — gate on `not already_sent`
+#          (was `is_voice_input and not already_sent`); the runner path now handles only
+#          streamed responses, the base adapter handles non-streamed ones. Single reply.
+#
+# Companion to hermes_autotts_selffix_20260616.patch (Hermes' own /voice tts gate fix).
+# Re-apply intent after `hermes update` (line numbers drift). Backups saved alongside as
+# run.py.bak.autotts_20260617 and base.py.bak.autotts_20260617.
+# ===========================================================================
+
+diff --git a/gateway/run.py b/gateway/run.py
+index ec90cce6f..1ab4df619 100644
+--- a/gateway/run.py
++++ b/gateway/run.py
+@@ -10149,12 +10149,17 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+         if has_agent_tts:
+             return False
+ 
+-        # Dedup: base adapter auto-TTS already handles voice input
+-        # (play_tts plays in VC when connected, so runner can skip).
+-        # When streaming already delivered the text (already_sent=True),
+-        # the base adapter will receive None and can't run auto-TTS,
+-        # so the runner must take over.
+-        if is_voice_input and not already_sent:
++        # Dedup: the base adapter (gateway/platforms/base.py) runs auto-TTS for
++        # BOTH text and voice input on the NON-streamed path (it owns the .mp3 ->
++        # .ogg opus conversion there). The runner only needs to take over when
++        # streaming already delivered the text (already_sent=True) — then the
++        # base adapter receives an empty response and can't run auto-TTS.
++        # Hermes local fix 2026-06-17: was ``is_voice_input and not already_sent``,
++        # which let TEXT replies double-fire (runner voice-only message AND base
++        # adapter voice+text) once the /voice tts streaming bypass forced
++        # already_sent=False. Gating on ``not already_sent`` alone keeps a single
++        # voice reply. (See Hermes/hermes_voicetts_streaming_fix_20260617.patch)
++        if not already_sent:
+             return False
+ 
+         return True
+@@ -13245,6 +13250,17 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+             if _plat_streaming is None
+             else bool(_plat_streaming)
+         )
++        # Hermes local fix 2026-06-17 — auto-TTS streaming bypass (/voice tts):
++        # the auto-TTS gate lives in _process_message_background's non-streamed
++        # `if response:` block, which is skipped when the stream consumer already
++        # delivered the content. Force the non-streamed path for chats that opted
++        # into spoken replies so the full text flows back and gets synthesized
++        # into a voice note. (See Hermes/hermes_voicetts_streaming_fix_20260617.patch)
++        _vtts_adapter = self.adapters.get(source.platform)
++        if _vtts_adapter is not None and source.chat_id in getattr(
++            _vtts_adapter, "_auto_tts_all_chats", ()
++        ):
++            _streaming_enabled = False
+ 
+         _thread_metadata: Optional[Dict[str, Any]] = self._thread_metadata_for_source(source, event_message_id)
+ 
+@@ -14303,9 +14319,23 @@ class GatewayRunner(GatewayAuthorizationMixin, GatewayKanbanWatchersMixin, Gatew
+                 if _plat_streaming is None
+                 else bool(_plat_streaming)
+             )
++            # Hermes local fix 2026-06-17 — auto-TTS streaming bypass (/voice tts):
++            # force the non-streamed final-send path for chats opted into spoken
++            # replies, so the auto-TTS gate in _process_message_background fires.
++            # Also suppress the interim-message consumer for those chats: any
++            # stream consumer would set final_content_delivered / response_previewed
++            # and re-trigger the suppression at the final-send decision. (Voice-tts
++            # chats trade live preview + interim progress for a reliable spoken reply.)
++            _vtts_adapter = self.adapters.get(source.platform)
++            _voice_tts_chat = bool(
++                _vtts_adapter is not None
++                and source.chat_id in getattr(_vtts_adapter, "_auto_tts_all_chats", ())
++            )
++            if _voice_tts_chat:
++                _streaming_enabled = False
+             _want_stream_deltas = _streaming_enabled
+             _want_interim_messages = interim_assistant_messages_enabled
+-            _want_interim_consumer = _want_interim_messages
++            _want_interim_consumer = _want_interim_messages and not _voice_tts_chat
+             if _want_stream_deltas or _want_interim_consumer:
+                 try:
+                     from gateway.stream_consumer import GatewayStreamConsumer, StreamConsumerConfig
+diff --git a/gateway/platforms/base.py b/gateway/platforms/base.py
+index 80694780d..441983ad0 100644
+--- a/gateway/platforms/base.py
++++ b/gateway/platforms/base.py
+@@ -4302,6 +4302,29 @@ class BasePlatformAdapter(ABC):
+                             )
+                             tts_data = _json.loads(tts_result_str)
+                             _tts_path = tts_data.get("file_path")
++                            # Hermes local fix 2026-06-17: text_to_speech_tool picks
++                            # its output format from the HERMES_SESSION_PLATFORM
++                            # contextvar, which is NOT set on this post-handler /
++                            # asyncio.to_thread path — so Edge TTS returns .mp3 and
++                            # send_voice delivers a non-voice audio file (or falls back
++                            # to text) instead of a Telegram voice bubble. When the
++                            # platform needs Opus, convert .mp3 -> .ogg here so
++                            # play_tts() -> send_voice() routes it to sendVoice.
++                            # (See Hermes/hermes_voicetts_streaming_fix_20260617.patch)
++                            if (
++                                _tts_path
++                                and self.platform == Platform.TELEGRAM
++                                and not str(_tts_path).lower().endswith((".ogg", ".opus"))
++                            ):
++                                from tools.tts_tool import _convert_to_opus
++                                _opus_path = await asyncio.to_thread(_convert_to_opus, _tts_path)
++                                if _opus_path:
++                                    if _opus_path != _tts_path:
++                                        try:
++                                            os.remove(_tts_path)
++                                        except OSError:
++                                            pass
++                                    _tts_path = _opus_path
+                     except Exception as tts_err:
+                         logger.warning("[%s] Auto-TTS failed: %s", self.name, tts_err)
+ 
