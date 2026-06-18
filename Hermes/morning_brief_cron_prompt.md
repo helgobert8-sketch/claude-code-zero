@@ -1,11 +1,13 @@
-# Hermes Morning-Briefing — Cron-Prompt (v1.1)
+# Hermes Morning-Briefing — Cron-Prompt (v1.2)
 
+> **Update 2026-06-18:** (1) **Modell auf `gpt-5.4`/openai-codex gepinnt** (Job + Scout), weil `gpt-5.5` auf dem ChatGPT-Plus-Codex-Backend intermittierend silently-rejected → 90s-Timeout (08:08-Lauf failte). Interaktives Default bleibt `gpt-5.5`. Fallback-Kette `grok-4.20-reasoning` (xai-oauth) in `config.yaml`. (2) **Root-Cause „nichts in Obsidian" war Norton**: Auto-Protect quarantänisierte `2026-06-18-morning-brief.md` als `MD:HttpRequest-inf [Susp]` (Heuristik-Fehlalarm auf link-lastigen Inhalt) → `exists()`==False → Retry-Thrash. Fix: Norton-Echtzeit-Ausschluss `C:\Users\manyw\HermesBrain\*`. (3) **v1.2 Vault-Write gehärtet** (stdin-Heredoc statt `content="""…"""`-Literal) + Anti-Thrash-Regel (genau 1 Retry, dann sauber melden + Kurz-Version liefern).
+>
 > **Stand:** 2026-06-17 · **Status:** Option B end-to-end VERIFIZIERT (Testlauf 16:06 — TG=nur-Kurz+Pointer, Vault-Datei 197 Zeilen Kurz+Lang, Zeit CEST ok, Firecrawl-extract ok für Reuters/CoinDesk/TechCrunch). **Nächster Schritt: `hermes cron resume 6a0c0b7481fd` → live 8:00.** Runtime ~15 Min/Lauf (Gateway-gefeuert, kein CLI-Timeout); reale 8:00-Zustellung daher ~8:10–8:15.
 > **Job-ID:** `6a0c0b7481fd` · Schedule `0 8 * * *` · Timezone Europe/Berlin (gepinnt) · `cron.wrap_response=false`.
 > **Liefermodell (Option B, neu in v1.1):** Voller Brief (Kurz+Lang) → Vault-Datei `C:\Users\manyw\HermesBrain\Briefings\YYYY-MM-DD-morning-brief.md`; finale Telegram-Antwort = NUR Kurz-Version + Pointer-Zeile. (Grund: Telegram-4096-Limit zerhackt die Lang in 5–6 Bubbles — Test 2026-06-17.)
 > **Polish v1.1:** Zeit via Python ZoneInfo (nicht `date`/TZ → lieferte GMT); `terminal` statt `code_execution` (im Cron blockiert); Krypto via CoinGecko, kein Yahoo(429)/Stooq(404)-Stochern.
 > **Firecrawl:** `web.extract_backend=firecrawl` gesetzt; **FIRECRAWL_API_KEY noch nachzutragen** in `.env` (Chris' Cowork-Key). Ohne Key degradiert web_extract sauber auf Snippets.
-> **Offene Upgrades:** **v1.2 (Priorität): Vault-Write härten** — der Python-Heredoc mit eingebettetem `content="""…"""` brach im Test 2× am Shell-Quoting (`unexpected EOF while looking for matching '`), 3. Versuch ok. Fix: Brief via **stdin-Heredoc** an Python geben — `python -c "import sys,pathlib; pathlib.Path(r'…').write_text(sys.stdin.read(),encoding='utf-8')" <<'BRIEF' … BRIEF` — statt in einen String-Literal einbetten (quoting-sicher). · **v2:** dediziertes Preis-Skript für zuverlässige klassische Marktdaten (CoinGecko ✅ belegt; Stooq mit korrekten Symbolen `^spx`/`^ndq`); Lang ggf. straffen.
+> **Offene Upgrades:** ~~**v1.2 (Priorität): Vault-Write härten**~~ **DONE 2026-06-18** — stdin-Heredoc-Schreibweg (`python -c "import sys,pathlib; pathlib.Path(r'…').write_text(sys.stdin.read(),encoding='utf-8')" <<'BRIEF' … BRIEF`) ersetzt das `content="""…"""`-Literal (quoting-sicher gg. `\U`/Backslashes/Quotes); siehe Datei-Schreibregel + Anti-Thrash-Regel in Schritt 7. · **v2:** dediziertes Preis-Skript für zuverlässige klassische Marktdaten (CoinGecko ✅ belegt; Stooq mit korrekten Symbolen `^spx`/`^ndq`); Lang ggf. straffen.
 > **Cron-Toolsets:** web, x_search, terminal, code_execution (code_execution real blockiert) · messaging im Cron deaktiviert → Single-Auto-Delivery.
 
 ---
@@ -24,7 +26,7 @@ Liefermodell:
    Dabei gilt:
    - YYYY-MM-DD = heutiges Datum in Europe/Berlin.
    - Lege den Ordner C:\Users\manyw\HermesBrain\Briefings an, falls er nicht existiert.
-   - Verwende für das Schreiben terminal mit Python/pathlib, nicht echo/cat/heredoc-Textdatei-Tricks.
+   - Verwende für das Schreiben terminal mit Python (pathlib write_text), wobei der Brief-Text per stdin-Heredoc an Python übergeben wird (siehe „Datei-Schreibregel"). Keine echo/cat-Umleitung in eine Datei.
    - Prüfe nach dem Schreiben per terminal, dass die Datei existiert.
 3. Deine finale Antwort — die per Cron-Delivery an Telegram geliefert wird — enthält NUR:
    - die Kurz-Version
@@ -541,21 +543,20 @@ Nachdem Kurz-Version und Lang-Version fertig sind:
 2. Schreibe diesen vollständigen Brief via terminal in:
    C:\Users\manyw\HermesBrain\Briefings\YYYY-MM-DD-morning-brief.md
 
-3. Nutze dafür Python/pathlib in terminal. Beispielmuster:
-   python - <<'PY'
-   from pathlib import Path
-   vault_file = Path(r"C:\Users\manyw\HermesBrain\Briefings\YYYY-MM-DD-morning-brief.md")
-   vault_file.parent.mkdir(parents=True, exist_ok=True)
-   content = """[VOLLSTÄNDIGER BRIEF: KURZ + LANG]"""
-   vault_file.write_text(content, encoding="utf-8")
-   print(vault_file)
-   print(vault_file.exists())
-   PY
+3. Nutze dafür Python via terminal und übergib den Brief-Text NICHT als Python-String-Literal (das bricht an \U-Sequenzen, Backslashes, Anführungszeichen), sondern per stdin-Heredoc, das Python via sys.stdin.read() einliest. Verbindliches Muster (Heredoc-Body ohne zusätzliche Einrückung, sonst landet die Einrückung in der Datei):
 
-4. Passe YYYY-MM-DD und content real an.
+python -c "import sys, pathlib; p = pathlib.Path(r'C:\Users\manyw\HermesBrain\Briefings\YYYY-MM-DD-morning-brief.md'); p.parent.mkdir(parents=True, exist_ok=True); p.write_text(sys.stdin.read(), encoding='utf-8'); print(p); print('EXISTS:', p.exists())" <<'BRIEF'
+--- KURZVERSION ---
+[Kurzer Brief]
+
+--- LANGVERSION ---
+[Langer Brief]
+BRIEF
+
+4. Passe YYYY-MM-DD und den Brief-Inhalt real an. Der Heredoc-Delimiter ist 'BRIEF' in einfachen Anführungszeichen (verhindert Shell-Interpolation von $ und Backticks). Achte darauf, dass keine Brief-Zeile aus exakt nur BRIEF besteht.
 5. Verwende nicht code_execution.
-6. Verwende nicht shell-echo, nicht cat-Heredoc zum Schreiben.
-7. Wenn der Schreibvorgang fehlschlägt, versuche ihn einmal erneut. Wenn er weiterhin fehlschlägt, melde den Fehler transparent in der finalen Antwort statt so zu tun, als liege die Datei im Vault.
+6. Verwende nicht shell-echo und keine cat-Heredoc-Umleitung in eine Datei (> file). Der Python-stdin-Heredoc aus Schritt 3 ist ausdrücklich erlaubt und der vorgeschriebene Weg.
+7. Prüfe die EXISTS-Ausgabe. Wenn der Schreibvorgang fehlschlägt oder EXISTS False ist: versuche es GENAU EINMAL erneut. Schlägt es weiterhin fehl (z. B. weil ein Virenscanner die Datei in Quarantäne verschiebt), gehe NICHT in eine Endlos-Retry-Schleife — melde den Fehler transparent in der finalen Antwort und liefere die Kurz-Version trotzdem aus.
 
 Finale Antwort:
 Die finale Antwort an Telegram ist NUR die Kurz-Version, gefolgt von genau einer zusätzlichen Zeile mit dem relativen Vault-Pfad.
