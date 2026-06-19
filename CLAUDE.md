@@ -115,14 +115,8 @@ Die vollstaendige Pass- und Build-Historie (Watch-Migration-Sweep, Persona-Pass-
 
 **Konvention (Record vs. Wissen):** Neue Pass-/Build-Protokolle (`… DONE`-Eintraege, Per-Pass-Bilanzen, Event-Counts) ab jetzt an `dashboard_build_log.md` anhaengen, **NICHT** in CLAUDE.md. In CLAUDE.md kommen nur durable Aenderungen an Schema/Pipeline/Konventionen. Forward-State (offene Tasks) gehoert nach Linear (Job 2), nicht in CLAUDE.md.
 
-**AI-only additions (planned):**
-- `AI/Feeds/` — non-human report archives (Epoch AI, Stanford AI Index, SemiAnalysis), referenced from Council analyses.
-- `AI/AI_Commentary/` — markdown per AI system (Claude Code, Claude Chat, ChatGPT, Grok, Perplexity, Gemini, Mistral, Meta-AI) for meta-perspective tracking.
-- `scripts/rss_monitor.py` (Phase 3b) — corporate research blogs + personal Substacks via `feedparser`.
-- `scripts/relevance_triage.py` (Phase 3d, optional) — Haiku 4.5 vorfilter to keep Opus analysis spend down.
-
 **AI Profile-Build Conventions (Phase 2):**
 - Each profile folder gets a `sources.md` annotated bibliography (URL + date + which Kernthese-ID it feeds + fetch-method). Wikipedia avoided (politicized). Podcast whitelist: Lex Fridman, Dwarkesh Patel, Hard Fork (NYT), Ezra Klein, Bg2 Pod, All-In, Bloomberg Open Interest — one explicit search-wave per podcast format per profile build. See `feedback_ai_sources_strategy` memory.
 - Layer-3 finding schema for AI is v3 (K/D/N + R/V/P/E), see Layer-3 section above.
 
-**Additional Modules** (planned): Market data, earnings calendar, Fed/ECB watch, news aggregator.
+**Geplante Module / Additions → Linear:** Forward-State (AI/Feeds-Befüllung, `relevance_triage.py`, Additional Modules wie Market data / Earnings calendar / Fed/ECB watch / News aggregator) lebt als Backlog-Issues im Linear-Projekt „Dashboard" (Team Pan-Opticon), nicht mehr in CLAUDE.md — siehe Record-vs-Wissen-Konvention oben.
