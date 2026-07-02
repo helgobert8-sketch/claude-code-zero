@@ -6,6 +6,10 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Bei Beginn **jeder** Session prüfen, ob im Wurzelverzeichnis eines aktiven Arbeitsverzeichnisses (Primär- **oder** Zusatzverzeichnis) eine `NEXT_SESSION.md` mit einem nicht-leeren pending Prompt liegt (alles ausser `# Pending Prompt — (leer)`). Wenn ja: dem User den Titel/Kern kurz nennen und anbieten, ihn auszuführen — **nicht ungefragt starten** (per [[feedback_no_unsolicited_actions]]). Die Datei ist pro Repo eine einzige, immer-ueberschriebene Pending-Prompt-Datei (kein Stapel); die ausfuehrende Session setzt sie per Selbst-Reset-Footer am Ende zurueck. Hintergrund + Konvention: `feedback_next_session_handoff`-Memory. Bekannte Dateien aktuell: `C:\Users\manyw\Dashboard\NEXT_SESSION.md` (AI-Dashboard-Analyse-Kadenz) · `C:\Users\manyw\Desktop\ClaudeCodeZero\NEXT_SESSION.md` (Linear-Build-Achse) · `C:\Users\manyw\AppFactory\NEXT_SESSION.md` (App-Factory-Einkommens-Track, ab 2026-06-27 — siehe `project_app_factory`-Memory). Weitere Repos analog, sobald dort eine angelegt wird.
 
+## Session-Ende: GitHub-Backup-Disziplin (gilt für ALLE Projekte)
+
+Am Ende **jeder** Session mit substantiellen Änderungen: `git status` in den berührten Repos prüfen, Commit-Message vorschlagen, nach OK committen + pushen — **proaktiv anbieten, nicht warten bis Chris fragt**. Das schließt das Memory-Repo ein (`.claude/projects/C--Users-manyw-Desktop-ClaudeCodeZero/memory/` → `helgobert8-sketch/claude-memory`, Sammel-Commit "Session YYYY-MM-DD: …"). Hintergrund + Detail-Konvention: `feedback_git_github`-Memory. Drift-Belege: 2026-05-15 (Dashboard, 350 Files) und 2026-05-16→07-02 (claude-memory, 6 Wochen / 25 Dateien). **Achtung:** `claude-code-zero` ist PUBLIC — private Inhalte dort nie ungefragt committen.
+
 ## Projects
 
 ### Dashboard — Macro + AI Domains (C:\Users\manyw\Dashboard\)
